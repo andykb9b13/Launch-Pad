@@ -5,7 +5,7 @@ const itemCard = () => {
   return (
     <div>
       <h2>Funding Form</h2>
-      <img src="" alt="item" />
+      <img src="" alt="product" />
       <div className="progressBar">
         <p>$0</p>
         <p className="progressAmt">$400</p>
@@ -17,8 +17,9 @@ const itemCard = () => {
         <textarea cols="20" rows="20"></textarea>
         <button>Donate</button>
       </form>
-      <Link>Sign in to donate</Link>
-      <Link>Back to Business</Link>
+      {/* check these links, they are placeholders on 5/3 */}
+      <Link to="/signup">Sign in to donate</Link>
+      <Link to="/business">Back to Business</Link>
     </div>
   );
 };
