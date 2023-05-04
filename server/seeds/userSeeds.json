@@ -1,0 +1,20 @@
+[
+  {
+    "username": "Tammy",
+    "email": "tammy@tammy.com",
+    "password": "12345678",
+    "donorTier": "1"
+  },
+  {
+    "username": "John542",
+    "email": "john@john.com",
+    "password": "an3413d5",
+    "donorTier": "2"
+  },
+  {
+    "username": "Sarah121",
+    "email": "sarah@sarah.com",
+    "password": "t4542s43",
+    "donorTier": ""
+  }
+]
