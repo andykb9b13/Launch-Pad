@@ -1,15 +1,20 @@
 import React from "react";
 
-const BusinessCard = () => {
+const BusinessCard = ({ businesses }) => {
   return (
-    <div>
-      <h2>This is a businessCard</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque unde
-        consequuntur soluta autem tempora adipisci, a, voluptates expedita
-        voluptatibus ex iste consectetur sunt architecto eligendi odit, at
-        excepturi voluptatum doloremque.
-      </p>
+    <div className="business-cards">
+      {businesses.map((business) => (
+        <div className="business-card">
+          <div className="business-header">
+            <h2>{business.name}</h2>
+          </div>
+          <div className="business-content">
+            <img src={business.imageUrl} alt="business-profile-pic" />
+            <p>{business.description}</p>
+          </div>
+          <button type="button">Click to Launch</button>
+        </div>
+      ))}
     </div>
   );
 };

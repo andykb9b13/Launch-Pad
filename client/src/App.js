@@ -1,5 +1,5 @@
 import "./App.css";
-import BusinessProfile from "./components/BusinessProfile";
+import BusinessProfile from "./pages/BusinessProfile";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
