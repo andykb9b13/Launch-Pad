@@ -1,7 +1,7 @@
 import React from "react";
 import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
-import { BusinessProducts } from "../components/BusinessProducts";
+import Products from "../components/Products";
 
 const BusinessProfile = () => {
   const { data } = useQuery(QUERY_BUSINESS);
@@ -18,7 +18,7 @@ const BusinessProfile = () => {
         <p>{business.description}</p>
       </div>
       <h2>These are the items that need funding</h2>
-      <BusinessProducts products={business.products} />
+      <Products products={business.products} />
     </div>
   );
 };

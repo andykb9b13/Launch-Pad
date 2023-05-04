@@ -1,6 +1,6 @@
 import React from "react";
 
-const BusinessProducts = ({ products }) => {
+const Products = ({ products }) => {
   return (
     <div className="productArea">
       {products &&
@@ -16,4 +16,4 @@ const BusinessProducts = ({ products }) => {
   );
 };
 
-export default BusinessProducts;
+export default Products;
