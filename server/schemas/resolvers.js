@@ -1,4 +1,4 @@
-const { User, Business, Product, Donation } = require("../models");
+const { User, Business, Product } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 // Stripe goes here if we use it
@@ -34,7 +34,7 @@ const resolvers = {
     addUser: async (_, { username, email, password }) => {
       const user = new User({ username, email, password });
       await user.save();
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET);
+      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     login: async (_, { email, password }) => {
@@ -42,10 +42,15 @@ const resolvers = {
       if (!user) {
         throw new Error('No user with that email');
       }
-      if (password !== user.password) {
-        throw new Error('Incorrect password');
+      // if (password !== user.password) {
+      //   throw new Error('Incorrect password');
+      // }
+      const correctPassword = await user.isCorrectPassword(password);
+      if (!correctPassword) {
+        throw new AuthenticationError("Invalid Login");
       }
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET);
+
+      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     addToWatchlist: async (_, { _id }, { user }) => {

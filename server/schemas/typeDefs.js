@@ -6,7 +6,7 @@ const typeDefs = gql`
     email: String
     username: String
     password: String
-    donarTier: String
+    donarTier: Int
     donations: [Donation]
     businesses: [Business]
     watchlist: [Product]
@@ -17,6 +17,12 @@ const typeDefs = gql`
     name: String
     sponsor: String
     description: String
+    location: String
+    website: String
+    facebook: String
+    twitter: String
+    instagram: String
+    missionStatement: String
     products: [Product]
   }
 
@@ -25,6 +31,7 @@ const typeDefs = gql`
     name: String
     description: String
     funding: Int
+    externalLink: String
     donors: [User]
   }
 
