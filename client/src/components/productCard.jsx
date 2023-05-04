@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { QUERY_PRODUCTS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const itemCard = () => {
+  // const { loading, data } = useQuery(QUERY_PRODUCTS);
+  // const products = data?.products || [];
+
   return (
     <div>
       <h2>Funding Form</h2>
