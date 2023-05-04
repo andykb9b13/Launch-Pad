@@ -1,44 +1,44 @@
 [
-    {
-        "name": "Rockville Microphone",
-        "description": "Studio quality recording microphone",
-        "funding": 100,
-        "externalLink": "https://www.rockvilleaudio.com/rcm-pro-rmf1/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzLHUxbkVAXeLdsSDrxRLwkjU9kBavTuHhwV7WBRTJ67lFM51D7wikaApHoEALw_wcB",
-        "businessName": "BreakAlive Studios"
-    },
-    {
-        "name": "Rockville headset",
-        "description": "Studio quality recording headset",
-        "funding": 350,
-        "externalLink": "https://www.rockvilleaudio.com/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzjA1j5ci61cm3s4kgUiVneV5RfT54vJyuxv3jjH2mJJ-Ek5CvsvicaAmqbEALw_wcB",
-        "businessName": "BreakAlive Studios"
-    },
-    {
-        "name": "Pizza Oven",
-        "description": "Premier industrial pizza oven. BEST PIZZA EVER",
-        "funding": 20000,
-        "externalLink": "https://www.katom.com/767-SRPO48G2.html?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxN38U7Kkb4ykmyanjaj9Zi8I4U9aj0xmWi9SvJpKZ60vqZOIs6wh4aAqq9EALw_wcB",
-        "businessName": "Chef Chicks Bakery"
-    },
-    {
-        "name": "Giant dough mixer",
-        "description": "Extra large dough mixer, this well help us make ALL the dough.",
-        "funding": 2000,
-        "externalLink": "https://www.webstaurantstore.com/main-street-equipment-gmix30-30-qt-planetary-floor-mixer-with-guard-standard-accessories-120v-3-hp/541GMIX30.html?utm_source=google&utm_medium=cpc&utm_campaign=GoogleShopping&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxOE_DJLxZu8WuV8Bp5HXwY-f6tYIbgyMfy-Tpou7xsnnmHWkdjRdcaAidkEALw_wcB",
-        "businessName": "Chef Chicks Bakery"
-    },
-    {
-        "name": "Super fancy printer",
-        "description": "We'll print ALL the documents",
-        "funding": 12000,
-        "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
-        "businessName": "SpeedeeQue Printing"
-    },
-    {
-        "name": "Fancy Ink",
-        "description": "SUPER vibrant colors",
-        "funding": 100,
-        "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
-        "businessName": "SpeedeeQue Printing"
-    }
+  {
+    "name": "Rockville Microphone",
+    "description": "Studio quality recording microphone",
+    "funding": 100,
+    "externalLink": "https://www.rockvilleaudio.com/rcm-pro-rmf1/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzLHUxbkVAXeLdsSDrxRLwkjU9kBavTuHhwV7WBRTJ67lFM51D7wikaApHoEALw_wcB",
+    "businessName": "BreakAlive Studios"
+  },
+  {
+    "name": "Rockville headset",
+    "description": "Studio quality recording headset",
+    "funding": 350,
+    "externalLink": "https://www.rockvilleaudio.com/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzjA1j5ci61cm3s4kgUiVneV5RfT54vJyuxv3jjH2mJJ-Ek5CvsvicaAmqbEALw_wcB",
+    "businessName": "BreakAlive Studios"
+  },
+  {
+    "name": "Pizza Oven",
+    "description": "Premier industrial pizza oven. BEST PIZZA EVER",
+    "funding": 20000,
+    "externalLink": "https://www.katom.com/767-SRPO48G2.html?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxN38U7Kkb4ykmyanjaj9Zi8I4U9aj0xmWi9SvJpKZ60vqZOIs6wh4aAqq9EALw_wcB",
+    "businessName": "Chef Chicks Bakery"
+  },
+  {
+    "name": "Giant dough mixer",
+    "description": "Extra large dough mixer, this well help us make ALL the dough.",
+    "funding": 2000,
+    "externalLink": "https://www.webstaurantstore.com/main-street-equipment-gmix30-30-qt-planetary-floor-mixer-with-guard-standard-accessories-120v-3-hp/541GMIX30.html?utm_source=google&utm_medium=cpc&utm_campaign=GoogleShopping&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxOE_DJLxZu8WuV8Bp5HXwY-f6tYIbgyMfy-Tpou7xsnnmHWkdjRdcaAidkEALw_wcB",
+    "businessName": "Chef Chicks Bakery"
+  },
+  {
+    "name": "Super fancy printer",
+    "description": "We'll print ALL the documents",
+    "funding": 12000,
+    "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
+    "businessName": "SpeedeeQue Printing"
+  },
+  {
+    "name": "Fancy Ink",
+    "description": "SUPER vibrant colors",
+    "funding": 100,
+    "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
+    "businessName": "SpeedeeQue Printing"
+  }
 ]
