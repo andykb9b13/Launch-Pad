@@ -1,0 +1,27 @@
+[
+    {
+        "donor": "64540b8cf7282046dacc2bbd",
+        "amount": 50,
+        "product": "64540b8cf7282046dacc2bcd"
+    },
+    {
+        "donor": "64540b8cf7282046dacc2bbe",
+        "amount": 816,
+        "product": "64540b8df7282046dacc2bd3"
+    },    
+    {
+        "donor": "64540b8cf7282046dacc2bbf",
+        "amount": 50,
+        "product": "64540b8cf7282046dacc2bcd"
+    },    
+    {
+        "donor": "64540b8cf7282046dacc2bbf",
+        "amount": 12000,
+        "product": "64540b8df7282046dacc2bd9"
+    },    
+    {
+        "donor": "64540b8cf7282046dacc2bbe",
+        "amount": 10,
+        "product": "64540b8df7282046dacc2bdc"
+    }
+]
