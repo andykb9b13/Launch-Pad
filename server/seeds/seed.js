@@ -1,9 +1,10 @@
 const db = require("../config/connection");
-const { User, Business } = require("../models");
+const { User, Business, Product, Donation } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const businessSeeds = require("./businessSeeds.json");
 const productSeeds = require("./productSeeds.json");
-const donorSeeds = requre;
+const donorSeeds = require('./donorSeeds.json');
+
 
 db.once("open", async () => {
   try {
@@ -70,6 +71,21 @@ db.once("open", async () => {
         }
       );
       console.log("3rd business in seeds", business);
+    }
+
+    for(let i = 0; i < donorSeeds.length; i++){
+      const { _id } = await Donation.create(donorSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        {
+          _id: donorSeeds[i].donor
+        },
+        {
+          $addToSet: {
+            user: _id
+          }
+        }
+      );
+      console.log("Donation added: ", donorSeeds[i]);
     }
 
     console.log("all done");
