@@ -40,6 +40,9 @@ const businessSchema = new Schema({
         required: true,
         minLength: 25
     },
+    imageUrl: {
+        type: String
+    },
     products: [
         {
             type: Schema.Types.ObjectId,

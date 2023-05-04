@@ -1,10 +1,11 @@
 import "./App.css";
-import BusinessProfile from "./components/BusinessProfile";
+import BusinessProfile from "./pages/BusinessProfile";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
+import businessSignUp from "./components/BusinessSignUp";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/business" element={<BusinessProfile />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/newbusiness" element={<businessSignUp />} />
       </Routes>
     </Router>
   );
