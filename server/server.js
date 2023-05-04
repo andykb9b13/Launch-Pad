@@ -14,7 +14,7 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets IF WE DECIDE TO INCLUDE STATIC IMAGES
