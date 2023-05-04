@@ -1,0 +1,32 @@
+[
+  {
+    "name": "BreakAlive Studios",
+    "description": "We are a recording studio in Durham",
+    "location": "Durham, NC",
+    "website": "",
+    "facebook": "https://www.facebook.com/BreakAliveStudios/",
+    "instagram": "https://www.instagram.com/breakalivestudios/?hl=en",
+    "missionStatement": "We record your stuff and make it sound killer!",
+    "imageUrl": ""
+  },
+  {
+    "name": "Chef Chicks Bakery",
+    "description": "We are a polish bakery in southern Durham",
+    "location": "Durham, NC",
+    "website": "https://www.ccbakerync.com/",
+    "facebook": "https://www.facebook.com/ChefChicksBakery/",
+    "instagram": "https://www.instagram.com/chefchicksbakery/?hl=en",
+    "missionStatement": "We make dank pastries and lots of tastiness!",
+    "imageUrl": ""
+  },
+  {
+    "name": "SpeedeeQue Printing",
+    "description": "Forget Kinkos or FedEx or whatever it's called now. We do it right and cheap.",
+    "location": "Downtown Durham, NC",
+    "website": "http://www.speedeeque.com/",
+    "facebook": "https://www.facebook.com/profile.php?id=138283419552710&paipv=0&eav=Afah-fQVFPFAHZ7hq2T1X5PtncKDPj3mBsmAPhLMn2Qw9HuMmj-ET3ogJV0drq0V6YM&_rdr",
+    "instagram": "",
+    "missionStatement": "We give your work the personal touch it deserves!",
+    "imageUrl": ""
+  }
+]
