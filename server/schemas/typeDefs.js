@@ -6,7 +6,7 @@ const typeDefs = gql`
     email: String
     username: String
     password: String
-    donarTier: Int
+    donorTier: Int
     donations: [Donation]
     businesses: [Business]
     watchlist: [Product]
