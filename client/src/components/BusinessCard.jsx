@@ -14,7 +14,7 @@ const BusinessCard = () => {
         businesses.map((business, i) => (
           <div key={i} className="businessCard">
             <div className="businessHeader">
-              <h2>{business.name}</h2>
+              <h2 className="text-[var(--red)]">{business.name}</h2>
             </div>
             <div className="businessContent">
               <img src={business.sponsor} alt="businessProfilePic" />

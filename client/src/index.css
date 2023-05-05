@@ -12,3 +12,14 @@
     }
 }
 
+:root {
+    --lime: #A3DE83;
+    --green: #2EB872;
+    --red: #FF5D6E;
+    --white: #FEFFEA;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--green);
+}
