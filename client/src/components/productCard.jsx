@@ -1,10 +1,26 @@
 import React from "react";
+import { QUERY_PRODUCT } from "../utils/queries";
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
 
-const productCard = () => {
+const ProductCard = () => {
+  const { productId } = useParams();
+  console.log("productId", productId);
+
+  const { data } = useQuery(QUERY_PRODUCT, {
+    variables: {
+      _id: productId,
+    },
+  });
+
+  console.log("data from productId", data);
+  const product = data?.product || [];
+
   return (
     <div>
       <h2>Funding Form</h2>
+      <h3>{product.name}</h3>
       <img src="" alt="product" />
       <div className="progressBar">
         <p>$0</p>
@@ -24,4 +40,4 @@ const productCard = () => {
   );
 };
 
-export default productCard;
+export default ProductCard;

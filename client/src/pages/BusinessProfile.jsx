@@ -17,6 +17,8 @@ const BusinessProfile = () => {
 
   const business = data?.business || [];
 
+  console.log("business.products", business.products);
+
   return (
     <div>
       <h1>This is a business Profile</h1>
@@ -28,7 +30,7 @@ const BusinessProfile = () => {
         <p>{business.description}</p>
       </div>
       <h2>These are the items that need funding</h2>
-      {/* <Products products={business.products} /> */}
+      <Products products={business.products} />
     </div>
   );
 };

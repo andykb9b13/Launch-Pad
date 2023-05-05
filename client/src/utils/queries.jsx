@@ -46,3 +46,14 @@ export const QUERY_BUSINESSES = gql`
     }
   }
 `;
+
+export const QUERY_PRODUCT = gql`
+  query Product($productId: ID) {
+    product(_id: $productId) {
+      _id
+      name
+      description
+      funding
+    }
+  }
+`;
