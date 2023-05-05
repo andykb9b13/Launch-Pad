@@ -5,7 +5,7 @@ import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
-import businessSignUp from "./components/BusinessSignUp";
+import BusinessSignUp from "./components/BusinessSignUp";
 
 export default function App() {
   return (

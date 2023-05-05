@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {Route, Link, Routes, useNavigate} from "react-router-dom"
 
-export default function businessSignUp(){
-    const navigate = useNavigate();
+export default function BusinessSignUp(){
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [websiteURL, setWebsiteURL] = useState("");
@@ -12,30 +11,29 @@ export default function businessSignUp(){
     const [description, setDescription] = useState("");
 
     //Handle & store Changes for input values
-    const handleNameChange = (e) => {
+    function handleNameChange(e){
         setBusinessName(e.target.value);
     }
-    const handleLocationChange = (e) => {
+    function handleLocationChange(e){
         setLocation(e.target.value);
     }
-    const handleWebsiteChange = (e) => {
+    function handleWebsiteChange(e){
         setWebsiteURL(e.target.value);
     }
-    const handleTwitterChange = (e) => {
+    function handleTwitterChange(e){
         setTwitterURL(e.target.value);
     }
-    const handleFacebookChange = (e) => {
+    function handleFacebookChange(e){
         setFacebookURL(e.target.value);
     }
-    const handleInstagramChange = (e) => {
+    function handleInstagramChange(e){
         setInstagramURL(e.target.value);
     }
-    const handleDescriptionChange = (e) => {
+    function handleDescriptionChange(e){
         setDescription(e.target.value);
     }
     //set cancel button to previous page.
     const prevPage = () => {
-        navigate(-1);
     }
     //Move to next steps
     const onSubmit = (e) => {
@@ -91,7 +89,7 @@ export default function businessSignUp(){
                 </div>
 
                 <div>
-                    <button type="submit">Next</button>
+                    <button type="submit" onClick={prevPage}>Next</button>
                     <button>Cancel</button>
                 </div>
             </form>
