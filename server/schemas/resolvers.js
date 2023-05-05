@@ -17,10 +17,10 @@ const resolvers = {
       return await Product.find().populate("funding");
     },
     businesses: async () => {
-      return await Business.find();
+      return await Business.find().populate("products");
     },
     business: async (parent, { name }) => {
-      return await Business.findOne({ name });
+      return await Business.findOne({ name }).populate("products");
     },
     // make sure to set Context on the client side in app.js
     me: async (parent, args, contest) => {
