@@ -10,7 +10,7 @@ const ProductCard = () => {
 
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
-      _id: productId,
+      productId: productId,
     },
   });
 
@@ -23,9 +23,10 @@ const ProductCard = () => {
       <h3>{product.name}</h3>
       <img src="" alt="product" />
       <div className="progressBar">
-        <p>$0</p>
-        <p className="progressAmt">$400</p>
+        <h3>How much is raised so far...</h3>
+        <p className="progressAmt">${product.funding}</p>
       </div>
+      <a href={product.externalLink}>Buy it now</a>
       <form action="submit">
         <label htmlFor="donateAmt">Enter amount you want to donate</label>
         <input type="text" />
