@@ -16,6 +16,9 @@ const resolvers = {
     products: async () => {
       return await Product.find().populate("funding");
     },
+    product: async () => {
+      return await Product.findOne({ _id });
+    },
     businesses: async () => {
       return await Business.find().populate("products");
     },
