@@ -26,6 +26,7 @@ export default function App() {
           <Route path="/business" element={<BusinessProfile />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/business/:name" element={<BusinessProfile />} />
           {/* <Route path="/newbusiness" element={<businessSignUp />} /> */}
         </Routes>
       </Router>
