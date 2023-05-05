@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Route, Link, Routes, useNavigate} from "react-router-dom"
 
-export default function businessSignUp(){
+export default function BusinessSignUp(){
     const navigate = useNavigate();
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
