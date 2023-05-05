@@ -1,5 +1,4 @@
 import React from "react";
-
 import BusinessCard from "../components/BusinessCard";
 
 const Homepage = () => {
