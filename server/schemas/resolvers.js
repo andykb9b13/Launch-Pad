@@ -6,29 +6,34 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find().populate("businesses").populate("donorTier");
+      return await User.find({}).populate("businesses").populate("donorTier");
     },
     user: async (parent, { username }) => {
-      return await User.findOne({ username }).populate("businesses").populate("donorTier");
+      return User.findOne({ username })
+        .populate("businesses")
+        .populate("donorTier");
     },
     products: async () => {
       return await Product.find().populate("funding");
     },
     businesses: async () => {
-        return await Business.find();
+      return await Business.find().populate("products");
     },
     business: async (parent, { name }) => {
-        return await Business.findOne({ name });
+      return await Business.findOne({ name }).populate("products");
     },
     // make sure to set Context on the client side in app.js
     me: async (parent, args, contest) => {
-        if (context.user) {
-            return await User.findOne({ _id: context.user._id }).populate('donations').populate('businesses').populate('watchlist');
-        }
-        throw new AuthenticationError('You are not logged in.');
+      if (context.user) {
+        return User.findOne({ _id: context.user._id })
+          .populate("donations")
+          .populate("businesses")
+          .populate("watchlist");
+      }
+      throw new AuthenticationError("You are not logged in.");
     },
   },
-  
+
   Mutation: {
     // Mutation resolvers go here
     addUser: async (_, { username, email, password }) => {
@@ -40,7 +45,7 @@ const resolvers = {
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new Error('No user with that email');
+        throw new Error("No user with that email");
       }
       // if (password !== user.password) {
       //   throw new Error('Incorrect password');
@@ -55,14 +60,14 @@ const resolvers = {
     },
     addToWatchlist: async (_, { _id }, { user }) => {
       if (!user) {
-        throw new Error('Authentication failed');
+        throw new Error("Authentication failed");
       }
       const product = await Product.findById(_id);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       if (product.donors.includes(user._id)) {
-        throw new Error('Product already in watchlist');
+        throw new Error("Product already in watchlist");
       }
       product.donors.push(user._id);
       await product.save();
@@ -72,24 +77,26 @@ const resolvers = {
     },
     removeFromWatchlist: async (_, { _id }, { user }) => {
       if (!user) {
-        throw new Error('Authentication failed');
+        throw new Error("Authentication failed");
       }
       const product = await Product.findById(_id);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       if (!product.donors.includes(user._id)) {
-        throw new Error('Product not in watchlist');
+        throw new Error("Product not in watchlist");
       }
       product.donors = product.donors.filter((donor) => donor !== user._id);
       await product.save();
-      user.watchlist = user.watchlist.filter((productId) => productId !== product._id);
+      user.watchlist = user.watchlist.filter(
+        (productId) => productId !== product._id
+      );
       await user.save();
       return product;
     },
     addBusiness: async (_, { name, sponsor, description }, { user }) => {
       if (!user) {
-        throw new Error('Authentication failed');
+        throw new Error("Authentication failed");
       }
       const business = new Business({ name, sponsor, description });
       await business.save();
@@ -99,17 +106,17 @@ const resolvers = {
     },
     donate: async (_, { _id, amount }, { user }) => {
       if (!user) {
-        throw new Error('Authentication failed');
+        throw new Error("Authentication failed");
       }
       const product = await Product.findById(_id);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       product.funding += amount;
       await product.save();
       return product;
-    }
-    }
+    },
+  },
 };
 
 module.exports = resolvers;
