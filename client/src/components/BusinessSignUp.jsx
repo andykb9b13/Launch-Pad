@@ -11,6 +11,7 @@ export default function BusinessSignUp(){
     const [description, setDescription] = useState("");
 
     //Handle & store Changes for input values
+    //Handle & store Changes for input values
     function handleNameChange(e){
         setBusinessName(e.target.value);
     }
