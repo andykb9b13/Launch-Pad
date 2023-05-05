@@ -6,10 +6,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find().populate("businesses").populate("donarTier");
+      return await User.find().populate("businesses").populate("donorTier");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("businesses").populate("donarTier");
+      return await User.findOne({ username }).populate("businesses").populate("donorTier");
     },
     products: async () => {
       return await Product.find().populate("funding");
@@ -23,7 +23,7 @@ const resolvers = {
     // make sure to set Context on the client side in app.js
     me: async (parent, args, contest) => {
         if (context.user) {
-            return User.findOne({ _id: context.user._id }).populate('donations').populate('businesses').populate('watchlist');
+            return await User.findOne({ _id: context.user._id }).populate('donations').populate('businesses').populate('watchlist');
         }
         throw new AuthenticationError('You are not logged in.');
     },
@@ -111,3 +111,5 @@ const resolvers = {
     }
     }
 };
+
+module.exports = resolvers;
