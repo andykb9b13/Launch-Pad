@@ -16,8 +16,15 @@ const resolvers = {
     products: async () => {
       return await Product.find().populate("funding");
     },
-    product: async () => {
-      return await Product.findOne({ _id });
+    product: async (parent, { productId }) => {
+      console.log("productId in resolvers", productId);
+      try {
+        const product = await Product.findOne({ _id: productId });
+        console.log("product in resolvers", product);
+        return product;
+      } catch (err) {
+        console.log(err);
+      }
     },
     businesses: async () => {
       return await Business.find().populate("products");

@@ -38,6 +38,7 @@ export const QUERY_BUSINESSES = gql`
       instagram
       missionStatement
       products {
+        _id
         name
         description
         funding
@@ -48,12 +49,13 @@ export const QUERY_BUSINESSES = gql`
 `;
 
 export const QUERY_PRODUCT = gql`
-  query Product($productId: ID) {
-    product(_id: $productId) {
+  query Product($productId: String!) {
+    product(productId: $productId) {
       _id
       name
       description
       funding
+      externalLink
     }
   }
 `;
