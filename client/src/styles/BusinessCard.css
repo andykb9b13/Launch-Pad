@@ -1,0 +1,24 @@
+
+
+/* :root{
+       --text-color: #2EB872;
+       --background-color: #FEFFEA;
+       --header-color: #A3DE83;
+       --important-color: #FF5D6E;
+       background-color: var(--background-color);
+        font: 15px Tillium, sans-serif;
+}  */
+
+h5 {
+    color: var(--green);
+}
+
+p {
+    color: var(--green);
+    /* font: Tillium; */
+}
+
+.businessCards {
+    position: relative;
+    top: 70px;
+}
