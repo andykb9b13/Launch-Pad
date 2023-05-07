@@ -1,6 +1,7 @@
 import React from "react";
 import { QUERY_BUSINESSES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 import Products from "./Products";
 
 const BusinessCard = () => {
@@ -28,6 +29,7 @@ const BusinessCard = () => {
             </div>
             <Products products={business.products} />
             <button type="button">Click to Launch</button>
+            <Link to={`/business/${business.name}`}>Launch Me</Link>
           </div>
         ))}
     </div>

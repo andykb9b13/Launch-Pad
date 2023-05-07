@@ -4,6 +4,7 @@ import BusinessProfile from "./pages/BusinessProfile";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
+import ProductCard from "./components/productCard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -26,6 +27,8 @@ export default function App() {
           <Route path="/business" element={<BusinessProfile />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/business/:name" element={<BusinessProfile />} />
+          <Route path="/product/:productId" element={<ProductCard />} />
           {/* <Route path="/newbusiness" element={<businessSignUp />} /> */}
         </Routes>
       </Router>
