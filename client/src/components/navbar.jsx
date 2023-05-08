@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/launchpad-logo-placeholder.png";
 import { FaBars, FaTimes } from 'react-icons/fa'
+import Header1 from '../assets/backgrounds/header1.jpg';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="fixed w-full h-[70px] flex justify-between items-center px-4 bg-[var(--lime)] text-[var(--red)] ">
+    <div 
+    className="fixed w-full h-[70px] flex justify-between items-center px-4 text-[var(--red)] z-10 bg-[var(--white)]"
+    >
       <div className='border-2 rounded-lg border-[var(--white)]'>
         <Link to="/" smooth={true} duration={500}>
         <img src={Logo} alt='LaunchPad Logo' style={{ width: '50px' }} />
