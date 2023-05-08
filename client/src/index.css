@@ -19,6 +19,23 @@
     --white: #FEFFEA;
 }
 
+.whitelime {
+    background-image: linear-gradient(
+        to right,
+        var(--white),
+        var(--lime)
+    );
+}
+
+.redwhite {
+    background-image: linear-gradient(
+        to right,
+        var(--red),
+        var(--white),
+        var(--red)
+    );
+}
+
 body {
     background-color: var(--white);
     color: var(--green);
