@@ -104,8 +104,8 @@ function SignUp() {
         </label>
         <br />
         <div className='flex'>
-        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] px-10 py-3 my-2 mx-auto flex flex-center' type="submit">Sign Up</button>
-        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] px-10 py-3 my-2 mx-auto flex flex-center' type="button" onClick={ handleClear }>Cancel</button>
+        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center' type="submit">Sign Up</button>
+        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center' type="button" onClick={ handleClear }>Cancel</button>
         </div>
       </form>
     </div>

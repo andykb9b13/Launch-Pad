@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import ProductCard from "./components/productCard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
+import BusinessSignUp from "./components/BusinessSignUp";
 
 // import businessSignUp from "./components/BusinessSignUp";
 
@@ -29,7 +30,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/business/:name" element={<BusinessProfile />} />
           <Route path="/product/:productId" element={<ProductCard />} />
-          {/* <Route path="/newbusiness" element={<businessSignUp />} /> */}
+          <Route path="/newbusiness" element={<BusinessSignUp />} />
         </Routes>
       </Router>
     </ApolloProvider>
