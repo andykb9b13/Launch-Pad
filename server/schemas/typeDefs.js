@@ -59,11 +59,15 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    deleteUser(_id: ID!): Auth
     login(email: String!, password: String!): Auth
     addToWatchlist(_id: ID!): Product
     removeFromWatchlist(_id: ID!): Product
     addBusiness(name: String!, sponsor: String!, description: String): User
+    deleteBusiness(_id: ID!, sponsor: String!): User
     donate(_id: ID!, amount: Int!): Product
+    addProduct(name: String!, description: String!, funding: Int!, externalLink: String!): Product
+    deleteProduct(productId: ID!): Product
   }
 `;
 
