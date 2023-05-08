@@ -52,6 +52,10 @@ const resolvers = {
       const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
+    deleteUser: async (_, { userId }) => {
+      const deletedUser = await User.findByIdAndDelete(userId);
+      return deletedUser;
+    },
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -114,6 +118,39 @@ const resolvers = {
       await user.save();
       return user;
     },
+    deleteBusiness: async (_, { businessId }, { user }) => {
+      if (!user) {
+        throw new Error("Invalid Credentials");
+      }
+      const business = await Business.findById(businessId);
+      if (!business) {
+        throw new Error("Business not found");
+      }
+      if (!user.businesses.includes(business._id)) {
+        throw new Error("Invalid Credentials");
+      }
+      await Business.findByIdAndDelete(businessId);
+      user.businesses = user.businesses.filter((b) => b.toString() !== businessId.toString());
+      await user.save();
+      return user;
+    },
+    addProduct: async (_, { name, description, funding, externalLink }) => {
+      const product = new Product({ name, description, funding, externalLink });
+      await product.save();
+      return product;
+    },
+    deleteProduct: async (_, { productId }) => {
+      const product = await Product.findById(productId);
+      if (!product) {
+        throw new Error('Product not found');
+      }
+      await Product.findByIdAndDelete(productId);
+      return product;
+    },
+
+
+
+
     donate: async (_, { _id, amount }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
