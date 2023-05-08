@@ -9,46 +9,46 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full h-[70px] flex justify-between items-center px-4 bg-[var(--lime)] text-[var(--red)] ">
-      <div className='border-4 border-[var(--green)]'>
+      <div className='border-2 rounded-lg border-[var(--white)]'>
         <Link to="/" smooth={true} duration={500}>
         <img src={Logo} alt='LaunchPad Logo' style={{ width: '50px' }} />
         </Link>
       </div>
 
-      <h2 className="text-2xl md:text-4xl tracking-wider font-bold text-[var(--green)] hover:text-[var(--red)] duration-150">
+      <h2 className="text-2xl md:text-4xl tracking-wider font-bold text-[var(--green)] hover:rotate-2 duration-150">
         <Link to="/" smooth={true} duration={500}>
            LaunchPad
         </Link>
       </h2>
 
        {/*Menu*/}
-       <div>
+       <div className=''>
         <ul className="hidden md:flex text-2xl">
-          <li className="hover:scale-150 duration-500">
+          <li className="hover:scale-110 duration-500">
             <Link to="/" smooth={true} duration={500}>
               Home
             </Link>
           </li>
-          <li className="hover:scale-150 duration-500">
+          <li className="hover:scale-110 duration-500">
             <Link to="/user" smooth={true} duration={500}>
               Profile
             </Link>
           </li>
-          <li className="hover:scale-150 duration-500">
+          <li className="hover:scale-110 duration-500">
             <Link to="/business" smooth={true} duration={500}>
               Business
             </Link>
           </li>
-          <li className="hover:scale-150 duration-500">
+          <li className="hover:scale-110 duration-500">
             <Link to="/products" smooth={true} duration={500}>
               Browse
             </Link>
           </li>
-          {/* <li className="hover:scale-150 duration-500">
-            <Link to="/login" smooth={true} duration={500}>
+          <li className="hover:scale-110 duration-500">
+            <Link to="/signup" smooth={true} duration={500}>
               Login/Sign Up
             </Link>
-          </li> */}
+          </li>
         </ul>
       </div>
 
@@ -85,11 +85,11 @@ const Navbar = () => {
             Browse
           </Link>
         </li>
-        {/* <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/login" smooth={true} duration={500}>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="/signup" smooth={true} duration={500}>
             Login/Sign Up
           </Link>
-        </li> */}
+        </li>
       </ul>
 
     </div>
