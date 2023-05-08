@@ -24,7 +24,7 @@ function SignUp() {
     let isValid = true;
 
     if (!formData.username.trim()) {
-      errors.username = "Please enter your name";
+      errors.username = "Please enter your username";
       isValid = false;
     }
 
@@ -77,35 +77,36 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <h1>User SignUp</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+    <div className='w-full h-screen flex justify-center items-center p-4'>
+      <form className='border-4 border-[var(--lime)] rounded-lg flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6' onSubmit={handleSubmit}>
+        <label className='text-[var(--red)] tracking-wider sm:text-2xl'> 
+          Username : 
+          <input placeholder=' username' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2' type="text" name="username" value={formData.username} onChange={handleChange} />
           {formErrors.username && <span className="error">{formErrors.username}</span>}
         </label>
         <br />
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+          Email :
+          <input placeholder=' email' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2' type="email" name="email" value={formData.email} onChange={handleChange} />
           {formErrors.email && <span className="error">{formErrors.email}</span>}
         </label>
         <br />
-        <label>
-          Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
+        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+          Password :
+          <input placeholder=' password' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2' type="password" name="password" value={formData.password} onChange={handleChange} />
           {formErrors.password && <span className="error">{formErrors.password}</span>}
         </label>
         <br />
-        <label>
-          Confirm Password:
-          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
+        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+          Confirm Password :
+          <input placeholder=' password' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2' type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
           {formErrors.confirmPassword && <span className="error">{formErrors.confirmPassword}</span>}
         </label>
         <br />
-        <button type="submit">Sign Up</button>
-        <button type="button" onClick={ handleClear }>Cancel</button>
+        <div className='flex'>
+        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] px-10 py-3 my-2 mx-auto flex flex-center' type="submit">Sign Up</button>
+        <button className='bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] px-10 py-3 my-2 mx-auto flex flex-center' type="button" onClick={ handleClear }>Cancel</button>
+        </div>
       </form>
     </div>
   );
