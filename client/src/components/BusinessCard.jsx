@@ -8,7 +8,7 @@ import "../styles/BusinessCard.css";
 const BusinessCard = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
   const businesses = data?.businesses || [];
-  console.log("data in businessCard", data);
+  console.log("businesses in BusinessCard", businesses);
 
   return (
     <div className="grid grid-cols-3 gap-4 businessCards ">
