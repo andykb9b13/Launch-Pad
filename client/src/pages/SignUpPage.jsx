@@ -72,14 +72,12 @@ function SignUp() {
           console.error(err);
           alert(err);
         }
-    
         setFormData({
           username: "",
           email: "",
           password: "",
           confirmPassword: "",
         });
-      // Handle form submission logic here
     }
   };
 

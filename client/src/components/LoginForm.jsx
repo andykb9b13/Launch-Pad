@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Auth from '../utils/auth';
 import { useMutation } from "@apollo/react-hooks";
-import { ADD_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../utils/mutations";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -16,7 +16,7 @@ function SignIn() {
     password: "",
   });
 
-  const [createUser, {error}] = useMutation(ADD_USER);
+  const [loginUser, {error}] = useMutation(LOGIN_USER);
   const [validated] = useState(false);
 
   const handleChange = (event) => {
@@ -57,21 +57,19 @@ function SignIn() {
     event.preventDefault();
     if (validateForm()) {
         try {
-          const { data } = await createUser({
+          const { data } = await loginUser({
             variables: { ...formData },
           });
-          Auth.login(data.addUser.token);
+          Auth.login(data.loginUser.token);
         } catch (err) {
           console.error(err);
           alert(err);
         }
-    
         setFormData({
           username: "",
           email: "",
           password: "",
         });
-      // Handle form submission logic here
     }
   };
 
