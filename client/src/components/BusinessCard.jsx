@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import Products from "./Products";
 import "../styles/BusinessCard.css";
-import testImage from "../assets/breakalive-studios.jpg"
 
 const BusinessCard = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
@@ -32,14 +31,17 @@ const BusinessCard = () => {
                 {business.name}
               </h5>
               <p className="mb-4 text-base text-[var(--green)]">
-                <span className="font-medium">Company description: </span>{business.description}
+                <span className="font-medium">Company description: </span>
+                {business.description}
               </p>
               <p className="mb-4 text-base text-[var(--green)]">
-              <span className="font-medium">Location: </span>{business.location}
+                <span className="font-medium">Location: </span>
+                {business.location}
               </p>
 
               <p className="mb-4 text-base text-[var(--green)]">
-              <span className="font-medium">Mission statement: </span>{business.missionStatement}
+                <span className="font-medium">Mission statement: </span>
+                {business.missionStatement}
               </p>
               <button
                 type="button"
@@ -53,9 +55,15 @@ const BusinessCard = () => {
                 <span className="hover:scale-150 duration-200 relative top-5 left-0 basis-1/4">
                   <a href={business.website}>Company Website</a>
                 </span>
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4"><a href={business.facebook}>Facebook</a></span>
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4"><a href={business.twitter}>Twitter</a></span>
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4"><a href={business.instagram}>Instagram</a></span>
+                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
+                  <a href={business.facebook}>Facebook</a>
+                </span>
+                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
+                  <a href={business.twitter}>Twitter</a>
+                </span>
+                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
+                  <a href={business.instagram}>Instagram</a>
+                </span>
               </p>
             </div>
             <div className="businessContent"></div>
