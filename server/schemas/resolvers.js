@@ -49,7 +49,7 @@ const resolvers = {
     addUser: async (_, { username, email, password }) => {
       const user = new User({ username, email, password });
       await user.save();
-      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
+      const token = signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     login: async (_, { email, password }) => {
@@ -65,7 +65,7 @@ const resolvers = {
         throw new AuthenticationError("Invalid Login");
       }
 
-      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
+      const token = signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     addToWatchlist: async (_, { _id }, { user }) => {
