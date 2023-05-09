@@ -24,6 +24,40 @@ h2 {
   font-size: 3em;
 }
 
-.businessCardContainer {
+button {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  text-shadow: 1px 5px 10px black;
+  font-size: 1.5em;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+}
+
+.missionStatement {
+  border: 1px solid black;
+  margin: 5%;
+  padding: 3%;
   display: flex;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px black;
+}
+
+.missionImg {
+  width: 300px;
+}
+
+.businessCardContainer {
+  margin: 5%;
+  border: 1px solid black;
+  box-shadow: 1px 1px 10px black;
+  padding: 3%;
+  border-radius: 5px;
 }

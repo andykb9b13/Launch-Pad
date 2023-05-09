@@ -12,7 +12,7 @@ const Navbar = () => {
     <div className="w-full h-[70px] flex justify-between items-center px-4 text-[var(--red)] z-10">
       <div className="border-2 rounded-lg border-[var(--white)]">
         <Link to="/" smooth={true} duration={500}>
-          <img src={Logo} alt="LaunchPad Logo" style={{ width: "50px" }} />
+          Launch Pad
         </Link>
       </div>
 
