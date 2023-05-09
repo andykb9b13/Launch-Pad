@@ -52,7 +52,7 @@ const resolvers = {
       const token = signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
-    login: async (_, { email, password }) => {
+    loginUser: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
         throw new Error("No user with that email");
