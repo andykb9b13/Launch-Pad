@@ -26,42 +26,42 @@ npm install
 ### Homepage
 
 When a user first visits the site, they will see a homepage populated with business that are looking for funding for items.
-![HomePage](./assets/HomePage.png)
+![HomePage](/client/src/assets/mock-ups/HomePage.png)
 
 ### Business Page
 
 Users can choose to visit a particular business and see the items they have posted for funding
-![Business Page](./assets/BusinessPage.png)
+![Business Page](/client/src/assets/mock-ups/BusinessPage.png)
 
 ### Funding a Business
 
 When an item is clicked on, the user will see the progress of funding as well as details for the item.
-![Funding Form](./assets/FundingForm.png)
+![Funding Form](/client/src/assets/mock-ups/FundingForm.png)
 
 ### Signup
 
 In order to donate to a business, a user must create an account.
-![User Sign Up](./assets/UserSignup.png)
+![User Sign Up](/client/src/assets/mock-ups/UserSignup.png)
 
 ### User Profile
 
 Users can customize their profiles once they have created their account. Users will be able to see the projects that they have contributed to.
-![User Profile](./assets/UserProfile.png)
+![User Profile](/client/src/assets/mock-ups/UserProfile.png)
 
 ### Business Profile
 
 Users have the option to create a business profile
-![Business Profile](./assets/BusinessProfile1.png)
+![Business Profile](/client/src/assets/mock-ups/BusinessProfile1.png)
 
 ### Customize Profile
 
 Users will have the option to customize their profile by adding a written mission statement, a video describing their business, and images of their business.
-![Customize Profile](./assets/BusinessProfile2.png)
+![Customize Profile](/client/src/assets/mock-ups/BusinessProfile2.png)
 
 ### Add Items for Funding
 
 Users can add items that require funding.
-![Add Items](./assets/BusinessProfile3.png)
+![Add Items](/client/src/assets/mock-ups/BusinessProfile3.png)
 
 ## Contributing
 
