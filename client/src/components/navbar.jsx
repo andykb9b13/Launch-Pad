@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/launchpad-logo-placeholder.png";
-import { FaBars, FaTimes } from 'react-icons/fa'
-import Header1 from '../assets/backgrounds/header1.jpg';
+import { FaBars, FaTimes } from "react-icons/fa";
+import Header1 from "../assets/backgrounds/header1.jpg";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
   return (
-    <div 
-    className="fixed w-full h-[70px] flex justify-between items-center px-4 text-[var(--red)] z-10 bg-[var(--white)]"
-    >
-      <div className='border-2 rounded-lg border-[var(--white)]'>
+    <div className="w-full h-[70px] flex justify-between items-center px-4 text-[var(--red)] z-10">
+      <div className="border-2 rounded-lg border-[var(--white)]">
         <Link to="/" smooth={true} duration={500}>
-        <img src={Logo} alt='LaunchPad Logo' style={{ width: '50px' }} />
+          <img src={Logo} alt="LaunchPad Logo" style={{ width: "50px" }} />
         </Link>
       </div>
 
       <h2 className="text-2xl md:text-4xl tracking-wider font-bold text-[var(--green)] hover:rotate-2 duration-150">
         <Link to="/" smooth={true} duration={500}>
-           LaunchPad
+          LaunchPad
         </Link>
       </h2>
 
-       {/*Menu*/}
-       <div className=''>
+      {/*Menu*/}
+      <div className="">
         <ul className="hidden md:flex text-2xl">
           <li className="hover:scale-110 duration-500">
             <Link to="/" smooth={true} duration={500}>
@@ -55,8 +53,11 @@ const Navbar = () => {
         </ul>
       </div>
 
- {/*Hamburger, only shows on mobile and brings up larger nav menu*/}
- <div onClick={handleClick} className="md:hidden z-10 hover:cursor-pointer">
+      {/*Hamburger, only shows on mobile and brings up larger nav menu*/}
+      <div
+        onClick={handleClick}
+        className="md:hidden z-10 hover:cursor-pointer"
+      >
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
@@ -79,12 +80,22 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/business" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="/business"
+            smooth={true}
+            duration={500}
+          >
             Business
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/products" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="/products"
+            smooth={true}
+            duration={500}
+          >
             Browse
           </Link>
         </li>
@@ -94,7 +105,6 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-
     </div>
   );
 };

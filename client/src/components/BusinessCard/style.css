@@ -1,0 +1,8 @@
+.businessCard {
+  display: flex;
+  justify-content: center;
+}
+
+.businessImg {
+  width: 100%;
+}
