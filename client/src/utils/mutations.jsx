@@ -24,3 +24,17 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_BUSINESS = gql`
+  mutation addBusiness($name: String!, $sponsor: String!, $description: String!) {
+    addBusiness(name: $name, sponsor: $sponsor, description: $description) {
+      token
+      business {
+         _id
+         name
+         sponsor
+         description
+      }
+    }
+  }
+`;
