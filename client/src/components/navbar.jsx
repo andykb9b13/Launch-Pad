@@ -43,13 +43,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="hover:scale-110 duration-500">
-            <Link to="/products" smooth={true} duration={500}>
-              Browse
+            <Link to="/login" smooth={true} duration={500}>
+              Login
             </Link>
           </li>
           <li className="hover:scale-110 duration-500">
             <Link to="/signup" smooth={true} duration={500}>
-              Login/Sign Up
+              Sign Up
             </Link>
           </li>
         </ul>
@@ -84,13 +84,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/products" smooth={true} duration={500}>
-            Browse
+          <Link onClick={handleClick} to="/login" smooth={true} duration={500}>
+            Login
           </Link>
         </li>
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/signup" smooth={true} duration={500}>
-            Login/Sign Up
+            Sign Up
           </Link>
         </li>
       </ul>
