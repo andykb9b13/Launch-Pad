@@ -37,6 +37,7 @@ export const QUERY_BUSINESSES = gql`
       twitter
       instagram
       missionStatement
+      imageUrl
       products {
         _id
         name

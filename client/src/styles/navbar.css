@@ -1,0 +1,9 @@
+.navbar {
+  display: flex;
+  flex-direction: inline;
+}
+
+.menuOptions {
+  display: flex;
+  color: green;
+}

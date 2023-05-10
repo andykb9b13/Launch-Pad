@@ -23,6 +23,7 @@ const typeDefs = gql`
     twitter: String
     instagram: String
     missionStatement: String
+    imageUrl: String
     products: [Product]
   }
 
@@ -66,7 +67,12 @@ const typeDefs = gql`
     addBusiness(name: String!, sponsor: String!, description: String): User
     deleteBusiness(_id: ID!, sponsor: String!): User
     donate(_id: ID!, amount: Int!): Product
-    addProduct(name: String!, description: String!, funding: Int!, externalLink: String!): Product
+    addProduct(
+      name: String!
+      description: String!
+      funding: Int!
+      externalLink: String!
+    ): Product
     deleteProduct(productId: ID!): Product
   }
 `;
