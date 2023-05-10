@@ -8,8 +8,10 @@ const Homepage = () => {
     <div>
       <div className="banner">
         <h1>Launch Pad</h1>
-        <h2 className="subtitle">Where dreams are launched...</h2>
-        <button type="button">Launch Business</button>
+        <h2 className="subtitle">where dreams are launched...</h2>
+        <button className="launchBtn" type="button">
+          Launch Business
+        </button>
       </div>
       <div className="missionStatement">
         <div>
@@ -25,6 +27,9 @@ const Homepage = () => {
             donors with small businesses in need, we can help create a more
             equitable and thriving economy for all.
           </p>
+          <button className="exploreBtn" type="button">
+            Explore Businesses
+          </button>
         </div>
         <img
           className="missionImg"

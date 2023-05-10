@@ -1,43 +1,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/launchpad-logo-placeholder.png";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Header1 from "../assets/backgrounds/header1.jpg";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="navbar">
-      <div>
+    <div className="w-full h-[70px] flex justify-between items-center px-4 z-10">
+      <h2 className="text-2xl md:text-4xl tracking-wider duration-150">
         <Link to="/" smooth={true} duration={500}>
-          Launch Pad
+          LaunchPad
         </Link>
-      </div>
+      </h2>
 
       {/*Menu*/}
-      <div>
-        <ul className="menuOptions">
-          <li>
+      <div className="">
+        <ul className="hidden md:flex text-2xl">
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/" smooth={true} duration={500}>
               Home
             </Link>
           </li>
-          <li>
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/user" smooth={true} duration={500}>
               Profile
             </Link>
           </li>
-          <li>
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/business" smooth={true} duration={500}>
               Business
             </Link>
           </li>
-          <li>
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/products" smooth={true} duration={500}>
               Browse
             </Link>
           </li>
-          <li>
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/signup" smooth={true} duration={500}>
               Login/Sign Up
             </Link>
