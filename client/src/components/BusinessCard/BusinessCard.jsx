@@ -14,11 +14,11 @@ const BusinessCard = () => {
     <div className="businessCard">
       {businesses &&
         businesses.map((business, i) => (
-          <div key={i} className="border-4 business">
+          <div key={i} className="business">
             <a href="#!">
               <img
                 src={business.imageUrl}
-                className="rounded-t-lg businessImg"
+                className="businessImg"
                 alt="businessProfilePic"
               />
             </a>
@@ -27,22 +27,12 @@ const BusinessCard = () => {
               <h5 className="mb-2 text-xl font-bold leading-tight">
                 {business.name}
               </h5>
-              <p className="mb-4">
-                <span className="font-medium">Company description: </span>
-                {business.description}
-              </p>
-              <p className="mb-4">
-                <span className="font-medium">Location: </span>
-                {business.location}
-              </p>
-
-              <p className="mb-4">
-                <span className="font-medium">Mission statement: </span>
-                {business.missionStatement}
-              </p>
+              <p className="mb-4">{business.location}</p>
+              <p className="mb-4">{business.description}</p>
+              <p className="mb-4">{business.missionStatement}</p>
               <button
                 type="button"
-                class="inline-block"
+                className="inline-block businessLaunchBtn"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
