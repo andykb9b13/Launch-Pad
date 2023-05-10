@@ -9,7 +9,9 @@ const Homepage = () => {
       <div className="banner">
         <h1>Launch Pad</h1>
         <h2 className="subtitle">where dreams are launched...</h2>
-        <button className="launchBtn" type="button">
+        <button className="launchBtn" type="button" onClick={() => {
+          window.location.replace('/newbusiness')
+        }}>
           Launch Business
         </button>
       </div>
