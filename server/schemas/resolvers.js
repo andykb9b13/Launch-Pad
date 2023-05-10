@@ -56,7 +56,7 @@ const resolvers = {
       const deletedUser = await User.findByIdAndDelete(userId);
       return deletedUser;
     },
-    login: async (_, { email, password }) => {
+    loginUser: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
         throw new Error("No user with that email");

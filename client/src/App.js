@@ -1,21 +1,37 @@
 import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import BusinessProfile from "./pages/BusinessProfile";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import ProductCard from "./components/productCard";
+import LoginForm from './components/LoginForm'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./components/BusinessSignUp";
 
 // import businessSignUp from "./components/BusinessSignUp";
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("id_token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-  // THis is so that we can see our cache in action
-  connectToDevTools: true,
 });
 
 export default function App() {
@@ -31,6 +47,7 @@ export default function App() {
           <Route path="/business/:name" element={<BusinessProfile />} />
           <Route path="/product/:productId" element={<ProductCard />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </Router>
     </ApolloProvider>
