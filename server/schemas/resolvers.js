@@ -108,7 +108,7 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, sponsor, description }, { user }) => {
+    addBusiness: async (_, { name, description }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
