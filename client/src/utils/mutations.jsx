@@ -25,11 +25,9 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// removed token
 export const ADD_BUSINESS = gql`
   mutation addBusiness($name: String!, $sponsor: String, $description: String, $location: String, $website: String, $facebook: String, $twitter: String, $instagram: String, $missionStatement: String) {
     addBusiness(name: $name, sponsor: $sponsor, description: $description, location: $location, website: $website, facebook: $facebook, twitter: $twitter, instagram: $instagram, missionStatement: $missionStatement) {
-      business {
         _id
         name
         sponsor
@@ -40,8 +38,6 @@ export const ADD_BUSINESS = gql`
        twitter
        instagram
        missionStatement
-     }
-
     }
   }
 `;

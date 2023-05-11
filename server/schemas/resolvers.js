@@ -112,15 +112,22 @@ const resolvers = {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      console.log("this is user: ",user);
       try {
-        const business = new Business({ name, description, sponsor: user._id} );
-        console.log("this is business: ",business);
-        await business.save();
-        
-        let newUser = await User.findByIdAndUpdate(user._id, {$push: {businesses: business._id}}, {new: true});
+        let newBusiness = await Business.create({
+          name,
+          description,
+          sponsor: user._id,
+        });
 
-        return { business };
+        console.log("here is newBusiness", newBusiness);
+
+        let newUser = await User.findByIdAndUpdate(
+          user._id,
+          { $push: { businesses: newBusiness._id } },
+          { new: true }
+        );
+
+        return newBusiness;
       } catch (err) {
         console.error(err);
       }
