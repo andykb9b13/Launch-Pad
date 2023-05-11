@@ -33,7 +33,7 @@ const resolvers = {
       return await Business.findOne({ name }).populate("products");
     },
     // make sure to set Context on the client side in app.js
-    me: async (parent, args, contest) => {
+    me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
@@ -112,11 +112,25 @@ const resolvers = {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const business = new Business({ name, sponsor, description });
-      await business.save();
-      user.businesses.push(business._id);
-      await user.save();
-      return user;
+      try {
+        let newBusiness = await Business.create({
+          name,
+          description,
+          sponsor: user._id,
+        });
+
+        console.log("here is newBusiness", newBusiness);
+
+        let newUser = await User.findByIdAndUpdate(
+          user._id,
+          { $push: { businesses: newBusiness._id } },
+          { new: true }
+        );
+
+        return newBusiness;
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteBusiness: async (_, { businessId }, { user }) => {
       if (!user) {
@@ -130,7 +144,9 @@ const resolvers = {
         throw new Error("Invalid Credentials");
       }
       await Business.findByIdAndDelete(businessId);
-      user.businesses = user.businesses.filter((b) => b.toString() !== businessId.toString());
+      user.businesses = user.businesses.filter(
+        (b) => b.toString() !== businessId.toString()
+      );
       await user.save();
       return user;
     },
@@ -142,14 +158,11 @@ const resolvers = {
     deleteProduct: async (_, { productId }) => {
       const product = await Product.findById(productId);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       await Product.findByIdAndDelete(productId);
       return product;
     },
-
-
-
 
     donate: async (_, { _id, amount }, { user }) => {
       if (!user) {
