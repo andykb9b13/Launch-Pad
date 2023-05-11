@@ -11,41 +11,27 @@ const Navbar = () => {
   return (
     <div className="w-full h-[70px] flex justify-between items-center px-4 z-10">
       <h2 className="text-2xl md:text-4xl tracking-wider duration-150">
-        <Link to="/" smooth={true} duration={500}>
-          LaunchPad
-        </Link>
+        <Link to="/">LaunchPad</Link>
       </h2>
 
       {/*Menu*/}
       <div className="">
         <ul className="hidden md:flex text-2xl">
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/" smooth={true} duration={500}>
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/user" smooth={true} duration={500}>
-              Profile
-            </Link>
+            <Link to="/user">Profile</Link>
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/business" smooth={true} duration={500}>
-              Business
-            </Link>
+            <Link to="/business">Business</Link>
           </li>
-
 
           <li className="hover:scale-110 duration-500">
-            <Link to="/login" smooth={true} duration={500}>
-              Login
-
-            </Link>
+            <Link to="/login">Login</Link>
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/signup" smooth={true} duration={500}>
-              Sign Up
-            </Link>
+            <Link to="/signup">Sign Up</Link>
           </li>
         </ul>
       </div>
@@ -67,32 +53,25 @@ const Navbar = () => {
         }
       >
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/" smooth={true} duration={500}>
+          <Link onClick={handleClick} to="/">
             Home
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/user" smooth={true} duration={500}>
+          <Link onClick={handleClick} to="/user">
             Profile
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link
-            onClick={handleClick}
-            to="/business"
-            smooth={true}
-            duration={500}
-          >
+          <Link onClick={handleClick} to="/business">
             Business
           </Link>
         </li>
         <li className="py-6 text-4xl">
-
-          <Link onClick={handleClick} to="/login" smooth={true} duration={500}>
-          </Link>
+          <Link onClick={handleClick} to="/login"></Link>
         </li>
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/signup" smooth={true} duration={500}>
+          <Link onClick={handleClick} to="/signup">
             Sign Up
           </Link>
         </li>
