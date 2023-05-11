@@ -25,6 +25,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
+// removed token
 export const ADD_BUSINESS = gql`
   mutation addBusiness(
     $name: String!
@@ -62,6 +63,25 @@ export const ADD_BUSINESS = gql`
   }
 `;
 
+export const ADD_DONATION = gql`
+  mutation donate(
+    $amount: String!
+    $message: String
+    $productId: String
+  ) {
+    donate(
+      amount: $amount
+      message: $message
+      productId: $productId
+    ) {
+      _id
+      donor
+      amount
+      product
+      message
+    }
+  }
+`;
 export const ADD_PRODUCT = gql`
   mutation addProduct(
     $name: String!

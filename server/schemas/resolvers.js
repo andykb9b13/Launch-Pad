@@ -1,4 +1,4 @@
-const { User, Business, Product } = require("../models");
+const { User, Business, Product, Donation } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 // Stripe goes here if we use it
@@ -112,7 +112,14 @@ const resolvers = {
       if (!user) {
         throw new Error("Authentication failed");
       }
+      console.log("this is user: ", user);
       try {
+        // const business = new Business({ name, description, sponsor: user._id });
+        // console.log("this is business: ", business);
+        // let theBusiness = await business.save();
+
+        // console.log("this is theBusiness 2 ", theBusiness);
+
         let newBusiness = await Business.create({
           name,
           description,
@@ -187,17 +194,29 @@ const resolvers = {
       return product;
     },
 
-    donate: async (_, { _id, amount }, { user }) => {
+    donate: async (_, { amount, message, productId }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const product = await Product.findById(_id);
-      if (!product) {
-        throw new Error("Product not found");
-      }
-      product.funding += amount;
-      await product.save();
-      return product;
+      console.log('hitting donation route');
+      let newDonation = await Donation.create({
+        amount,
+        message,
+        donor: user._id,
+      });
+      let newProduct = await Product.findByIdAndUpdate(
+        productId,
+        { $push: { donors: user._id } },
+        { new: true }
+      );
+        let newUser = await User.findByIdAndUpdate(
+        user._id,
+        { $push: { donations: newDonation._id } },
+        { new: true }
+      );
+      // product.funding += amount;
+      // await product.save();
+      return newDonation;
     },
   },
 };

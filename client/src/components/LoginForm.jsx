@@ -17,7 +17,6 @@ function SignIn() {
   });
 
   const [loginUser, {error}] = useMutation(LOGIN_USER);
-  // Incase we want to change navBar to not show login/signup when logged in
   const [validated] = useState(false);
 
   const handleChange = (event) => {
