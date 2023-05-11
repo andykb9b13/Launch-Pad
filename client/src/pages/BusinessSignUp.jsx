@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
+import UploadWidget from "../components/UploadWidget";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function BusinessSignUp() {
   const [instagramURL, setInstagramURL] = useState("");
   const [description, setDescription] = useState("");
   const [missionStatement, setMissionStatement] = useState("");
-
+  const [imageUrl, setImageUrl] = useState("");
   //Handle & store Changes for input values
   //Handle & store Changes for input values
   function handleNameChange(e) {
@@ -40,6 +41,17 @@ export default function BusinessSignUp() {
   function handleMissionStatementChange(e) {
     setMissionStatement(e.target.value);
   }
+
+  function handleOnUpload(error, result, widget) {
+    if (error) {
+      widget.close({
+        quiet: true,
+      });
+      return;
+    }
+    setImageUrl(result?.info?.secure_url);
+  }
+
   //set cancel button to previous page.
   const prevPage = () => {};
   //Move to next steps
