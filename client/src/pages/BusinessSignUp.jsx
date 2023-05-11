@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
+import UploadWidget from "../components/UploadWidget";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function BusinessSignUp() {
   const [instagramURL, setInstagramURL] = useState("");
   const [description, setDescription] = useState("");
   const [missionStatement, setMissionStatement] = useState("");
-
+  const [imageUrl, setImageUrl] = useState("");
   //Handle & store Changes for input values
   //Handle & store Changes for input values
   function handleNameChange(e) {
@@ -40,6 +41,17 @@ export default function BusinessSignUp() {
   function handleMissionStatementChange(e) {
     setMissionStatement(e.target.value);
   }
+
+  function handleOnUpload(error, result, widget) {
+    if (error) {
+      widget.close({
+        quiet: true,
+      });
+      return;
+    }
+    setImageUrl(result?.info?.secure_url);
+  }
+
   //set cancel button to previous page.
   const prevPage = () => {};
   //Move to next steps
@@ -54,28 +66,30 @@ export default function BusinessSignUp() {
       instagram: instagramURL,
       description: description,
       missionStatement: missionStatement,
+      imageUrl: imageUrl,
     };
     console.log(userInfo);
-    
+
     try {
-          const { data } = await createBusiness({
-      variables: { ...userInfo }
-    });
-    console.log(data);
-    // navigate to another page here
+      const { data } = await createBusiness({
+        variables: { ...userInfo },
+      });
+      console.log(data);
+      // navigate to another page here
     } catch (err) {
       console.error(err);
     }
-
-
   };
 
-  const [createBusiness, {error}] = useMutation(ADD_BUSINESS);
+  const [createBusiness, { error }] = useMutation(ADD_BUSINESS);
   const [validated] = useState(false);
 
   return (
     <div className="w-full flex justify-center items-center p-4">
-      <form className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10" onSubmit={onSubmit}>
+      <form
+        className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
+        onSubmit={onSubmit}
+      >
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Business Name
         </label>
@@ -157,6 +171,32 @@ export default function BusinessSignUp() {
         />
 
         <div>
+          <UploadWidget onUpload={handleOnUpload}>
+            {({ open }) => {
+              function handleOnClick(e) {
+                e.preventDefault();
+                open();
+              }
+              return (
+                <button
+                  className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  onClick={handleOnClick}
+                >
+                  Upload an Image
+                </button>
+              );
+            }}
+          </UploadWidget>
+
+          {imageUrl && (
+            <>
+              <h3>Profile Image</h3>
+              <p>
+                <img src={imageUrl} alt="Uploaded resource" />
+              </p>
+              <p>{imageUrl}</p>
+            </>
+          )}
           <button
             className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
