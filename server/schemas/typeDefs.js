@@ -41,6 +41,7 @@ const typeDefs = gql`
     donor: String
     amount: Int
     product: String
+    message: String
   }
 
   type Auth {
@@ -76,7 +77,7 @@ const typeDefs = gql`
       missionStatement: String
     ): Business
     deleteBusiness(_id: ID!, sponsor: String!): User
-    donate(_id: ID!, amount: Int!): Product
+    donate(_id: ID!, amount: Int!, message: String): Product
     addProduct(
       name: String!
       description: String!

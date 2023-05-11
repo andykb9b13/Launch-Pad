@@ -12,6 +12,9 @@ const donationSchema = new Schema({
         required: true,
         trim: true
     },
+    message: {
+        type: String,
+    },
     product: [
         {
             type: Schema.Types.ObjectId,

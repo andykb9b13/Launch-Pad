@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { QUERY_PRODUCT } from "../utils/queries";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import forms from "@tailwindcss/forms";
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_DONATION } from "../utils/mutations";
+import Auth from '../utils/auth';
 
 const ProductCard = () => {
   const { productId } = useParams();
-  console.log("productId", productId);
 
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
@@ -15,7 +17,33 @@ const ProductCard = () => {
     },
   });
 
-  console.log("data from productId", data);
+  const [donate, {error}] = useMutation(ADD_DONATION);
+  const [formData, setFormData] = useState({
+    amount: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+        try {
+          await donate({
+            variables: { ...formData, productId: productId },
+          });
+        } catch (err) {
+          console.error(err);
+          alert(err);
+        }
+        setFormData({
+          amount: "",
+          message: "",
+        });
+  };
+
   const product = data?.product || [];
 
   return (
@@ -39,11 +67,12 @@ const ProductCard = () => {
           </a>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
+        <form className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1" onSubmit={handleSubmit}>
           <div className="sm:col-span-4">
             <label
-              htmlFor="donateAmt"
+              htmlFor="amount"
               className="block text-sm font-medium leading-6 text-[var(--green)] ml-2"
+              name="amount" 
             >
               Enter amount you want to donate
             </label>
@@ -51,10 +80,11 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
+                  onChange={handleChange}
+                  value={formData.amount}
                   type="text"
-                  name="username"
-                  id="username"
-                  autocomplete="username"
+                  name="amount"
+                  id="amount"
                   className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 ml-2"
                   placeholder="$500"
                 ></input>
@@ -63,26 +93,26 @@ const ProductCard = () => {
 
             <label
               htmlFor="message"
-              className="block text-sm font-medium leading-6 text-[var(--green)] ml-2"
-            >
+              className="block text-sm font-medium leading-6 text-[var(--green)] ml-2">
               Write a message
             </label>
             <div className="mt-2 ml-2 mr-2">
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
-                <input
+                <textarea
+                  onChange={handleChange}
+                  value={formData.message}
                   type="text"
                   name="message"
                   id="message"
                   rows="3"
-                  autocomplete="message"
                   className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   placeholder="Your message here..."
-                ></input>
+                ></textarea>
               </div>
             </div>
             <button
-              type="button"
+              type="submit"
               className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
               data-te-ripple-init
               data-te-ripple-color="light"
@@ -105,7 +135,7 @@ const ProductCard = () => {
               Back to Business
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
