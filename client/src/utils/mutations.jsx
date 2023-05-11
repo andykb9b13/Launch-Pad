@@ -66,7 +66,7 @@ export const ADD_PRODUCT = gql`
   mutation addProduct(
     $name: String!
     $description: String!
-    $funding: Number
+    $funding: String!
     $externalLink: String
     $imageUrl: String
   ) {

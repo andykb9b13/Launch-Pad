@@ -81,8 +81,8 @@ const typeDefs = gql`
     addProduct(
       name: String!
       description: String!
-      funding: Int!
-      externalLink: String!
+      funding: String!
+      externalLink: String
       imageUrl: String
     ): Product
     deleteProduct(productId: ID!): Product

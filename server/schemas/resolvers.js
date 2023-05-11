@@ -150,8 +150,17 @@ const resolvers = {
       await user.save();
       return user;
     },
-    addProduct: async (_, { name, description, funding, externalLink }) => {
-      const product = new Product({ name, description, funding, externalLink });
+    addProduct: async (
+      _,
+      { name, description, funding, externalLink, imageUrl }
+    ) => {
+      const product = new Product({
+        name,
+        description,
+        funding,
+        externalLink,
+        imageUrl,
+      });
       await product.save();
       return product;
     },

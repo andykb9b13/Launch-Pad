@@ -3,6 +3,7 @@ import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Products from "../components/Products";
+import AddProduct from "../components/AddProduct";
 
 const BusinessProfile = () => {
   const { name } = useParams();
@@ -30,6 +31,11 @@ const BusinessProfile = () => {
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />
+      <div>
+        <h2>Add a product for funding</h2>
+
+        <AddProduct />
+      </div>
     </div>
   );
 };
