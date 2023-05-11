@@ -108,15 +108,22 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, sponsor, description }, { user }) => {
+    addBusiness: async (_, { name, description, location, website, facebook, twitter, instagram, missionStatement }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const business = new Business({ name, sponsor, description });
-      await business.save();
-      user.businesses.push(business._id);
-      await user.save();
-      return user;
+      console.log("this is user: ",user);
+      try {
+        const business = new Business({ name, description, sponsor: user._id, location, website, facebook, twitter, instagram, missionStatement} );
+        console.log("this is business: ",business);
+        await business.save();
+        
+        await User.findByIdAndUpdate(user._id, {$push: {businesses: business._id}});
+
+        return user;
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteBusiness: async (_, { businessId }, { user }) => {
       if (!user) {

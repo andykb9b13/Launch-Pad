@@ -17,7 +17,7 @@ const businessSchema = new Schema({
     required: true,
     trim: true,
     minLength: 25,
-    maxLength: 300,
+    maxLength: 2000,
   },
   location: {
     type: String,
@@ -37,7 +37,6 @@ const businessSchema = new Schema({
   },
   missionStatement: {
     type: String,
-    required: true,
     minLength: 25,
   },
   imageUrl: {
