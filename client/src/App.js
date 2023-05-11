@@ -10,7 +10,7 @@ import LoginForm from './components/LoginForm'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./pages/BusinessSignUp";
-
+// a comment
 // import businessSignUp from "./components/BusinessSignUp";
 
 const httpLink = createHttpLink({
