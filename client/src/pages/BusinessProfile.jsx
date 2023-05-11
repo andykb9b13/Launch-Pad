@@ -21,11 +21,10 @@ const BusinessProfile = () => {
 
   return (
     <div>
-      <h1>This is a business Profile</h1>
       <div>
         <h2>{business.name}</h2>
-        <div className="missionVideo">
-          This is where a mission statement video could go
+        <div className="profileImg">
+          <img src={business.name} alt="" />
         </div>
         <p>{business.description}</p>
       </div>
