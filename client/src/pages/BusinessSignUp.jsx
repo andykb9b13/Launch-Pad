@@ -62,7 +62,7 @@ export default function BusinessSignUp() {
       variables: { ...userInfo }
     });
     console.log(data);
-    // navigate to another page
+    // navigate to another page here
     } catch (err) {
       console.error(err);
     }

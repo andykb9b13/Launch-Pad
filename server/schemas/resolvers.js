@@ -118,9 +118,9 @@ const resolvers = {
         console.log("this is business: ",business);
         await business.save();
         
-        await User.findByIdAndUpdate(user._id, {$push: {businesses: business._id}});
+        let newUser = await User.findByIdAndUpdate(user._id, {$push: {businesses: business._id}}, {new: true});
 
-        return user;
+        return { business };
       } catch (err) {
         console.error(err);
       }
