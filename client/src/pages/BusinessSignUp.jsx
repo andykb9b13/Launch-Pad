@@ -66,6 +66,7 @@ export default function BusinessSignUp() {
       instagram: instagramURL,
       description: description,
       missionStatement: missionStatement,
+      imageUrl: imageUrl,
     };
     console.log(userInfo);
 
