@@ -24,7 +24,7 @@ const BusinessProfile = () => {
       <div>
         <h2>{business.name}</h2>
         <div className="profileImg">
-          <img src={business.name} alt="" />
+          <img src={business.imageUrl} alt="profile" />
         </div>
         <p>{business.description}</p>
       </div>
