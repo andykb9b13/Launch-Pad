@@ -8,19 +8,22 @@ const donationSchema = new Schema({
         ref: 'User'
     }],
     amount: {
-        type: Number,
+        type: String,
         required: true,
         trim: true
     },
     message: {
         type: String,
     },
-    product: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Product'
-        }
-    ]
+    productId: {
+        type: String,
+    },
+    // product: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Product'
+    //     }
+    // ]
 });
 
 const Donation = mongoose.model('Donation', donationSchema);

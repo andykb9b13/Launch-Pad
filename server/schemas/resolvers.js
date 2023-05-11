@@ -194,28 +194,28 @@ const resolvers = {
       return product;
     },
 
-    donate: async (_, { _id, amount, message }, { user, product }) => {
+    donate: async (_, { amount, message, productId }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
       console.log('hitting donation route');
-      let newUser = await User.findByIdAndUpdate(
-        user._id,
-        { $push: { donations: newUser._id } },
-        { new: true }
-      );
-      let newProduct = await Product.findByIdAndUpdate(
-        product._id,
-        { $push: { donors: newUser._id } },
-        { new: true }
-      );
-      let newDonation = await Donation.Create({
+      let newDonation = await Donation.create({
         amount,
         message,
         donor: user._id,
       });
-      product.funding += amount;
-      await product.save();
+      let newProduct = await Product.findByIdAndUpdate(
+        productId,
+        { $push: { donors: user._id } },
+        { new: true }
+      );
+        let newUser = await User.findByIdAndUpdate(
+        user._id,
+        { $push: { donations: newDonation._id } },
+        { new: true }
+      );
+      // product.funding += amount;
+      // await product.save();
       return newDonation;
     },
   },
