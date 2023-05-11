@@ -56,26 +56,27 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
     };
     console.log(userInfo);
-    
+
     try {
-          const { data } = await createBusiness({
-      variables: { ...userInfo }
-    });
-    console.log(data);
-    // navigate to another page here
+      const { data } = await createBusiness({
+        variables: { ...userInfo },
+      });
+      console.log(data);
+      // navigate to another page here
     } catch (err) {
       console.error(err);
     }
-
-
   };
 
-  const [createBusiness, {error}] = useMutation(ADD_BUSINESS);
+  const [createBusiness, { error }] = useMutation(ADD_BUSINESS);
   const [validated] = useState(false);
 
   return (
     <div className="w-full flex justify-center items-center p-4">
-      <form className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10" onSubmit={onSubmit}>
+      <form
+        className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
+        onSubmit={onSubmit}
+      >
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Business Name
         </label>
@@ -157,6 +158,32 @@ export default function BusinessSignUp() {
         />
 
         <div>
+          <UploadWidget onUpload={handleOnUpload}>
+            {({ open }) => {
+              function handleOnClick(e) {
+                e.preventDefault();
+                open();
+              }
+              return (
+                <button
+                  className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  onClick={handleOnClick}
+                >
+                  Upload an Image
+                </button>
+              );
+            }}
+          </UploadWidget>
+
+          {imageUrl && (
+            <>
+              <h3>Profile Image</h3>
+              <p>
+                <img src={imageUrl} alt="Uploaded resource" />
+              </p>
+              <p>{imageUrl}</p>
+            </>
+          )}
           <button
             className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
