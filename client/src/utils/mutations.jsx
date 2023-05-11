@@ -26,18 +26,66 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_BUSINESS = gql`
-  mutation addBusiness($name: String!, $sponsor: String, $description: String, $location: String, $website: String, $facebook: String, $twitter: String, $instagram: String, $missionStatement: String) {
-    addBusiness(name: $name, sponsor: $sponsor, description: $description, location: $location, website: $website, facebook: $facebook, twitter: $twitter, instagram: $instagram, missionStatement: $missionStatement) {
-        _id
-        name
-        sponsor
-        description
-        location
-       website
-       facebook
-       twitter
-       instagram
-       missionStatement
+  mutation addBusiness(
+    $name: String!
+    $sponsor: String
+    $description: String
+    $location: String
+    $website: String
+    $facebook: String
+    $twitter: String
+    $instagram: String
+    $missionStatement: String
+  ) {
+    addBusiness(
+      name: $name
+      sponsor: $sponsor
+      description: $description
+      location: $location
+      website: $website
+      facebook: $facebook
+      twitter: $twitter
+      instagram: $instagram
+      missionStatement: $missionStatement
+    ) {
+      _id
+      name
+      sponsor
+      description
+      location
+      website
+      facebook
+      twitter
+      instagram
+      missionStatement
+    }
+  }
+`;
+
+export const ADD_PRODUCT = gql`
+  mutation addProduct(
+    $name: String!
+    $description: String!
+    $funding: String!
+    $externalLink: String
+    $imageUrl: String
+    $businessId: String
+  ) {
+    addProduct(
+      name: $name
+      description: $description
+      funding: $funding
+      externalLink: $externalLink
+      imageUrl: $imageUrl
+      businessId: $businessId
+    ) {
+      _id
+      name
+      description
+      funding
+      externalLink
+      imageUrl
+      businessId
     }
   }
 `;

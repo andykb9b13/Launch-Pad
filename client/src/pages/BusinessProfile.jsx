@@ -3,6 +3,7 @@ import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Products from "../components/Products";
+import AddProduct from "../components/AddProduct";
 
 const BusinessProfile = () => {
   const { name } = useParams();
@@ -17,20 +18,26 @@ const BusinessProfile = () => {
 
   const business = data?.business || [];
 
+  // console.log("This is business in BusinessProfile", business);
+
   console.log("business.products", business.products);
 
   return (
     <div>
-      <h1>This is a business Profile</h1>
       <div>
         <h2>{business.name}</h2>
-        <div className="missionVideo">
-          This is where a mission statement video could go
+        <div className="profileImg">
+          <img src={business.imageUrl} alt="profile" />
         </div>
         <p>{business.description}</p>
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />
+      <div>
+        <h2>Add a product for funding</h2>
+
+        <AddProduct business={business} />
+      </div>
     </div>
   );
 };
