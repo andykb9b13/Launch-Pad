@@ -9,7 +9,7 @@ import ProductCard from "./components/productCard";
 import LoginForm from './components/LoginForm'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
-import BusinessSignUp from "./components/BusinessSignUp";
+import BusinessSignUp from "./pages/BusinessSignUp";
 
 // import businessSignUp from "./components/BusinessSignUp";
 

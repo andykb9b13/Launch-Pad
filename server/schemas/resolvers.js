@@ -33,7 +33,7 @@ const resolvers = {
       return await Business.findOne({ name }).populate("products");
     },
     // make sure to set Context on the client side in app.js
-    me: async (parent, args, contest) => {
+    me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
@@ -108,15 +108,22 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, sponsor, description }, { user }) => {
+    addBusiness: async (_, { name, description }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const business = new Business({ name, sponsor, description });
-      await business.save();
-      user.businesses.push(business._id);
-      await user.save();
-      return user;
+      console.log("this is user: ",user);
+      try {
+        const business = new Business({ name, description, sponsor: user._id} );
+        console.log("this is business: ",business);
+        await business.save();
+        
+        let newUser = await User.findByIdAndUpdate(user._id, {$push: {businesses: business._id}}, {new: true});
+
+        return { business };
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteBusiness: async (_, { businessId }, { user }) => {
       if (!user) {
@@ -130,7 +137,9 @@ const resolvers = {
         throw new Error("Invalid Credentials");
       }
       await Business.findByIdAndDelete(businessId);
-      user.businesses = user.businesses.filter((b) => b.toString() !== businessId.toString());
+      user.businesses = user.businesses.filter(
+        (b) => b.toString() !== businessId.toString()
+      );
       await user.save();
       return user;
     },
@@ -142,14 +151,11 @@ const resolvers = {
     deleteProduct: async (_, { productId }) => {
       const product = await Product.findById(productId);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       await Product.findByIdAndDelete(productId);
       return product;
     },
-
-
-
 
     donate: async (_, { _id, amount }, { user }) => {
       if (!user) {
