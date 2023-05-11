@@ -108,11 +108,18 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, sponsor, description }, { user }) => {
+    addBusiness: async (_, { name, description }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
+      console.log("this is user: ", user);
       try {
+        // const business = new Business({ name, description, sponsor: user._id });
+        // console.log("this is business: ", business);
+        // let theBusiness = await business.save();
+
+        // console.log("this is theBusiness 2 ", theBusiness);
+
         let newBusiness = await Business.create({
           name,
           description,
