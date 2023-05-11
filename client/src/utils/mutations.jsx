@@ -69,6 +69,7 @@ export const ADD_PRODUCT = gql`
     $funding: String!
     $externalLink: String
     $imageUrl: String
+    $businessId: String
   ) {
     addProduct(
       name: $name
@@ -76,6 +77,7 @@ export const ADD_PRODUCT = gql`
       funding: $funding
       externalLink: $externalLink
       imageUrl: $imageUrl
+      businessId: $businessId
     ) {
       _id
       name
@@ -83,6 +85,7 @@ export const ADD_PRODUCT = gql`
       funding
       externalLink
       imageUrl
+      businessId
     }
   }
 `;

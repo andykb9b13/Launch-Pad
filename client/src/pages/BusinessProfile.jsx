@@ -18,6 +18,8 @@ const BusinessProfile = () => {
 
   const business = data?.business || [];
 
+  // console.log("This is business in BusinessProfile", business);
+
   console.log("business.products", business.products);
 
   return (
@@ -34,7 +36,7 @@ const BusinessProfile = () => {
       <div>
         <h2>Add a product for funding</h2>
 
-        <AddProduct />
+        <AddProduct business={business} />
       </div>
     </div>
   );

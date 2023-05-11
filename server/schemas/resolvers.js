@@ -150,19 +150,33 @@ const resolvers = {
       await user.save();
       return user;
     },
+
     addProduct: async (
       _,
-      { name, description, funding, externalLink, imageUrl }
+      { name, description, funding, externalLink, imageUrl, businessId }
     ) => {
-      const product = new Product({
-        name,
-        description,
-        funding,
-        externalLink,
-        imageUrl,
-      });
-      await product.save();
-      return product;
+      try {
+        console.log("In the resolver~~~~~");
+        let newProduct = await Product.create({
+          name,
+          description,
+          funding,
+          externalLink,
+          imageUrl,
+          businessId,
+        });
+        console.log("This is businessId", businessId);
+
+        let newBusiness = await Business.findByIdAndUpdate(
+          businessId,
+          { $push: { products: newProduct._id } },
+          { new: true }
+        );
+        console.log("here is newBusiness in the resolver", newBusiness);
+        return newProduct;
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteProduct: async (_, { productId }) => {
       const product = await Product.findById(productId);

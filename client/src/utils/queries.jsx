@@ -20,6 +20,7 @@ export const QUERY_BUSINESS = gql`
         description
         funding
         externalLink
+        businessId
       }
     }
   }
@@ -58,6 +59,7 @@ export const QUERY_PRODUCT = gql`
       description
       funding
       externalLink
+      businessId
     }
   }
 `;

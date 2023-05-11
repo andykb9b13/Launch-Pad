@@ -20,6 +20,9 @@ const productSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  businessId: {
+    type: String,
+  },
   // donor: [] //come back to this - donor model references Product, so i don't think we need to reference Donor in Product model
 });
 

@@ -34,6 +34,7 @@ const typeDefs = gql`
     funding: Int
     externalLink: String
     imageUrl: String
+    businessId: String
     donors: [User]
   }
 
@@ -84,6 +85,7 @@ const typeDefs = gql`
       funding: String!
       externalLink: String
       imageUrl: String
+      businessId: String
     ): Product
     deleteProduct(productId: ID!): Product
   }

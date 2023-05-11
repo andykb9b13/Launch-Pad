@@ -3,12 +3,14 @@ import { useMutation } from "@apollo/react-hooks";
 import { ADD_PRODUCT } from "../utils/mutations";
 import UploadWidget from "./UploadWidget";
 
-const AddProduct = () => {
+export default function AddProduct({ business }) {
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productFunding, setProductFunding] = useState("");
   const [externalLink, setExternalLink] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+
+  console.log("business in Add Product", business);
 
   function handleProductNameChange(e) {
     setProductName(e.target.value);
@@ -41,13 +43,14 @@ const AddProduct = () => {
       funding: productFunding,
       externalLink: externalLink,
       imageUrl: imageUrl,
+      businessId: business._id,
     };
     console.log("productInfo", productInfo);
     try {
       const { data } = await createProduct({
         variables: { ...productInfo },
       });
-      console.log(data);
+      console.log("This is data in createProduct", data);
     } catch (err) {
       console.error(err);
     }
@@ -142,6 +145,4 @@ const AddProduct = () => {
       </form>
     </div>
   );
-};
-
-export default AddProduct;
+}
