@@ -1,6 +1,7 @@
 import React from "react";
 import BusinessCard from "../components/BusinessCard/BusinessCard";
 import BusinessProfile from "./BusinessProfile";
+import { Link } from "react-router-dom";
 import "../styles/Homepage.css";
 
 const Homepage = () => {
@@ -9,9 +10,11 @@ const Homepage = () => {
       <div className="banner">
         <h1>Launch Pad</h1>
         <h2 className="subtitle">where dreams are launched...</h2>
-        <button className="launchBtn" type="button">
-          Launch Business
-        </button>
+        <Link to="/newbusiness">
+          <button className="launchBtn" type="button">
+            Launch Business
+          </button>
+        </Link>
       </div>
       <div className="missionStatement">
         <div>
