@@ -15,13 +15,11 @@ const Products = ({ products }) => {
               <p>{product.description}</p>
               <p>${product.funding}</p>
               <a href={product.externalLink}>More Info For This Item</a>
-              <div>
-                <button>
-                  <Link to={`/product/${product._id}`} product={product}>
-                    Fund This Item!
-                  </Link>
-                </button>
-              </div>
+              <button type="button" className="fundBtn">
+                <Link to={`/product/${product._id}`} product={product}>
+                  Fund This Item!
+                </Link>
+              </button>
             </div>
           </div>
         ))}

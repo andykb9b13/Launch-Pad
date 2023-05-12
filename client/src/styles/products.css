@@ -11,9 +11,27 @@
 }
 
 .product img {
-  width: 300px;
+  width: 200px;
+  align-items: center;
 }
 
 .product h2 {
   font-size: 2em;
+}
+.fundBtn {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  color: black;
+  font-size: 1em;
+  transition: 0.3s;
+  margin-top: 3%;
+}
+
+.fundBtn:hover {
+  background-color: black;
+  color: white;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+  text-shadow: 1px 1px 5px white;
 }

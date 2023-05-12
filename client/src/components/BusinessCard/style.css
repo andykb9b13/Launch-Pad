@@ -41,3 +41,8 @@
   width: 90%;
   margin: 2%;
 }
+
+.socialIcons {
+  display: flex;
+  justify-content: space-evenly;
+}

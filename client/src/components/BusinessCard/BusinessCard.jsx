@@ -49,24 +49,17 @@ const BusinessCard = () => {
             </div>
             <div className="businessProducts p-6">
               <Products products={business.products} />
-
-              <p className="mb-4 text-center font-medium text-sm relative flex flex-row">
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
-                  <a href={business.facebook}>
-                    <img src={facebook} alt="" />
-                  </a>
-                </span>
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
-                  <a href={business.twitter}>
-                    <img src={twitter} alt="" />
-                  </a>
-                </span>
-                <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
-                  <a href={business.instagram}>
-                    <img src={instagram} alt="" />
-                  </a>
-                </span>
-              </p>
+              <div className="socialIcons">
+                <a href={business.facebook}>
+                  <img src={facebook} alt="facebook" />
+                </a>
+                <a href={business.twitter}>
+                  <img src={twitter} alt="twitter" />
+                </a>
+                <a href={business.instagram}>
+                  <img src={instagram} alt="instagram" />
+                </a>
+              </div>
             </div>
           </div>
         ))}
