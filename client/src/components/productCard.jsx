@@ -10,12 +10,21 @@ import Auth from '../utils/auth';
 import Stripe from 'react-stripe-checkout';
 
 const ProductCard = () => {
-  const handleToken = (totalAmount, token) => {
+  const [total, setTotal] = useState(0);
+
+  const handleTotalChange = (e) => {
+    setTotal(e.target.value);
+  }
+
+  const handleToken = (total, token) => {
+    console.log("token email: " + token.email) 
+    console.log("token amount: " + token.amount) 
+    console.log(total)
     try {
       fetch('/api/stripe/pay', {
         method: 'POST',
-        token: token.id,
-        amount: totalAmount
+        token: token,
+        amount: total
       })
     } catch(err){
       console.log(err);
@@ -23,7 +32,7 @@ const ProductCard = () => {
   }
 
   const tokenHandler = (token) => {
-    handleToken(100, token);
+    handleToken(total, token);
   }
 
   const { productId } = useParams();
@@ -113,7 +122,10 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e)
+                    handleTotalChange(e);
+                  }}
                   value={formData.amount}
                   type="number"
                   name="amount"
@@ -145,21 +157,19 @@ const ProductCard = () => {
                 ></textarea>
               </div>
             </div>
-            <button
-              className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-            >
-              Donate
-            </button>
             <div id="stripe-button">
-              <Stripe 
-              className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-              stripeKey="pk_live_51N6iz9AqOUdA7AoGSimbjyFJIZCfqvmjGHnMp3FOKb7rmt76KwqNlt6JPHCtc6OxTRaBXt1JoCLbyVavkvlCXCPC00DtTQu4zg"
-              token={tokenHandler}
+              <button onClick={(e) => {
+                e.preventDefault()
+              }}>
+                <Stripe
+                className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
+                token={tokenHandler}
               />
+              </button>
+   
             </div>
           </div>
           {/* check these links, they are placeholders on 5/3 */}
