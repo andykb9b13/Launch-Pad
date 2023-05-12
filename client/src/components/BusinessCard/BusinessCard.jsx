@@ -45,7 +45,7 @@ const BusinessCard = () => {
                 <Link to={`/business/${business.name}`}>Launch Me</Link>
               </button>
 
-              <p className="mb-4 text-center text-base font-medium text-sm relative flex flex-row">
+              <p className="mb-4 text-center font-medium text-sm relative flex flex-row">
                 <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">
                   <a href={business.facebook}>
                     <img src={facebook} alt="" />

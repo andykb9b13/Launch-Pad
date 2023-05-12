@@ -72,7 +72,7 @@ export default function AddProduct({ business }) {
           type="text"
           placeholder=""
           onChange={handleProductNameChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -82,7 +82,7 @@ export default function AddProduct({ business }) {
           type="text"
           placeholder=""
           onChange={handleProductDescriptionChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -92,7 +92,7 @@ export default function AddProduct({ business }) {
           type="text"
           placeholder=""
           onChange={handleProductFundingChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -102,7 +102,7 @@ export default function AddProduct({ business }) {
           type="text"
           placeholder=""
           onChange={handleExternalLinkChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <div>
@@ -114,7 +114,7 @@ export default function AddProduct({ business }) {
               }
               return (
                 <button
-                  className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
                   onClick={handleOnClick}
                 >
                   Upload an Image
@@ -133,12 +133,12 @@ export default function AddProduct({ business }) {
             </>
           )}
           <button
-            className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
           >
             Next
           </button>
-          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>
         </div>

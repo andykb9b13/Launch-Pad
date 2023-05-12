@@ -62,7 +62,7 @@ const ProductCard = () => {
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
       <div className="rounded-md outline outline-4 outline-[var(--lime)]">
-        <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--lime)] h-10 text-2xl">
+        <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
           Funding Form
         </h2>
         <h3 className="text-center text-xl font-semibold">{product.name}</h3>
