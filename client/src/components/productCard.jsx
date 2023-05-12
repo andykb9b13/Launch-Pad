@@ -7,8 +7,25 @@ import forms from "@tailwindcss/forms";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_DONATION } from "../utils/mutations";
 import Auth from '../utils/auth';
+import Stripe from 'react-stripe-checkout';
 
 const ProductCard = () => {
+  const handleToken = (totalAmount, token) => {
+    try {
+      fetch('/api/stripe/pay', {
+        method: 'POST',
+        token: token.id,
+        amount: totalAmount
+      })
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  const tokenHandler = (token) => {
+    handleToken(100, token);
+  }
+
   const { productId } = useParams();
 
   const { data } = useQuery(QUERY_PRODUCT, {
@@ -113,13 +130,21 @@ const ProductCard = () => {
               </div>
             </div>
             <button
-              type="submit"
               className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
               data-te-ripple-init
               data-te-ripple-color="light"
             >
               Donate
             </button>
+            <div id="stripe-button">
+              <Stripe 
+              className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              stripeKey="pk_live_51N6iz9AqOUdA7AoGSimbjyFJIZCfqvmjGHnMp3FOKb7rmt76KwqNlt6JPHCtc6OxTRaBXt1JoCLbyVavkvlCXCPC00DtTQu4zg"
+              token={tokenHandler}
+              />
+            </div>
           </div>
           {/* check these links, they are placeholders on 5/3 */}
           <div className="flex flex-row justify-center">

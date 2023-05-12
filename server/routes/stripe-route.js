@@ -3,7 +3,7 @@ const express = require('express');
 
 const secretKeyFromStripe = "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";
 //we need secret key from stripe here \/
-const stripe = require("stripe")(secretKeyFromStripe);
+const stripe = require("stripe")("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");
 const { v4:uuidv4 } = require('uuid');
 
 const router = express.Router();
