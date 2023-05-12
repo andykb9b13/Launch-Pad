@@ -6,10 +6,12 @@ import { useParams } from "react-router-dom";
 import forms from "@tailwindcss/forms";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_DONATION } from "../utils/mutations";
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const ProductCard = () => {
   const { productId } = useParams();
+
+  console.log("productId from useParams", productId);
 
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
@@ -17,7 +19,9 @@ const ProductCard = () => {
     },
   });
 
-  const [donate, {error}] = useMutation(ADD_DONATION);
+  console.log("data from useQuery", data);
+
+  const [donate, { error }] = useMutation(ADD_DONATION);
   const [formData, setFormData] = useState({
     amount: "",
     message: "",
@@ -26,26 +30,29 @@ const ProductCard = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    console.log("This is formData in handleChange", formData);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(productId, 'THIS IS PRODUCTID')
-        try {
-          await donate({
-            variables: { ...formData, productId: productId },
-          });
-        } catch (err) {
-          console.error(err);
-          alert(err);
-        }
-        setFormData({
-          amount: "",
-          message: "",
-        });
+    console.log(productId, "THIS IS PRODUCTID in handleSubmit");
+    try {
+      const { data } = await donate({
+        variables: { ...formData, productId: productId },
+      });
+      console.log("This is data in donate()", data);
+    } catch (err) {
+      console.error(err);
+      alert(err);
+    }
+    setFormData({
+      amount: "",
+      message: "",
+    });
   };
 
   const product = data?.product || [];
+  console.log("This is product at the end", product);
 
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
@@ -68,12 +75,15 @@ const ProductCard = () => {
           </a>
         </div>
 
-        <form className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1" onSubmit={handleSubmit}>
+        <form
+          className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1"
+          onSubmit={handleSubmit}
+        >
           <div className="sm:col-span-4">
             <label
               htmlFor="amount"
               className="block text-sm font-medium leading-6 text-[var(--green)] ml-2"
-              name="amount" 
+              name="amount"
             >
               Enter amount you want to donate
             </label>
@@ -94,7 +104,8 @@ const ProductCard = () => {
 
             <label
               htmlFor="message"
-              className="block text-sm font-medium leading-6 text-[var(--green)] ml-2">
+              className="block text-sm font-medium leading-6 text-[var(--green)] ml-2"
+            >
               Write a message
             </label>
             <div className="mt-2 ml-2 mr-2">
