@@ -3,9 +3,8 @@ import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Products from "../components/Products";
-import AddProduct from "../components/AddProduct";
 
-const BusinessProfile = () => {
+const ExploreBusiness = () => {
   const { name } = useParams();
   console.log("name from useParams", name);
 
@@ -26,16 +25,15 @@ const BusinessProfile = () => {
     <div>
       <div>
         <h2>{business.name}</h2>
+        <div className="profileImg">
+          <img src={business.imageUrl} alt="profile" />
+        </div>
+        <p>{business.missionStatement}</p>
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />
-      <div>
-        <h2>Add a product for funding</h2>
-
-        <AddProduct business={business} />
-      </div>
     </div>
   );
 };
 
-export default BusinessProfile;
+export default ExploreBusiness;
