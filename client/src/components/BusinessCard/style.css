@@ -1,12 +1,5 @@
-.businessCard {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 .businessImg {
-  height: 400px;
+  width: 400px;
 }
 
 .launchBtn {
@@ -31,4 +24,20 @@
   transform: translateY(2px);
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
+}
+
+.business {
+  margin: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.businessDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 2%;
 }

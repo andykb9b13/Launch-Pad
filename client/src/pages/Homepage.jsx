@@ -40,11 +40,8 @@ const Homepage = () => {
           alt="fundraising"
         />
       </div>
-
-      <div className="businessCardContainer">
-        <h2 className="text-center">Featured Businesses</h2>
-        <BusinessCard />
-      </div>
+      <h2 className="text-center">Featured Businesses</h2>
+      <BusinessCard />
     </div>
   );
 };

@@ -1,0 +1,19 @@
+.productContainer {
+  display: flex;
+}
+
+.product {
+  margin-left: 2%;
+  border: 1px solid black;
+  padding: 2%;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.product img {
+  width: 300px;
+}
+
+.product h2 {
+  font-size: 2em;
+}

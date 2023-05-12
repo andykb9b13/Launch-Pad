@@ -18,15 +18,15 @@ const BusinessCard = () => {
       {businesses &&
         businesses.map((business, i) => (
           <div key={i} className="business">
-            <a href="#!">
-              <img
-                src={business.imageUrl}
-                className="businessImg"
-                alt="businessProfilePic"
-              />
-            </a>
+            <div className="businessDetails">
+              <a href="#!">
+                <img
+                  src={business.imageUrl}
+                  className="businessImg"
+                  alt="businessProfilePic"
+                />
+              </a>
 
-            <div className="p-6 businessHeader">
               <h5 className="mb-2 text-xl font-bold leading-tight">
                 {business.name}
               </h5>
@@ -42,8 +42,12 @@ const BusinessCard = () => {
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
-                <Link to={`/business/${business.name}`}>Launch Me</Link>
+                <Link to={`/business/${business.name}`}>
+                  View More Products
+                </Link>
               </button>
+            </div>
+            <div className="businessProducts p-6">
               <Products products={business.products} />
 
               <p className="mb-4 text-center font-medium text-sm relative flex flex-row">
@@ -64,10 +68,6 @@ const BusinessCard = () => {
                 </span>
               </p>
             </div>
-            <div className="businessContent"></div>
-            {/* <Products products={business.products} />
-            <button type="button">Click to Launch</button>
-            <Link to={`/business/${business.name}`}>Launch Me</Link> */}
           </div>
         ))}
     </div>
