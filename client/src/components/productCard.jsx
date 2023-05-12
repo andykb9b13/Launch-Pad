@@ -16,15 +16,13 @@ const ProductCard = () => {
     setTotal(e.target.value);
   }
 
-  const handleToken = (total, token) => {
-    console.log("token email: " + token.email) 
-    console.log("token amount: " + token.amount) 
-    console.log(total)
+  const handleToken = (totalAmount, token) => {
+    console.log("token: " + token)
     try {
       fetch('/api/stripe/pay', {
         method: 'POST',
-        token: token,
-        amount: total
+        token: token.id,
+        amount: totalAmount
       })
     } catch(err){
       console.log(err);
@@ -32,7 +30,7 @@ const ProductCard = () => {
   }
 
   const tokenHandler = (token) => {
-    handleToken(total, token);
+    handleToken(100, token);
   }
 
   const { productId } = useParams();
