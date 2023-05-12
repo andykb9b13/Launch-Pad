@@ -27,24 +27,19 @@ const BusinessCard = () => {
                 />
               </a>
 
-              <h5 className="mb-2 text-xl font-bold leading-tight">
-                {business.name}
-              </h5>
-              <p>
-                <a href={business.website}>{business.website}</a>
-              </p>
+              <h2 className="businessName">{business.name}</h2>
+              <a className="businessWebsite" href={business.website}>
+                {business.website}
+              </a>
               <p className="mb-4">{business.location}</p>
               <p className="mb-4">{business.description}</p>
-              <p className="mb-4">{business.missionStatement}</p>
               <button
                 type="button"
                 className="inline-block businessLaunchBtn"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
-                <Link to={`/business/${business.name}`}>
-                  View More Products
-                </Link>
+                <Link to={`/business/${business.name}`}>Learn More</Link>
               </button>
             </div>
             <div className="businessProducts p-6">

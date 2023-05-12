@@ -29,7 +29,7 @@ const BusinessProfile = () => {
         <div className="profileImg">
           <img src={business.imageUrl} alt="profile" />
         </div>
-        <p>{business.description}</p>
+        <p>{business.missionStatement}</p>
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />

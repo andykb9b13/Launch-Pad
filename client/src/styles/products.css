@@ -10,13 +10,22 @@
   border-radius: 5px;
 }
 
-.product img {
-  width: 200px;
+.innerProduct {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
+.innerProduct * {
+  margin-top: 3%;
+}
+
+.product img {
+  width: 200px;
+}
+
 .product h2 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .fundBtn {
   border: 2px solid black;

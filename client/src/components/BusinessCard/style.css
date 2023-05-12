@@ -1,5 +1,14 @@
 .businessImg {
-  width: 400px;
+  max-width: 400px;
+}
+
+.businessName {
+  font-size: 2.3em;
+}
+
+.businessWebsite {
+  color: teal;
+  padding-bottom: 2%;
 }
 
 .launchBtn {
@@ -38,11 +47,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+
   margin: 2%;
 }
 
 .socialIcons {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 2%;
 }
