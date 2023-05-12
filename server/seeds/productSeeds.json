@@ -1,44 +1,50 @@
 [
   {
-    "name": "Rockville Microphone",
-    "description": "Studio quality recording microphone",
-    "funding": 100,
-    "externalLink": "https://www.rockvilleaudio.com/rcm-pro-rmf1/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzLHUxbkVAXeLdsSDrxRLwkjU9kBavTuHhwV7WBRTJ67lFM51D7wikaApHoEALw_wcB",
+    "name": "Neumann TLM 103 Condenser Micrphone",
+    "description": "A standard name in high-end recording studios around the world, Neumann mics deliver the professional touch that's needed to capture high-quality audio. The TLM 103 is fast becoming a standard for home recording and the music industry. The large-diaphragm Neumann TLM 103 microphone provides platinum-quality sound on a bronze budget, using transformerless circuitry for ultralow self-noise and handling high sound pressure levels up to 138dB. The TLM 103's cardioid polar pattern optimizes attenuation of unwanted sound and suppresses feedback, and comes with a rugged wire mesh grille that helps protect the capsule. This is the mic for everyone who, despite budget limitations, does not want to do without the uncompromising Neumann sound.",
+    "funding": 1200,
+    "externalLink": "https://www.musiciansfriend.com/pro-audio/neumann-tlm-103-condenser-microphone/j52341000002000",
+    "imageUrl": "https://media.musiciansfriend.com/is/image/MMGS7/TLM-103-Condenser-Microphone-Nickel/J52341000002000-00-500x500.jpg",
     "businessName": "BreakAlive Studios"
   },
   {
-    "name": "Rockville headset",
-    "description": "Studio quality recording headset",
-    "funding": 350,
-    "externalLink": "https://www.rockvilleaudio.com/?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZzjA1j5ci61cm3s4kgUiVneV5RfT54vJyuxv3jjH2mJJ-Ek5CvsvicaAmqbEALw_wcB",
+    "name": "Sennheiser HD280 Pro Closed-Back Headphones",
+    "description": "The Sennheiser HD 280 Pro closed-back headphones are circumaural headphones designed for professional monitoring applications. With up to 32dB external sound attenuation, it's perfect for use in noisy environments, at live shows and by DJs. The HD 280 Pro features rugged design and optimum sensitivity that'll make even those low-output headphone outs on synthesizers come alive. In other words, these headphones are nice and loud the way you need them. The HD 280 Pro delivers detailed, natural reproduction of music and speech, and boasts a smooth frequency response from 8Hz to 25kHz.",
+    "funding": 99,
+    "externalLink": "https://www.musiciansfriend.com/pro-audio/sennheiser-hd-280-pro-closed-back-headphones?pdpSearchTerm=sennheiser&tNtt=Sennheiser%20&tAt=item&tAv=Sennheiser%20HD%20280%20Pro%20Closed-Back%20Headphones",
+    "imageUrl": "https://media.musiciansfriend.com/is/image/MMGS7/HD-280-Pro-Closed-Back-Headphones-Black/J42590000001000-00-500x500.jpg",
     "businessName": "BreakAlive Studios"
   },
   {
-    "name": "Pizza Oven",
-    "description": "Premier industrial pizza oven. BEST PIZZA EVER",
-    "funding": 20000,
+    "name": "MoTak MCO-1-DBL Double Full Size Convertible Gas Convection Oven",
+    "description": "To support bulk cooking, the MoTak MCO-1-DBL double full-size convertible convection oven features two decks—each with five heavy-duty chrome-plated racks. The racks can be adjusted on the 10-position rack guide, which features 11⁄2-inch spacings. Operators can adjust each deck's temperature from 250 to 550 degrees Fahrenheit with the corresponding manual temperature knob, while a temperature-ready indicator light glows when the oven is preheated. A 60-minute continuous-ring timer notifies the operator when foods are finished cooking to reduce the risk of under or overdone products, and for even air circulation, it's built with a forced-air, two-speed fan motor.",
+    "funding": 6000,
     "externalLink": "https://www.katom.com/767-SRPO48G2.html?gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxN38U7Kkb4ykmyanjaj9Zi8I4U9aj0xmWi9SvJpKZ60vqZOIs6wh4aAqq9EALw_wcB",
+    "imageUrl": "https://assets.katomcdn.com/q_auto,f_auto,w_500,dpr_2/products/998/895-CCO1NDBL/895-cco1ndbl.jpg",
     "businessName": "Chef Chicks Bakery"
   },
   {
-    "name": "Giant dough mixer",
-    "description": "Extra large dough mixer, this well help us make ALL the dough.",
-    "funding": 2000,
-    "externalLink": "https://www.webstaurantstore.com/main-street-equipment-gmix30-30-qt-planetary-floor-mixer-with-guard-standard-accessories-120v-3-hp/541GMIX30.html?utm_source=google&utm_medium=cpc&utm_campaign=GoogleShopping&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZxOE_DJLxZu8WuV8Bp5HXwY-f6tYIbgyMfy-Tpou7xsnnmHWkdjRdcaAidkEALw_wcB",
+    "name": "Galaxy GMIX20 20 Qt. Planetary Stand Mixer",
+    "description": "Extra large dough mixer, this well help us make ALL the dough!",
+    "funding": 11500,
+    "externalLink": "https://www.webstaurantstore.com/galaxy-gmix20-20-qt-commercial-planetary-stand-mixer-with-guard-1100w-120v/177GMIX20.html?utm_source=google&utm_medium=cpc&utm_campaign=GoogleShopping&gclid=EAIaIQobChMIqMO6vPHv_gIVks_jBx1iWAs2EAQYCCABEgJuIfD_BwE",
+    "imageUrl": "https://cdnimg.webstaurantstore.com/images/products/large/536597/2074016.jpg",
     "businessName": "Chef Chicks Bakery"
   },
   {
-    "name": "Super fancy printer",
+    "name": "Canon Advance 64565i imageRUNNER",
     "description": "We'll print ALL the documents",
-    "funding": 12000,
-    "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
+    "funding": 2850,
+    "externalLink": "https://www.myrefurbishedcopier.com/shop/product/canon-advance-6565i-imagerunner-0294c002aa-454?gclid=EAIaIQobChMIy4fUpvLv_gIVW_bjBx26YQHAEAQYCiABEgKvfPD_BwE",
+    "imageUrl": "https://www.myrefurbishedcopier.com/web/image/product.template/454/image?unique=73e2e2e",
     "businessName": "SpeedeeQue Printing"
   },
   {
-    "name": "Fancy stuff",
+    "name": "Canon T09 Toner Set",
     "description": "SUPER vibrant colors",
-    "funding": 100,
-    "externalLink": "https://texaslabelprinters.com/products/label-printers/afinia-l901-plus-color-label-printer/?gad=1&gclid=Cj0KCQjwr82iBhCuARIsAO0EAZwo9B9fszmdqOMH2nKeEJA-Cf0fgz-_dyn64El5x0xg5SJ9J_0mkmUaAuc0EALw_wcB",
+    "funding": 590,
+    "externalLink": "https://www.gmsupplies.com/products/canon/imageclass-x-series/canon-imageclass-x-lbp1127c/toner-cartridges/canon-t09-complete-toner-set/?gclid=EAIaIQobChMIysuB1vLv_gIVzg-zAB3g3guwEAQYASABEgKH4fD_BwE",
+    "imageUrl": "https://www.gmsupplies.com/globalassets/products/canon/t09set.jpg",
     "businessName": "SpeedeeQue Printing"
   }
 ]
