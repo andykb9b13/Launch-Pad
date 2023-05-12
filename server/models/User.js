@@ -45,10 +45,6 @@ const userSchema = new Schema({
       ref: "Donation",
     },
   ],
-  // added reference to User in Donation model
-  // donations: {
-
-  // },
   // added reference to user in Business model
   // businesses: {
 

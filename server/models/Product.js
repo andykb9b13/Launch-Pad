@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const {Schema} = mongoose;
+
+const { Schema } = mongoose;
 
 const productSchema = new Schema({
   name: {
@@ -27,10 +28,15 @@ const productSchema = new Schema({
   donors: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User',
-    }
-  ]
-  // donor: [] //come back to this - donor model references Product, so i don't think we need to reference Donor in Product model
+      ref: "User",
+    },
+  ],
+  donations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Donation",
+    },
+  ],
 });
 
 const Product = mongoose.model("Product", productSchema);
