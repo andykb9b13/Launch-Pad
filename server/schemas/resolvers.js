@@ -214,6 +214,7 @@ const resolvers = {
         { $push: { donations: newDonation._id } },
         { new: true }
       );
+      console.log(newDonation, 'NEWDONATION', newProduct, 'NEWPRODUCT', newUser, 'NEWUSER');
       // product.funding += amount;
       // await product.save();
       return newDonation;

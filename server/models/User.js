@@ -39,6 +39,12 @@ const userSchema = new Schema({
       ref: "Business",
     },
   ],
+  donations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Donation",
+    },
+  ],
   // added reference to User in Donation model
   // donations: {
 

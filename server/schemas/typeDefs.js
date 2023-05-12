@@ -41,7 +41,7 @@ const typeDefs = gql`
   type Donation {
     _id: ID
     donor: String
-    amount: Int
+    amount: String
     product: String
     message: String
   }

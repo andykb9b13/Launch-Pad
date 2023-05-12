@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const {Schema} = mongoose;
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -23,6 +24,12 @@ const productSchema = new mongoose.Schema({
   businessId: {
     type: String,
   },
+  donors: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ]
   // donor: [] //come back to this - donor model references Product, so i don't think we need to reference Donor in Product model
 });
 

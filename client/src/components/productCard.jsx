@@ -30,7 +30,6 @@ const ProductCard = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(productId, 'THIS IS PRODUCTID')
         try {
           await donate({
             variables: { ...formData, productId: productId },
