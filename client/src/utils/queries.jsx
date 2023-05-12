@@ -20,6 +20,7 @@ export const QUERY_BUSINESS = gql`
         description
         funding
         externalLink
+        imageUrl
         businessId
       }
     }
