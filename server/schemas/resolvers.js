@@ -128,7 +128,7 @@ const resolvers = {
 
         console.log("here is newBusiness", newBusiness);
 
-        let newUser = await User.findByIdAndUpdate(
+        const newUser = await User.findByIdAndUpdate(
           user._id,
           { $push: { businesses: newBusiness._id } },
           { new: true }
@@ -139,23 +139,21 @@ const resolvers = {
         console.error(err);
       }
     },
-    deleteBusiness: async (_, { businessId }, { user }) => {
+    deleteBusiness: async (_, { _id }, { user }) => {
       if (!user) {
         throw new Error("Invalid Credentials");
-      }
-      const business = await Business.findById(businessId);
-      if (!business) {
-        throw new Error("Business not found");
       }
       if (!user.businesses.includes(business._id)) {
         throw new Error("Invalid Credentials");
       }
-      await Business.findByIdAndDelete(businessId);
-      user.businesses = user.businesses.filter(
-        (b) => b.toString() !== businessId.toString()
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { $pull: { businesses: _id } },
+        { new: true }
       );
-      await user.save();
-      return user;
+      await Business.findByIdAndDelete(_id);
+      
+      return updatedUser;
     },
 
     addProduct: async (

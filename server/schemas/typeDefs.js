@@ -78,7 +78,7 @@ const typeDefs = gql`
       instagram: String
       missionStatement: String
     ): Business
-    deleteBusiness(_id: ID!, sponsor: String!): User
+    deleteBusiness(_id: ID!): User
     donate(amount: String!, message: String, productId: String): Donation
     addProduct(
       name: String!

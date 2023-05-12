@@ -1,30 +1,29 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_BUSINESS = gql`
-  query Business($name: String!) {
-    business(name: $name) {
+query Query($name: String!) {
+  business(name: $name) {
+    _id
+    name
+    sponsor
+    description
+    location
+    website
+    facebook
+    twitter
+    instagram
+    missionStatement
+    imageUrl
+    products {
       _id
       name
-      sponsor
       description
-      location
-      website
-      facebook
-      twitter
-      instagram
-      missionStatement
-      imageUrl
-      products {
-        _id
-        name
-        description
-        funding
-        externalLink
-        businessId
-      }
+      funding
+      externalLink
+      businessId
     }
   }
-`;
+}`;
 
 export const QUERY_BUSINESSES = gql`
   query Businesses {

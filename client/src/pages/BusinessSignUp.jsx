@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { Route, Link, Routes, useNavigate, redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
 import UploadWidget from "../components/UploadWidget";
+import BusinessProfile from "./BusinessProfile";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -74,8 +75,7 @@ export default function BusinessSignUp() {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
-      console.log(data);
-      // navigate to another page here
+      if (data) navigate(`/custom-business/${businessName}`);
     } catch (err) {
       console.error(err);
     }
@@ -197,12 +197,14 @@ export default function BusinessSignUp() {
               <p>{imageUrl}</p>
             </>
           )}
-          <button
-            className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
-            type="submit"
-          >
-            Next
-          </button>
+          {/* <Link to={`/custom-business/${businessName}`}> */}
+            <button
+              className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+              type="submit"
+            >
+              Create Profile
+            </button>
+          {/* </Link> */}
           <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>

@@ -7,6 +7,7 @@ import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import ProductCard from "./components/productCard";
 import LoginForm from './components/LoginForm'
+import CustomBusinessProfile from './pages/CustomBusinessProfile';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./pages/BusinessSignUp";
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/product/:productId" element={<ProductCard />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/custom-business/:name" element={<CustomBusinessProfile />} />
         </Routes>
       </Router>
     </ApolloProvider>
