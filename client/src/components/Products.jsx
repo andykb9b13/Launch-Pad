@@ -9,13 +9,13 @@ const Products = ({ products }) => {
         <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4 my-4 p-2 rounded-lg'>
       {products &&
         products.map((product, i) => (
-          <div key={i} className="flex flex-col justify-center p-4 bg-[var(--white)] shadow-md shadow-[var(--lime)] border-2 border-[var(--lime)] group container rounded-lg">
+          <div key={i} className="flex flex-col justify-center p-4 bg-[var(--white)] shadow-md shadow-[var(--lime)] border-2 border-[var(--green)] group container rounded-lg">
             <div className='flex flex-col justify-center p-6'>
               <h2 className='text-xl text-[var(--green)] font-bold tracking-widest border-b-2 border-[var(--red)] pb-1'>{product.name}</h2>  
               <p>{product.description}</p>
               <p className='tracking-widest font-bold text-[var(--red)] py-4'>${product.funding}</p>
               <a className='py-2' href={product.externalLink} target='_blank'>More Info For This Item</a>
-                <div className="tracking-widest my-4 mx-auto border-2 border-[var(--lime)] rounded-lg p-4">
+                <div className="tracking-widest my-4 mx-auto border-2 border-[var(--green)] rounded-lg p-4">
                   <Link to={`/product/${product._id}`} product={product} className='text-[var(--green)]'>
                     Fund This Item!
                   </Link>
