@@ -29,6 +29,7 @@ const ProductCard = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log("This is value", typeof value);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     console.log("This is formData in handleChange", formData);
   };
@@ -38,7 +39,11 @@ const ProductCard = () => {
     console.log(productId, "THIS IS PRODUCTID in handleSubmit");
     try {
       const { data } = await donate({
-        variables: { ...formData, productId: productId },
+        variables: {
+          ...formData,
+          productId,
+          amount: parseInt(formData.amount),
+        },
       });
       console.log("This is data in donate()", data);
     } catch (err) {
@@ -93,7 +98,7 @@ const ProductCard = () => {
                 <input
                   onChange={handleChange}
                   value={formData.amount}
-                  type="text"
+                  type="number"
                   name="amount"
                   id="amount"
                   className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 ml-2"
