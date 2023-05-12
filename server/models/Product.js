@@ -37,7 +37,6 @@ const productSchema = new Schema({
       ref: "Donation",
     },
   ],
-  // donor: [] //come back to this - donor model references Product, so i don't think we need to reference Donor in Product model
 });
 
 const Product = mongoose.model("Product", productSchema);
