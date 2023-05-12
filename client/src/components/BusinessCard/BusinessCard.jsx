@@ -44,6 +44,7 @@ const BusinessCard = () => {
               >
                 <Link to={`/business/${business.name}`}>Launch Me</Link>
               </button>
+              <Products products={business.products} />
 
               <p className="mb-4 text-center font-medium text-sm relative flex flex-row">
                 <span className="hover:scale-150 duration-200 relative top-5 basis-1/4">

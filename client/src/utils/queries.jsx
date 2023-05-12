@@ -47,6 +47,7 @@ export const QUERY_BUSINESSES = gql`
         description
         funding
         externalLink
+        imageUrl
       }
     }
   }

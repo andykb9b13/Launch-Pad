@@ -1,11 +1,12 @@
 .businessCard {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .businessImg {
-  height: 40%;
+  height: 400px;
 }
 
 .launchBtn {
