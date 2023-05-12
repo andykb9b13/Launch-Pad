@@ -64,16 +64,8 @@ export const ADD_BUSINESS = gql`
 `;
 
 export const ADD_DONATION = gql`
-  mutation donate(
-    $amount: String!
-    $message: String
-    $productId: String
-  ) {
-    donate(
-      amount: $amount
-      message: $message
-      productId: $productId
-    ) {
+  mutation donate($amount: Int!, $message: String, $productId: String) {
+    donate(amount: $amount, message: $message, productId: $productId) {
       _id
       donor
       amount

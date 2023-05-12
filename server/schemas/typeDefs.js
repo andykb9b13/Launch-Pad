@@ -41,7 +41,7 @@ const typeDefs = gql`
   type Donation {
     _id: ID
     donor: String
-    amount: String
+    amount: Int
     product: String
     message: String
   }
@@ -79,7 +79,7 @@ const typeDefs = gql`
       missionStatement: String
     ): Business
     deleteBusiness(_id: ID!, sponsor: String!): User
-    donate(amount: String!, message: String, productId: String): Donation
+    donate(amount: Int!, message: String, productId: String): Donation
     addProduct(
       name: String!
       description: String!
