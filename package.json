@@ -19,6 +19,9 @@
     "tailwindcss": "^3.3.2"
   },
   "dependencies": {
-    "react-stripe-checkout": "^2.6.3"
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "react-stripe-checkout": "^2.6.3",
+    "uuid": "^9.0.0"
   }
 }

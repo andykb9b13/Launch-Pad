@@ -2,9 +2,14 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+const cors = require('cors');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+
+//stripe Route
+const striperoutes = require('./routes/stripe-route')
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,6 +21,10 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//setting up api route for stripe
+app.use(cors());
+app.use('/api/stripe', striperoutes);
 
 // Serve up static assets IF WE DECIDE TO INCLUDE STATIC IMAGES
 // app.use('/images', express.static(path.join(__dirname, '../client/images')));
