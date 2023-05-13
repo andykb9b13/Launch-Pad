@@ -76,6 +76,7 @@ export default function BusinessSignUp() {
       });
       console.log(data);
       // navigate to another page here
+      navigate(`/`);
     } catch (err) {
       console.error(err);
     }
@@ -198,12 +199,12 @@ export default function BusinessSignUp() {
             </>
           )}
           <button
-            className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
           >
             Next
           </button>
-          <button className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className=" border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>
         </div>
