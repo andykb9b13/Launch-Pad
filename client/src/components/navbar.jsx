@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/launchpad-logo-placeholder.png";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Header1 from "../assets/backgrounds/header1.jpg";
-import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Navbar = () => {
@@ -36,10 +32,13 @@ const Navbar = () => {
             <Link to="/business">Business</Link>
           </li> */}
 
-          <li className="hover:scale-110 duration-500">
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/login">Login</Link>
           </li>
-          <li className="hover:scale-110 duration-500" onClick={handleLogout}>
+          <li
+            className="hover:scale-110 duration-500 mx-2"
+            onClick={handleLogout}
+          >
             Logout
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
@@ -65,22 +64,20 @@ const Navbar = () => {
         }
       >
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/">
-            Home
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/user">
             Profile
           </Link>
         </li>
-        <li className="py-6 text-4xl">
+        {/* <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/business">
             Business
           </Link>
-        </li>
+        </li> */}
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/login"></Link>
+        </li>
+        <li className="hover:scale-110 duration-500" onClick={handleLogout}>
+          Logout
         </li>
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/signup">

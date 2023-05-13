@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   return (
     <div>
-      {loggedIn !== null ? (
+      {data === undefined ? (
         <div>
           <h2>You must be logged in to view your profile</h2>
           <button type="button" className="redirectBtn">
@@ -46,8 +46,8 @@ const UserProfile = () => {
           <div>
             <h2>My Business</h2>
             <div>
-              {user.businesses.map((business) => (
-                <div>
+              {user.businesses.map((business, i) => (
+                <div key={i}>
                   <h3>Business Name: {business.name}</h3>
                 </div>
               ))}
