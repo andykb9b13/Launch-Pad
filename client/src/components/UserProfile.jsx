@@ -3,7 +3,7 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import "../styles/userProfile.css";
-import Products from "./Products";
+import Business from "./Business";
 
 const UserProfile = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -44,21 +44,15 @@ const UserProfile = () => {
             <Link to="/newbusiness">Launch A Business</Link>
           </button>
           <div>
-            <h2>My Business</h2>
+            <h2>My Businesses</h2>
             <div>
               {user.businesses.map((business, i) => (
                 <div key={i}>
-                  <h3>Business Name: {business.name}</h3>
+                  <Business business={business} />
                 </div>
               ))}
             </div>
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
-            sapiente, quisquam et unde error perspiciatis deleniti sint a
-            dolorum distinctio adipisci, nisi, corrupti eos laboriosam. Enim, ad
-            ducimus? Minus, nulla.
-          </p>
         </div>
       )}
     </div>
