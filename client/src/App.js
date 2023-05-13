@@ -11,6 +11,7 @@ import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import ProductCard from "./components/productCard";
+import CustomBusinessProfile from './pages/CustomBusinessProfile';
 import LoginForm from "./components/LoginForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/custom-business/:name" element={<CustomBusinessProfile />} />
         </Routes>
       </Router>
     </ApolloProvider>

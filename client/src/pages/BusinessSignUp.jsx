@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { Route, Link, Routes, useNavigate, redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
 import UploadWidget from "../components/UploadWidget";
+import BusinessProfile from "./BusinessProfile";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -69,19 +70,15 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
       imageUrl: imageUrl,
     };
-    console.log(
-      "This is the userInfo checking to see if imageUrl is being saved",
-      userInfo
-    );
+    console.log("this is user Info: ",userInfo);
 
     try {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
-      console.log("This is the data in create business", data);
-      // navigate to another page here
-      navigate(`/`);
+      if (data) navigate(`/custom-business/${businessName}`);
     } catch (err) {
+      console.log("you're in the catch block");
       console.error(err);
     }
   };
@@ -202,13 +199,15 @@ export default function BusinessSignUp() {
               <p>{imageUrl}</p>
             </>
           )}
-          <button
-            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
-            type="submit"
-          >
-            Next
-          </button>
-          <button className=" border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
+          {/* <Link to={`/custom-business/${businessName}`}> */}
+            <button
+              className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+              type="submit"
+            >
+              Create Profile
+            </button>
+          {/* </Link> */}
+          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>
         </div>

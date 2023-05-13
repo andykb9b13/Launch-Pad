@@ -8,6 +8,7 @@ import AddProduct from "../components/AddProduct";
 const BusinessProfile = () => {
   const { name } = useParams();
   console.log("name from useParams", name);
+  // const name = "typehere";
 
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
