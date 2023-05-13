@@ -51,6 +51,11 @@ export default function AddProduct({ business }) {
         variables: { ...productInfo },
       });
       console.log("This is data in createProduct", data);
+      setProductName("");
+      setProductDescription("");
+      setProductFunding("");
+      setExternalLink("");
+      setImageUrl("");
     } catch (err) {
       console.error(err);
     }
