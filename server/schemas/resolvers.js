@@ -6,12 +6,17 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find({}).populate("businesses").populate("donorTier");
+      return await User.find({})
+        .populate("businesses")
+        .populate("donorTier")
+        .populate("donations");
     },
     user: async (parent, { username }) => {
+      console.log("This is username in query resolver", username);
       return User.findOne({ username })
         .populate("businesses")
-        .populate("donorTier");
+        .populate("donorTier")
+        .populate("donations");
     },
     products: async () => {
       return await Product.find().populate("funding");
@@ -34,11 +39,12 @@ const resolvers = {
     },
     // make sure to set Context on the client side in app.js
     me: async (parent, args, context) => {
+      console.log("hitting me route");
+      console.log("This is context.user._id", context.user._id);
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
-          .populate("businesses")
-          .populate("watchlist");
+          .populate("businesses");
       }
       throw new AuthenticationError("You are not logged in.");
     },
@@ -122,15 +128,15 @@ const resolvers = {
 
         let newBusiness = await Business.create({
           name,
-          description,
-          sponsor: user._id,
           location,
           website,
           twitter,
           facebook,
           instagram,
+          description,
           missionStatement,
-          imageUrl
+          imageUrl,
+          sponsor: user._id
         });
 
         const newUser = await User.findByIdAndUpdate(
@@ -205,22 +211,28 @@ const resolvers = {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      console.log('hitting donation route');
+      console.log("hitting donation route");
       let newDonation = await Donation.create({
         amount,
         message,
         donor: user._id,
+        productId,
       });
+      console.log("newDonation in resolver", newDonation);
+
       let newProduct = await Product.findByIdAndUpdate(
         productId,
-        { $push: { donors: user._id } },
+        { $push: { donors: user._id, donations: newDonation._id } },
         { new: true }
       );
-        let newUser = await User.findByIdAndUpdate(
+      console.log("newProduct in resolver", newProduct);
+
+      let newUser = await User.findByIdAndUpdate(
         user._id,
         { $push: { donations: newDonation._id } },
         { new: true }
       );
+      console.log("newUser in resolver", newUser);
       // product.funding += amount;
       // await product.save();
       return newDonation;

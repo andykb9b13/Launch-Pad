@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -27,10 +27,6 @@ const BusinessProfile = () => {
     <div>
       <div>
         <h2>{business.name}</h2>
-        <div className="profileImg">
-          <img src={business.imageUrl} alt="profile" />
-        </div>
-        <p>{business.description}</p>
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />

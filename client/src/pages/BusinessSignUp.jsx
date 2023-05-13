@@ -51,6 +51,7 @@ export default function BusinessSignUp() {
       return;
     }
     setImageUrl(result?.info?.secure_url);
+    console.log("This is the result in handleUpload", result.info.secure_url);
   }
 
   //set cancel button to previous page.
@@ -98,7 +99,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="Your Business Name"
           onChange={handleNameChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -108,7 +109,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="Business Location"
           onChange={handleLocationChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -118,7 +119,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="www.examplebusiness.com"
           onChange={handleWebsiteChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -128,7 +129,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="www.twitter.com/yourbusiness"
           onChange={handleTwitterChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -138,7 +139,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="www.facebook.com/yourbusiness"
           onChange={handleFacebookChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -148,7 +149,7 @@ export default function BusinessSignUp() {
           type="text"
           placeholder="www.instagram.com/yourbusiness"
           onChange={handleInstagramChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -158,7 +159,7 @@ export default function BusinessSignUp() {
           placeholder="Enter Description Here"
           onChange={handleDescriptionChange}
           rows="6"
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
@@ -168,7 +169,7 @@ export default function BusinessSignUp() {
           placeholder="Enter Mission Statement Here"
           onChange={handleMissionStatementChange}
           rows="6"
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
 
         <div>
@@ -180,7 +181,7 @@ export default function BusinessSignUp() {
               }
               return (
                 <button
-                  className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
                   onClick={handleOnClick}
                 >
                   Upload an Image

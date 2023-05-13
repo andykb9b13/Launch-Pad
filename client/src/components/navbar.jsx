@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/launchpad-logo-placeholder.png";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Header1 from "../assets/backgrounds/header1.jpg";
+import Auth from "../utils/auth";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
+  const handleLogout = async () => {
+    try {
+      Auth.logout();
+      console.log("user was logged out");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="w-full h-[70px] flex justify-between items-center px-4 z-10">
@@ -18,17 +26,20 @@ const Navbar = () => {
       <div className="">
         <ul className="hidden md:flex text-2xl">
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/user">Profile</Link>
           </li>
-          <li className="hover:scale-110 duration-500 mx-2">
+          {/* <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/business">Business</Link>
-          </li>
+          </li> */}
 
-          <li className="hover:scale-110 duration-500">
+          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/login">Login</Link>
+          </li>
+          <li
+            className="hover:scale-110 duration-500 mx-2"
+            onClick={handleLogout}
+          >
+            Logout
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/signup">Sign Up</Link>
@@ -53,22 +64,20 @@ const Navbar = () => {
         }
       >
         <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/">
-            Home
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/user">
             Profile
           </Link>
         </li>
-        <li className="py-6 text-4xl">
+        {/* <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/business">
             Business
           </Link>
-        </li>
+        </li> */}
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/login"></Link>
+        </li>
+        <li className="hover:scale-110 duration-500" onClick={handleLogout}>
+          Logout
         </li>
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/signup">

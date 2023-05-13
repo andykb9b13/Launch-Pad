@@ -1,11 +1,14 @@
-.businessCard {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.businessImg {
+  max-width: 400px;
 }
 
-.businessImg {
-  height: 40%;
+.businessName {
+  font-size: 2.3em;
+}
+
+.businessWebsite {
+  color: teal;
+  padding-bottom: 2%;
 }
 
 .launchBtn {
@@ -30,4 +33,26 @@
   transform: translateY(2px);
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
+}
+
+.business {
+  margin: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.businessDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 2%;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2%;
 }

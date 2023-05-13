@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String
     donorTier: Int
     donations: [Donation]
-    business: [Business]
+    businesses: [Business]
     watchlist: [Product]
   }
 
