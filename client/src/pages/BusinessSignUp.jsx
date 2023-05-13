@@ -50,6 +50,7 @@ export default function BusinessSignUp() {
       return;
     }
     setImageUrl(result?.info?.secure_url);
+    console.log("This is the result in handleUpload", result.info.secure_url);
   }
 
   //set cancel button to previous page.
@@ -68,13 +69,16 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
       imageUrl: imageUrl,
     };
-    console.log(userInfo);
+    console.log(
+      "This is the userInfo checking to see if imageUrl is being saved",
+      userInfo
+    );
 
     try {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
-      console.log(data);
+      console.log("This is the data in create business", data);
       // navigate to another page here
       navigate(`/`);
     } catch (err) {
