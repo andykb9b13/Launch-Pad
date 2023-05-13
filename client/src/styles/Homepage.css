@@ -1,0 +1,74 @@
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+  background-image: url("https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  background-position: center;
+}
+
+h1 {
+  font-size: 7em;
+  color: white;
+  text-shadow: 1px 5px 10px black;
+}
+
+.subtitle {
+  font-size: 3em;
+  color: white;
+  text-shadow: 1px 5px 10px black;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+.launchBtn {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  text-shadow: 1px 5px 10px black;
+  font-size: 1.5em;
+  transition: 0.3s;
+}
+
+.launchBtn:hover {
+  background-color: white;
+  color: black;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+  text-shadow: none;
+}
+
+.missionStatement {
+  border: 1px solid black;
+  margin: 5%;
+  padding: 3%;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px black;
+}
+
+.missionImg {
+  width: 300px;
+}
+
+.exploreBtn {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  color: black;
+  font-size: 1.5em;
+  transition: 0.3s;
+  margin-top: 3%;
+}
+
+.exploreBtn:hover {
+  background-color: black;
+  color: white;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+  text-shadow: 1px 1px 5px white;
+}

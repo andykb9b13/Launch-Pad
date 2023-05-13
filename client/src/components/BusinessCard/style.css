@@ -1,0 +1,58 @@
+.businessImg {
+  max-width: 400px;
+}
+
+.businessName {
+  font-size: 2.3em;
+}
+
+.businessWebsite {
+  color: teal;
+  padding-bottom: 2%;
+}
+
+.launchBtn {
+  padding: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.businessLaunchBtn {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-size: 1em;
+  transition: 0.3s;
+  margin-top: 3%;
+}
+
+.businessLaunchBtn:hover {
+  background-color: black;
+  color: white;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+  text-shadow: 1px 1px 5px white;
+}
+
+.business {
+  margin: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.businessDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 2%;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2%;
+}

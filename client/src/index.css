@@ -2,24 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    body {
-        @apply font-sans;
-    }
-    li {
-        @apply px-4;
-        @apply cursor-pointer;
-    }
-}
+/* @layer base {
+  body {
+    @apply font-sans;
+  }
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+} */
 
 :root {
-    --lime: #A3DE83;
-    --green: #2EB872;
-    --red: #FF5D6E;
-    --white: #FEFFEA;
+  --lime: #ffffff;
+  --green: #000000;
+  --red: #000000;
+  --white: #ffffff;
 }
 
-body {
+/* .whitelime {
+  background-image: linear-gradient(to right, var(--white), var(--lime));
+}
+
+.redwhite {
+  background-image: linear-gradient(
+    to right,
+    var(--red),
+    var(--white),
+    var(--red)
+  );
+} */
+
+/* body {
     background-color: var(--white);
     color: var(--green);
-}
+} */

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_BUSINESS } from "../utils/mutations";
+import UploadWidget from "../components/UploadWidget";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -10,7 +13,8 @@ export default function BusinessSignUp() {
   const [facebookURL, setFacebookURL] = useState("");
   const [instagramURL, setInstagramURL] = useState("");
   const [description, setDescription] = useState("");
-
+  const [missionStatement, setMissionStatement] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   //Handle & store Changes for input values
   //Handle & store Changes for input values
   function handleNameChange(e) {
@@ -34,93 +38,179 @@ export default function BusinessSignUp() {
   function handleDescriptionChange(e) {
     setDescription(e.target.value);
   }
+  function handleMissionStatementChange(e) {
+    setMissionStatement(e.target.value);
+  }
+
+  function handleOnUpload(error, result, widget) {
+    if (error) {
+      widget.close({
+        quiet: true,
+      });
+      return;
+    }
+    setImageUrl(result?.info?.secure_url);
+    console.log("This is the result in handleUpload", result.info.secure_url);
+  }
+
   //set cancel button to previous page.
   const prevPage = () => {};
   //Move to next steps
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const userInfo = {
-      businessName: businessName,
+      name: businessName,
       location: location,
-      websiteURL: websiteURL,
-      twitterURL: twitterURL,
-      facebookURL: facebookURL,
-      instagramURL,
-      instagramURL,
-      description,
-      description,
+      website: websiteURL,
+      twitter: twitterURL,
+      facebook: facebookURL,
+      instagram: instagramURL,
+      description: description,
+      missionStatement: missionStatement,
+      imageUrl: imageUrl,
     };
-    console.log(userInfo);
+    console.log(
+      "This is the userInfo checking to see if imageUrl is being saved",
+      userInfo
+    );
+
+    try {
+      const { data } = await createBusiness({
+        variables: { ...userInfo },
+      });
+      console.log("This is the data in create business", data);
+      // navigate to another page here
+      navigate(`/`);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
+  const [createBusiness, { error }] = useMutation(ADD_BUSINESS);
+  const [validated] = useState(false);
+
   return (
-    <div>
-      <form>
-        <div>
-          <label>Business Name</label>
-          <input
-            type="text"
-            placeholder="Your Business Name"
-            onChange={handleNameChange}
-          />
-        </div>
+    <div className="w-full flex justify-center items-center p-4">
+      <form
+        className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
+        onSubmit={onSubmit}
+      >
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Business Name
+        </label>
+        <input
+          type="text"
+          placeholder="Your Business Name"
+          onChange={handleNameChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Location
+        </label>
+        <input
+          type="text"
+          placeholder="Business Location"
+          onChange={handleLocationChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Website URL
+        </label>
+        <input
+          type="text"
+          placeholder="www.examplebusiness.com"
+          onChange={handleWebsiteChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Twitter
+        </label>
+        <input
+          type="text"
+          placeholder="www.twitter.com/yourbusiness"
+          onChange={handleTwitterChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Facebook
+        </label>
+        <input
+          type="text"
+          placeholder="www.facebook.com/yourbusiness"
+          onChange={handleFacebookChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Instagram
+        </label>
+        <input
+          type="text"
+          placeholder="www.instagram.com/yourbusiness"
+          onChange={handleInstagramChange}
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Description
+        </label>
+        <textarea
+          placeholder="Enter Description Here"
+          onChange={handleDescriptionChange}
+          rows="6"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
+
+        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+          Mission Statement
+        </label>
+        <textarea
+          placeholder="Enter Mission Statement Here"
+          onChange={handleMissionStatementChange}
+          rows="6"
+          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+        />
 
         <div>
-          <label>Location</label>
-          <input
-            type="text"
-            placeholder="Business Location"
-            onChange={handleLocationChange}
-          />
-        </div>
+          <UploadWidget onUpload={handleOnUpload}>
+            {({ open }) => {
+              function handleOnClick(e) {
+                e.preventDefault();
+                open();
+              }
+              return (
+                <button
+                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  onClick={handleOnClick}
+                >
+                  Upload an Image
+                </button>
+              );
+            }}
+          </UploadWidget>
 
-        <div>
-          <label>Website URL</label>
-          <input
-            type="text"
-            placeholder="www.examplebusiness.com"
-            onChange={handleWebsiteChange}
-          />
-        </div>
-
-        <div>
-          <label>Twitter</label>
-          <input
-            type="text"
-            placeholder="www.twitter.com/yourbusiness"
-            onChange={handleTwitterChange}
-          />
-        </div>
-
-        <div>
-          <label>Facebook</label>
-          <input
-            type="text"
-            placeholder="www.facebook.com/yourbusiness"
-            onChange={handleFacebookChange}
-          />
-        </div>
-
-        <div>
-          <label>Instagram</label>
-          <input
-            type="text"
-            placeholder="www.instagram.com/yourbusiness"
-            onChange={handleInstagramChange}
-          />
-        </div>
-
-        <div>
-          <label>Description</label>
-          <textarea
-            placeholder="Enter Description Here"
-            onChange={handleDescriptionChange}
-          />
-        </div>
-
-        <div>
-          <button type="submit">Next</button>
-          <button>Cancel</button>
+          {imageUrl && (
+            <>
+              <h3>Profile Image</h3>
+              <p>
+                <img src={imageUrl} alt="Uploaded resource" />
+              </p>
+              <p>{imageUrl}</p>
+            </>
+          )}
+          <button
+            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
+            type="submit"
+          >
+            Next
+          </button>
+          <button className=" border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
+            Cancel
+          </button>
         </div>
       </form>
     </div>

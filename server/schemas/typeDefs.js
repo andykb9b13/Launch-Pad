@@ -23,6 +23,7 @@ const typeDefs = gql`
     twitter: String
     instagram: String
     missionStatement: String
+    imageUrl: String
     products: [Product]
   }
 
@@ -32,6 +33,8 @@ const typeDefs = gql`
     description: String
     funding: Int
     externalLink: String
+    imageUrl: String
+    businessId: String
     donors: [User]
   }
 
@@ -40,6 +43,7 @@ const typeDefs = gql`
     donor: String
     amount: Int
     product: String
+    message: String
   }
 
   type Auth {
@@ -59,14 +63,32 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    loginUser(email: String!, password: String!): Auth
     deleteUser(_id: ID!): Auth
-    login(email: String!, password: String!): Auth
     addToWatchlist(_id: ID!): Product
     removeFromWatchlist(_id: ID!): Product
-    addBusiness(name: String!, sponsor: String!, description: String): User
+    addBusiness(
+      name: String!
+      sponsor: String
+      description: String
+      location: String
+      website: String
+      facebook: String
+      twitter: String
+      instagram: String
+      missionStatement: String
+      imageUrl: String
+    ): Business
     deleteBusiness(_id: ID!, sponsor: String!): User
-    donate(_id: ID!, amount: Int!): Product
-    addProduct(name: String!, description: String!, funding: Int!, externalLink: String!): Product
+    donate(amount: Int!, message: String, productId: String): Donation
+    addProduct(
+      name: String!
+      description: String!
+      funding: String!
+      externalLink: String
+      imageUrl: String
+      businessId: String
+    ): Product
     deleteProduct(productId: ID!): Product
   }
 `;

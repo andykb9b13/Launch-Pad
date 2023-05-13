@@ -1,4 +1,4 @@
-const { User, Business, Product } = require("../models");
+const { User, Business, Product, Donation } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 // Stripe goes here if we use it
@@ -6,12 +6,17 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find({}).populate("businesses").populate("donorTier");
+      return await User.find({})
+        .populate("businesses")
+        .populate("donorTier")
+        .populate("donations");
     },
     user: async (parent, { username }) => {
+      console.log("This is username in query resolver", username);
       return User.findOne({ username })
         .populate("businesses")
-        .populate("donorTier");
+        .populate("donorTier")
+        .populate("donations");
     },
     products: async () => {
       return await Product.find().populate("funding");
@@ -33,12 +38,13 @@ const resolvers = {
       return await Business.findOne({ name }).populate("products");
     },
     // make sure to set Context on the client side in app.js
-    me: async (parent, args, contest) => {
+    me: async (parent, args, context) => {
+      console.log("hitting me route");
+      console.log("This is context.user._id", context.user._id);
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
-          .populate("businesses")
-          .populate("watchlist");
+          .populate("businesses");
       }
       throw new AuthenticationError("You are not logged in.");
     },
@@ -49,14 +55,14 @@ const resolvers = {
     addUser: async (_, { username, email, password }) => {
       const user = new User({ username, email, password });
       await user.save();
-      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
+      const token = signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     deleteUser: async (_, { userId }) => {
       const deletedUser = await User.findByIdAndDelete(userId);
       return deletedUser;
     },
-    login: async (_, { email, password }) => {
+    loginUser: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
         throw new Error("No user with that email");
@@ -69,7 +75,7 @@ const resolvers = {
         throw new AuthenticationError("Invalid Login");
       }
 
-      const token = jwt.signToken({ _id: user._id }, process.env.SECRET);
+      const token = signToken({ _id: user._id }, process.env.SECRET);
       return { token, user };
     },
     addToWatchlist: async (_, { _id }, { user }) => {
@@ -108,15 +114,57 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, sponsor, description }, { user }) => {
+    addBusiness: async (
+      _,
+      {
+        name,
+        location,
+        website,
+        twitter,
+        facebook,
+        instagram,
+        description,
+        missionStatement,
+        imageUrl,
+      },
+      { user }
+    ) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const business = new Business({ name, sponsor, description });
-      await business.save();
-      user.businesses.push(business._id);
-      await user.save();
-      return user;
+      console.log("this is user: ", user);
+      try {
+        // const business = new Business({ name, description, sponsor: user._id });
+        // console.log("this is business: ", business);
+        // let theBusiness = await business.save();
+
+        // console.log("this is theBusiness 2 ", theBusiness);
+
+        let newBusiness = await Business.create({
+          name,
+          location,
+          website,
+          twitter,
+          facebook,
+          instagram,
+          description,
+          missionStatement,
+          imageUrl,
+          sponsor: user._id,
+        });
+
+        console.log("here is newBusiness", newBusiness);
+
+        let newUser = await User.findByIdAndUpdate(
+          user._id,
+          { $push: { businesses: newBusiness._id } },
+          { new: true }
+        );
+
+        return newBusiness;
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteBusiness: async (_, { businessId }, { user }) => {
       if (!user) {
@@ -130,38 +178,78 @@ const resolvers = {
         throw new Error("Invalid Credentials");
       }
       await Business.findByIdAndDelete(businessId);
-      user.businesses = user.businesses.filter((b) => b.toString() !== businessId.toString());
+      user.businesses = user.businesses.filter(
+        (b) => b.toString() !== businessId.toString()
+      );
       await user.save();
       return user;
     },
-    addProduct: async (_, { name, description, funding, externalLink }) => {
-      const product = new Product({ name, description, funding, externalLink });
-      await product.save();
-      return product;
+
+    addProduct: async (
+      _,
+      { name, description, funding, externalLink, imageUrl, businessId }
+    ) => {
+      try {
+        console.log("In the resolver~~~~~");
+        let newProduct = await Product.create({
+          name,
+          description,
+          funding,
+          externalLink,
+          imageUrl,
+          businessId,
+        });
+        console.log("This is businessId", businessId);
+
+        let newBusiness = await Business.findByIdAndUpdate(
+          businessId,
+          { $push: { products: newProduct._id } },
+          { new: true }
+        );
+        console.log("here is newBusiness in the resolver", newBusiness);
+        return newProduct;
+      } catch (err) {
+        console.error(err);
+      }
     },
     deleteProduct: async (_, { productId }) => {
       const product = await Product.findById(productId);
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error("Product not found");
       }
       await Product.findByIdAndDelete(productId);
       return product;
     },
 
-
-
-
-    donate: async (_, { _id, amount }, { user }) => {
+    donate: async (_, { amount, message, productId }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
-      const product = await Product.findById(_id);
-      if (!product) {
-        throw new Error("Product not found");
-      }
-      product.funding += amount;
-      await product.save();
-      return product;
+      console.log("hitting donation route");
+      let newDonation = await Donation.create({
+        amount,
+        message,
+        donor: user._id,
+        productId,
+      });
+      console.log("newDonation in resolver", newDonation);
+
+      let newProduct = await Product.findByIdAndUpdate(
+        productId,
+        { $push: { donors: user._id, donations: newDonation._id } },
+        { new: true }
+      );
+      console.log("newProduct in resolver", newProduct);
+
+      let newUser = await User.findByIdAndUpdate(
+        user._id,
+        { $push: { donations: newDonation._id } },
+        { new: true }
+      );
+      console.log("newUser in resolver", newUser);
+      // product.funding += amount;
+      // await product.save();
+      return newDonation;
     },
   },
 };
