@@ -104,3 +104,16 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+export const UPDATE_FUNDING = gql`
+mutation UpdateFunding($productId: ID!, $donationAmount: Int!) {
+  updateProductFunding(productId: $productId, donationAmount: $donationAmount) {
+    _id
+    name
+    funding
+  }
+}
+`;
+
+
+

@@ -16,7 +16,8 @@ const ProductCard = () => {
   console.log(productId)
 
   const handleTotalChange = (e) => {
-    setTotal(e.target.value);
+    const newTotal = parseInt(e.target.value); // or Number(e.target.value)
+    setTotal(newTotal);
   };
 
   const handleToken = async(total, token) => {
@@ -59,7 +60,7 @@ const ProductCard = () => {
 
   const [donate, { error }] = useMutation(ADD_DONATION);
   const [formData, setFormData] = useState({
-    amount: "",
+    amount: total,
     message: "",
   });
 
@@ -77,16 +78,16 @@ const ProductCard = () => {
         variables: {
           ...formData,
           productId,
-          amount: parseInt(formData.amount),
+          amount: total,
         },
       });
-      console.log("This is data in donate()", data);
+      console.log("This is data in donate()", data)
     } catch (err) {
       console.error(err);
       alert(err);
     }
     setFormData({
-      amount: "",
+      amount: total,
       message: "",
     });
   };
@@ -135,7 +136,7 @@ const ProductCard = () => {
                     handleChange(e);
                     handleTotalChange(e);
                   }}
-                  value={formData.amount}
+                  value={total}
                   type="number"
                   name="amount"
                   id="amount"

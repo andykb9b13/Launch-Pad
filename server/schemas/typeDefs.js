@@ -84,7 +84,7 @@ const typeDefs = gql`
     addProduct(
       name: String!
       description: String!
-      funding: String!
+      funding: Int!
       externalLink: String
       imageUrl: String
       businessId: String
