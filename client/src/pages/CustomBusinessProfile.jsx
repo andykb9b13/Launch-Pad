@@ -13,7 +13,7 @@ const CustomBusinessProfile = () => {
 
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
-      name: "typehere",
+      name: name,
     },
   });
   console.log("data from useQuery", data);
@@ -32,7 +32,8 @@ const CustomBusinessProfile = () => {
 
   return (
     <div>
-      <div className="w-full flex justify-center items-center p-4">
+      <div className="w-full justify-center items-center p-4">
+        <h2>Business Profile for {data?.business.name}</h2>
         <form
           className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
 
@@ -40,100 +41,44 @@ const CustomBusinessProfile = () => {
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Business Name
           </label>
-          <input
-            type="text"
-            placeholder={`${data?.business.name}`}
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.name}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Location
           </label>
-          <input
-            type="text"
-            placeholder="Business Location"
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.location}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Website URL
           </label>
-          <input
-            type="text"
-            placeholder="www.examplebusiness.com"
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.website}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Twitter
           </label>
-          <input
-            type="text"
-            placeholder="www.twitter.com/yourbusiness"
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.twitter}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Facebook
           </label>
-          <input
-            type="text"
-            placeholder="www.facebook.com/yourbusiness"
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.facebook}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Instagram
           </label>
-          <input
-            type="text"
-            placeholder="www.instagram.com/yourbusiness"
-
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.instagram}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Description
           </label>
-          <textarea
-            placeholder="Enter Description Here"
-
-            rows="6"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.description}</p>
 
           <label className="text-[var(--red)] tracking-wider sm:text-2xl">
             Mission Statement
           </label>
-          <textarea
-            placeholder="Enter Mission Statement Here"
-
-            rows="6"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--lime)] ml-2"
-          />
+          <p>{data?.business.missionStatement}</p>
 
           <div>
-            <UploadWidget>
-              {({ open }) => {
-                function handleOnClick(e) {
-                  e.preventDefault();
-                  open();
-                }
-                return (
-                  <button
-                    className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
-                    onClick={handleOnClick}
-                  >
-                    Upload an Image
-                  </button>
-                );
-              }}
-            </UploadWidget>
 
             {data?.business.imageUrl && (
               <>

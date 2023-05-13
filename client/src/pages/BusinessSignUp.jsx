@@ -69,7 +69,7 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
       imageUrl: imageUrl,
     };
-    console.log(userInfo);
+    console.log("this is user Info: ",userInfo);
 
     try {
       const { data } = await createBusiness({
@@ -77,6 +77,7 @@ export default function BusinessSignUp() {
       });
       if (data) navigate(`/custom-business/${businessName}`);
     } catch (err) {
+      console.log("you're in the catch block");
       console.error(err);
     }
   };

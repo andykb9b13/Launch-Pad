@@ -37,6 +37,7 @@ export const ADD_BUSINESS = gql`
     $twitter: String
     $instagram: String
     $missionStatement: String
+    $imageUrl: String
   ) {
     addBusiness(
       name: $name
@@ -48,6 +49,7 @@ export const ADD_BUSINESS = gql`
       twitter: $twitter
       instagram: $instagram
       missionStatement: $missionStatement
+      imageUrl: $imageUrl
     ) {
       _id
       name
@@ -59,6 +61,7 @@ export const ADD_BUSINESS = gql`
       twitter
       instagram
       missionStatement
+      imageUrl
     }
   }
 `;

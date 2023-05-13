@@ -77,6 +77,7 @@ const typeDefs = gql`
       twitter: String
       instagram: String
       missionStatement: String
+      imageUrl: String
     ): Business
     deleteBusiness(_id: ID!): User
     donate(amount: String!, message: String, productId: String): Donation

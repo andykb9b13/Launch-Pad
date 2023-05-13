@@ -108,7 +108,7 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, description }, { user }) => {
+    addBusiness: async (_, { name, description, location, website, twitter, facebook, instagram, missionStatement, imageUrl }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
@@ -124,6 +124,13 @@ const resolvers = {
           name,
           description,
           sponsor: user._id,
+          location,
+          website,
+          twitter,
+          facebook,
+          instagram,
+          missionStatement,
+          imageUrl
         });
 
         console.log("here is newBusiness", newBusiness);
