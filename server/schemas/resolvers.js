@@ -147,14 +147,17 @@ const resolvers = {
       }
     },
     deleteBusiness: async (_, { _id }, { user }) => {
-      if (!user) {
-        throw new Error("Invalid Credentials");
-      }
-      if (!user.businesses.includes(business._id)) {
-        throw new Error("Invalid Credentials");
-      }
+      // if (!user) {
+      //   throw new Error("Invalid Credentials");
+      // }
+      // if (!user.businesses.includes(Business._id)) {
+      //   throw new Error("Invalid Credentials");
+      // }        
+      console.log("user ID: ",Business.sponsor);
+      const userId = Business.sponsor; 
       const updatedUser = await User.findByIdAndUpdate(
-        user._id,
+
+        userId,
         { $pull: { businesses: _id } },
         { new: true }
       );

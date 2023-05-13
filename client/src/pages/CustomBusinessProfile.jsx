@@ -18,13 +18,17 @@ const CustomBusinessProfile = () => {
   });
   console.log("data from useQuery", data);
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     console.log("business id: ",data?.business._id);
-    //     try {
-    //     await deleteBusiness({
-    //         variables: {},
-    //     })
-    // }
+    const businessId = data?.business._id;
+        try {
+        await deleteBusiness({
+            variables: {id: businessId},
+        })
+    } catch (err) {
+      console.log("catch block");
+      console.error(err);
+    }
   }
     const [deleteBusiness, { error }] = useMutation(DELETE_BUSINESS);
   //   const [updateBusiness, { error }] = useMutation(ADD_BUSINESS);
@@ -90,8 +94,6 @@ const CustomBusinessProfile = () => {
               </>
             )}
             <Link to={`/`}>
-                {/* rest of the code */}
-                {/* delete button */}
                 <button
                   type="button"
                   onClick={handleDelete}
