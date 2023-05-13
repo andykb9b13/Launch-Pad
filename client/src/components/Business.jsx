@@ -2,6 +2,8 @@ import React from "react";
 import Products from "./Products";
 
 const Business = ({ business }) => {
+  console.log("Business in Business", business);
+
   return (
     <div>
       <h3>Business Name: {business.name}</h3>
