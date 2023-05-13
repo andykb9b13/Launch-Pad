@@ -114,7 +114,21 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, description }, { user }) => {
+    addBusiness: async (
+      _,
+      {
+        name,
+        location,
+        website,
+        twitter,
+        facebook,
+        instagram,
+        description,
+        missionStatement,
+        imageUrl,
+      },
+      { user }
+    ) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
@@ -128,7 +142,14 @@ const resolvers = {
 
         let newBusiness = await Business.create({
           name,
+          location,
+          website,
+          twitter,
+          facebook,
+          instagram,
           description,
+          missionStatement,
+          imageUrl,
           sponsor: user._id,
         });
 

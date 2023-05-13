@@ -55,6 +55,7 @@ export default function App() {
           <Route path="/business/:name" element={<ExploreBusiness />} />
           <Route path="/product/:productId" element={<ProductCard />} />
           <Route path="/newbusiness/addproduct" element={<AddProduct />} />
+          <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
