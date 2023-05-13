@@ -1,0 +1,46 @@
+.productContainer {
+  display: flex;
+}
+
+.product {
+  margin-left: 2%;
+  border: 1px solid black;
+  padding: 2%;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.innerProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.innerProduct * {
+  margin-top: 3%;
+}
+
+.product img {
+  width: 200px;
+}
+
+.product h2 {
+  font-size: 1.5em;
+}
+.fundBtn {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  color: black;
+  font-size: 1em;
+  transition: 0.3s;
+  margin-top: 3%;
+}
+
+.fundBtn:hover {
+  background-color: black;
+  color: white;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 5px black;
+  text-shadow: 1px 1px 5px white;
+}
