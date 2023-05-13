@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./pages/BusinessSignUp";
 import ExploreBusiness from "./pages/ExploreBusiness";
+import AddProduct from "./components/AddProduct";
 // a comment
 // import businessSignUp from "./components/BusinessSignUp";
 
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/business/profile/:name" element={<BusinessProfile />} />
           <Route path="/business/:name" element={<ExploreBusiness />} />
           <Route path="/product/:productId" element={<ProductCard />} />
+          <Route path="/newbusiness/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>

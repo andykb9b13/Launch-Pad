@@ -3,10 +3,22 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/launchpad-logo-placeholder.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Header1 from "../assets/backgrounds/header1.jpg";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import Auth from "../utils/auth";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
+  const handleLogout = async () => {
+    try {
+      Auth.logout();
+      console.log("user was logged out");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="w-full h-[70px] flex justify-between items-center px-4 z-10">
@@ -18,17 +30,17 @@ const Navbar = () => {
       <div className="">
         <ul className="hidden md:flex text-2xl">
           <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/user">Profile</Link>
           </li>
-          <li className="hover:scale-110 duration-500 mx-2">
+          {/* <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/business">Business</Link>
-          </li>
+          </li> */}
 
           <li className="hover:scale-110 duration-500">
             <Link to="/login">Login</Link>
+          </li>
+          <li className="hover:scale-110 duration-500" onClick={handleLogout}>
+            Logout
           </li>
           <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/signup">Sign Up</Link>

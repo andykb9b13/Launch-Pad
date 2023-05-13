@@ -45,8 +45,6 @@ const resolvers = {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
           .populate("businesses");
-        // .populate("businesses")
-        // .populate("watchlist");
       }
       throw new AuthenticationError("You are not logged in.");
     },
