@@ -33,6 +33,10 @@ export default function AddProduct({ business }) {
       return;
     }
     setImageUrl(result?.info?.secure_url);
+    console.log(
+      "this is result in handleOnUpload in AddProduct",
+      result.info.secure_url
+    );
   }
 
   const onSubmit = async (e) => {
