@@ -17,6 +17,7 @@ import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./pages/BusinessSignUp";
 import ExploreBusiness from "./pages/ExploreBusiness";
 import AddProduct from "./components/AddProduct";
+import Businesses from "./pages/Businesses";
 // a comment
 // import businessSignUp from "./components/BusinessSignUp";
 
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/businesses" element={<Businesses />} />
         </Routes>
       </Router>
     </ApolloProvider>
