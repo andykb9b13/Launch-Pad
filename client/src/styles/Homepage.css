@@ -55,14 +55,6 @@ h2 {
   width: 300px;
 }
 
-/* .businessCardContainer {
-  margin: 5%;
-  border: 1px solid black;
-  box-shadow: 1px 1px 10px black;
-  padding: 3%;
-  border-radius: 5px;
-} */
-
 .exploreBtn {
   border: 2px solid black;
   border-radius: 5px;
@@ -79,10 +71,4 @@ h2 {
   transform: translateY(2px);
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
-}
-
-.business {
-  margin: 2%;
-  border: 1px solid black;
-  border-radius: 5px;
 }

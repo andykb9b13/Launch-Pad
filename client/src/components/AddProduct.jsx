@@ -33,6 +33,10 @@ export default function AddProduct({ business }) {
       return;
     }
     setImageUrl(result?.info?.secure_url);
+    console.log(
+      "this is result in handleOnUpload in AddProduct",
+      result.info.secure_url
+    );
   }
 
   const onSubmit = async (e) => {
@@ -51,6 +55,11 @@ export default function AddProduct({ business }) {
         variables: { ...productInfo },
       });
       console.log("This is data in createProduct", data);
+      setProductName("");
+      setProductDescription("");
+      setProductFunding("");
+      setExternalLink("");
+      setImageUrl("");
     } catch (err) {
       console.error(err);
     }
@@ -133,12 +142,12 @@ export default function AddProduct({ business }) {
             </>
           )}
           <button
-            className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
           >
             Next
           </button>
-          <button className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>
         </div>

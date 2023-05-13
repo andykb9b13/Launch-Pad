@@ -6,32 +6,32 @@ import { useParams } from "react-router-dom";
 import forms from "@tailwindcss/forms";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_DONATION } from "../utils/mutations";
-import Auth from '../utils/auth';
-import Stripe from 'react-stripe-checkout';
+import Auth from "../utils/auth";
+import Stripe from "react-stripe-checkout";
 
 const ProductCard = () => {
   const [total, setTotal] = useState(0);
 
   const handleTotalChange = (e) => {
     setTotal(e.target.value);
-  }
+  };
 
   const handleToken = (totalAmount, token) => {
-    console.log("token: " + token)
+    console.log("token: " + token);
     try {
-      fetch('/api/stripe/pay', {
-        method: 'POST',
+      fetch("/api/stripe/pay", {
+        method: "POST",
         token: token.id,
-        amount: totalAmount
-      })
-    } catch(err){
+        amount: totalAmount,
+      });
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const tokenHandler = (token) => {
     handleToken(100, token);
-  }
+  };
 
   const { productId } = useParams();
 
@@ -86,11 +86,11 @@ const ProductCard = () => {
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
       <div className="rounded-md outline outline-4 outline-[var(--lime)]">
-        <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
+        {/* <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
           Funding Form
-        </h2>
+        </h2> */}
         <h3 className="text-center text-xl font-semibold">{product.name}</h3>
-        <img src="" alt="product" />
+        <img src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">
           <h3>How much is raised so far...</h3>
           <p className="progressAmt">${product.funding}</p>
@@ -121,7 +121,7 @@ const ProductCard = () => {
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
                   onChange={(e) => {
-                    handleChange(e)
+                    handleChange(e);
                     handleTotalChange(e);
                   }}
                   value={formData.amount}
@@ -156,18 +156,19 @@ const ProductCard = () => {
               </div>
             </div>
             <div id="stripe-button">
-              <button onClick={(e) => {
-                e.preventDefault()
-              }}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <Stripe
-                className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-                stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
-                token={tokenHandler}
-              />
+                  className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
+                  token={tokenHandler}
+                />
               </button>
-   
             </div>
           </div>
           {/* check these links, they are placeholders on 5/3 */}

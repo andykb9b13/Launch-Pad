@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String
     donorTier: Int
     donations: [Donation]
-    business: [Business]
+    businesses: [Business]
     watchlist: [Product]
   }
 
@@ -77,6 +77,7 @@ const typeDefs = gql`
       twitter: String
       instagram: String
       missionStatement: String
+      imageUrl: String
     ): Business
     deleteBusiness(_id: ID!, sponsor: String!): User
     donate(amount: Int!, message: String, productId: String): Donation

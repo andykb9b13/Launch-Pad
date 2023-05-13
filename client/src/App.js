@@ -1,15 +1,22 @@
 import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import BusinessProfile from "./pages/BusinessProfile";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import ProductCard from "./components/productCard";
-import LoginForm from './components/LoginForm'
+import LoginForm from "./components/LoginForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import BusinessSignUp from "./pages/BusinessSignUp";
+import ExploreBusiness from "./pages/ExploreBusiness";
+import AddProduct from "./components/AddProduct";
 // a comment
 // import businessSignUp from "./components/BusinessSignUp";
 
@@ -44,8 +51,11 @@ export default function App() {
           <Route path="/business" element={<BusinessProfile />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/business/:name" element={<BusinessProfile />} />
+          <Route path="/business/profile/:name" element={<BusinessProfile />} />
+          <Route path="/business/:name" element={<ExploreBusiness />} />
           <Route path="/product/:productId" element={<ProductCard />} />
+          <Route path="/newbusiness/addproduct" element={<AddProduct />} />
+          <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>

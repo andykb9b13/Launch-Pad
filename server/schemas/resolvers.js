@@ -12,6 +12,7 @@ const resolvers = {
         .populate("donations");
     },
     user: async (parent, { username }) => {
+      console.log("This is username in query resolver", username);
       return User.findOne({ username })
         .populate("businesses")
         .populate("donorTier")
@@ -38,11 +39,12 @@ const resolvers = {
     },
     // make sure to set Context on the client side in app.js
     me: async (parent, args, context) => {
+      console.log("hitting me route");
+      console.log("This is context.user._id", context.user._id);
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("donations")
-          .populate("businesses")
-          .populate("watchlist");
+          .populate("businesses");
       }
       throw new AuthenticationError("You are not logged in.");
     },
@@ -112,7 +114,21 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (_, { name, description }, { user }) => {
+    addBusiness: async (
+      _,
+      {
+        name,
+        location,
+        website,
+        twitter,
+        facebook,
+        instagram,
+        description,
+        missionStatement,
+        imageUrl,
+      },
+      { user }
+    ) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
@@ -126,7 +142,14 @@ const resolvers = {
 
         let newBusiness = await Business.create({
           name,
+          location,
+          website,
+          twitter,
+          facebook,
+          instagram,
           description,
+          missionStatement,
+          imageUrl,
           sponsor: user._id,
         });
 

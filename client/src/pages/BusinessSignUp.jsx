@@ -50,6 +50,7 @@ export default function BusinessSignUp() {
       return;
     }
     setImageUrl(result?.info?.secure_url);
+    console.log("This is the result in handleUpload", result.info.secure_url);
   }
 
   //set cancel button to previous page.
@@ -68,14 +69,18 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
       imageUrl: imageUrl,
     };
-    console.log(userInfo);
+    console.log(
+      "This is the userInfo checking to see if imageUrl is being saved",
+      userInfo
+    );
 
     try {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
-      console.log(data);
+      console.log("This is the data in create business", data);
       // navigate to another page here
+      navigate(`/`);
     } catch (err) {
       console.error(err);
     }
@@ -198,12 +203,12 @@ export default function BusinessSignUp() {
             </>
           )}
           <button
-            className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
           >
             Next
           </button>
-          <button className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className=" border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
             Cancel
           </button>
         </div>
