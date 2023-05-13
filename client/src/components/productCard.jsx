@@ -10,15 +10,29 @@ import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 
 const ProductCard = () => {
-  const [total, setTotal] = useState(0);
-
+  const [total, setTotal] = useState(null);
+  const [message, setMessage] = useState("")
+  const [donate, { error }] = useMutation(ADD_DONATION);
   const { productId } = useParams();
+
+  const product = data?.product || [];
+
+  const { data } = useQuery(QUERY_PRODUCT, {
+    variables: {
+      productId: productId,
+    },
+  });
   console.log(productId)
 
   const handleTotalChange = (e) => {
-    const newTotal = parseInt(e.target.value); // or Number(e.target.value)
-    setTotal(newTotal);
+    setTotal(e.target.value);
   };
+
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value)
+  }
+
+
 
   const handleToken = async(total, token) => {
     console.log("token: " + token);
@@ -48,35 +62,18 @@ const ProductCard = () => {
   const tokenHandler = (token) => {
     handleToken(total, token);
   };
-  console.log("productId from useParams", productId);
-
-  const { data } = useQuery(QUERY_PRODUCT, {
-    variables: {
-      productId: productId,
-    },
-  });
-
-  console.log("data from useQuery", data);
-
-  const [donate, { error }] = useMutation(ADD_DONATION);
-  const [formData, setFormData] = useState({
-    amount: total,
-    message: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    console.log("This is value", typeof value);
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-    console.log("This is formData in handleChange", formData);
-  };
-
+  
+  //variables: 
+  // _id
+  // donor
+  // amount
+  // product
+  // message
   const handleSubmit = async (event) => {
     console.log(productId, "THIS IS PRODUCTID in handleSubmit");
     try {
       const { data } = await donate({
         variables: {
-          ...formData,
           productId,
           amount: total,
         },
@@ -86,14 +83,7 @@ const ProductCard = () => {
       console.error(err);
       alert(err);
     }
-    setFormData({
-      amount: total,
-      message: "",
-    });
   };
-
-  const product = data?.product || [];
-  console.log("This is product at the end", product);
 
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
@@ -132,10 +122,7 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleTotalChange(e);
-                  }}
+                  onChange={handleTotalChange}
                   value={total}
                   type="number"
                   name="amount"
@@ -156,10 +143,7 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <textarea
-                  onChange={(e) => {
-                    handleChange(e)
-                  }}
-                  value={formData.message}
+                  onChange={handleMessageChange}
                   type="text"
                   name="message"
                   id="message"
