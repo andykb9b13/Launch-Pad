@@ -133,10 +133,9 @@ const resolvers = {
           imageUrl
         });
 
-        console.log("here is newBusiness", newBusiness);
-
         const newUser = await User.findByIdAndUpdate(
           user._id,
+          // changed from business to business
           { $push: { businesses: newBusiness._id } },
           { new: true }
         );
@@ -153,11 +152,11 @@ const resolvers = {
       // if (!user.businesses.includes(Business._id)) {
       //   throw new Error("Invalid Credentials");
       // }        
-      console.log("user ID: ",Business.sponsor);
+      console.log("user ID: ",user._id);
       const userId = Business.sponsor; 
       const updatedUser = await User.findByIdAndUpdate(
 
-        userId,
+        user._id,
         { $pull: { businesses: _id } },
         { new: true }
       );
