@@ -96,7 +96,7 @@ const ProductCard = () => {
         <img src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">
           <h3>How much is raised so far...</h3>
-          <p className="progressAmt">${productFunding}</p>
+          <p className="progressAmt">${productFunding}/${product.fundingGoal}</p>
         </div>
         <div className="text-center mt-6">
           <a

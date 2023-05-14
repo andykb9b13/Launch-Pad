@@ -16,6 +16,10 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
+  fundingGoal: {
+    type: Number,
+    required: true,
+  },
   externalLink: {
     type: String,
   },

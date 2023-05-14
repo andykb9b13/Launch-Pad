@@ -132,6 +132,7 @@ export const QUERY_PRODUCT = gql`
       name
       description
       funding
+      fundingGoal
       externalLink
       imageUrl
       businessId

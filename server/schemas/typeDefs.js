@@ -32,6 +32,7 @@ const typeDefs = gql`
     name: String
     description: String
     funding: Int
+    fundingGoal: Int
     externalLink: String
     imageUrl: String
     businessId: String
