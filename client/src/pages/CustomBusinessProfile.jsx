@@ -6,11 +6,13 @@ import { useMutation } from "@apollo/react-hooks";
 import UploadWidget from "../components/UploadWidget";
 import BusinessSignUp from "./BusinessSignUp";
 import { DELETE_BUSINESS } from "../utils/mutations";
+import "../styles/custombus.css"
 
 const CustomBusinessProfile = () => {
+  // grab name from url
   const { name } = useParams();
   console.log("name from useParams", name);
-
+  // query business based on name from url
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
       name: name,
@@ -24,10 +26,12 @@ const CustomBusinessProfile = () => {
         try {
         await deleteBusiness({
             variables: {id: businessId},
-        })
+        });
+        alert("Business deleted!");
     } catch (err) {
       console.log("catch block");
       console.error(err);
+      alert("Unsuccessful delete. Please try again.");
     }
   }
     const [deleteBusiness, { error }] = useMutation(DELETE_BUSINESS);
@@ -36,49 +40,51 @@ const CustomBusinessProfile = () => {
 
   return (
     <div>
-      <div className="w-full justify-center items-center p-4">
+      <div className="business-profile-flex">
+      <div className="business-profile-flex business-border">
         <h2>Business Profile for {data?.business.name}</h2>
         <form
-          className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
+          className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 align-biz-content bg-whitesmoke"
 
         >
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Business Name
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Business Name:
           </label>
           <p>{data?.business.name}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Location
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Location:
           </label>
           <p>{data?.business.location}</p>
+          <hr />
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Website URL
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Website URL:
           </label>
           <p>{data?.business.website}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Twitter
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Twitter:
           </label>
           <p>{data?.business.twitter}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Facebook
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Facebook:
           </label>
           <p>{data?.business.facebook}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Instagram
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Instagram:
           </label>
           <p>{data?.business.instagram}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Description
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Description:
           </label>
           <p>{data?.business.description}</p>
 
-          <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-            Mission Statement
+          <label className="text-[var(--red)] tracking-wider sm:text-2xl item-margin-biz biz-txt-decor">
+            Mission Statement:
           </label>
           <p>{data?.business.missionStatement}</p>
 
@@ -93,17 +99,22 @@ const CustomBusinessProfile = () => {
                 <p>{data?.business.imageUrl}</p>
               </>
             )}
+            <div>
+              <div className="delet-margin-top" >
             <Link to={`/`}>
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="bg-[var(--red)] text-[var(--white)] font-bold py-2 px-4 my-2 rounded"
+                  className="bg-[var(--red)] text-[var(--white)] font-bold py-2 px-4 my-2 rounded item-margin-biz"
                 >
                   Delete Profile
                 </button>
             </Link>
+            </div>
+            </div>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import "../styles/Homepage.css";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="margin-top">
       <div className="banner">
         <h1>Launch Pad</h1>
         <h2 className="subtitle">where dreams are launched...</h2>

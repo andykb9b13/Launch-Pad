@@ -28,19 +28,27 @@ const UserProfile = () => {
     <div>
       {data === undefined ? (
         <div>
+          <div className="flex-profile margin-top-profile">
           <h2>You must be logged in to view your profile</h2>
-          <button type="button" className="redirectBtn">
+          <br />
+          <div className="flex-row-btn">
+          <button type="button" className="redirectBtn prof-btn-pad prof-marg btn-width flex-btn btn-bg-color btn-bg-color:hover">
             <Link to="/login">Login</Link>
           </button>
-          <button type="button" className="redirectBtn">
+          <button type="button" className="redirectBtn prof-btn-pad prof-marg btn-width flex-btn btn-bg-color btn-bg-color:hover">
             <Link to="/signup">Signup</Link>
           </button>
+          </div>
+          </div>
         </div>
       ) : (
         <div>
+          <div className="flex-profile margin-top-profile">
+          <div className="flex-profile margin-top-profile profile-bg-color">
           <h2>Profile</h2>
-          <h3>Username: {user.username}</h3>
-          <button type="button" className="bizLaunchBtn">
+          <h2>Username: {user.username}</h2>
+          </div>
+          <button type="button" className="bizLaunchBtn btn-bg-color btn-bg-color:hover">
             <Link to="/newbusiness">Launch A Business</Link>
           </button>
           <div>
@@ -52,6 +60,7 @@ const UserProfile = () => {
                 </div>
               ))}
             </div>
+          </div>
           </div>
         </div>
       )}
