@@ -173,7 +173,7 @@ const resolvers = {
 
     addProduct: async (
       _,
-      { name, description, funding, externalLink, imageUrl, businessId }
+      { name, description, funding, fundingGoal, externalLink, imageUrl, businessId }
     ) => {
       try {
         console.log("In the resolver~~~~~");
@@ -181,6 +181,7 @@ const resolvers = {
           name,
           description,
           funding,
+          fundingGoal,
           externalLink,
           imageUrl,
           businessId,

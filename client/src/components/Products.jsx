@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/products.css";
+import CircularProgressBar from "./ProgressBar";
 
 const Products = ({ products }) => {
   console.log("products from component", products);
@@ -12,7 +13,8 @@ const Products = ({ products }) => {
             <div className="innerProduct">
               <img src={product.imageUrl} alt={product.name} />
               <h2>{product.name}</h2>
-              <p>${product.funding}</p>
+              <CircularProgressBar funding={product.funding} fundingGoal={product.fundingGoal} />
+              <p className="funding-progress">${product.funding.toLocaleString()}/${product.fundingGoal.toLocaleString()}</p>
               <p>{product.description}</p>
               <button type="button" className="fundBtn">
                 <Link to={`/product/${product._id}`} product={product}>
