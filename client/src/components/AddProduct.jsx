@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_PRODUCT } from "../utils/mutations";
 import UploadWidget from "./UploadWidget";
+import "../styles/userProfile.css"
 
 export default function AddProduct({ business }) {
   const [productName, setProductName] = useState("");
@@ -165,7 +166,7 @@ export default function AddProduct({ business }) {
               }
               return (
                 <button
-                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  className="bg-[var(--white)] btn-border border-[var(--green)] rounded-lg upload-btn-bg-color px-10 py-3 my-2 mx-auto flex flex-center"
                   onClick={handleOnClick}
                 >
                   Upload an Image
@@ -184,12 +185,12 @@ export default function AddProduct({ business }) {
             </>
           )}
           <button
-            className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
+            className="btn-border rounded-lg px-10 py-3 my-2 mx-auto flex flex-center btn-bg-color"
             type="submit"
           >
             Next
           </button>
-          <button className="border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className="btn-border rounded-lg px-10 py-3 my-2 mx-auto flex flex-center cancel-btn-bg-color">
             Cancel
           </button>
         </div>
