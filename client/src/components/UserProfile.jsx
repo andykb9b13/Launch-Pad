@@ -28,13 +28,18 @@ const UserProfile = () => {
     <div>
       {data === undefined ? (
         <div>
+          <div className="flex-profile margin-top-profile">
           <h2>You must be logged in to view your profile</h2>
-          <button type="button" className="redirectBtn">
+          <br />
+          <div className="flex-row-btn">
+          <button type="button" className="redirectBtn prof-btn-pad prof-marg btn-width flex-btn btn-bg-color btn-bg-color:hover">
             <Link to="/login">Login</Link>
           </button>
-          <button type="button" className="redirectBtn">
+          <button type="button" className="redirectBtn prof-btn-pad prof-marg btn-width flex-btn btn-bg-color btn-bg-color:hover">
             <Link to="/signup">Signup</Link>
           </button>
+          </div>
+          </div>
         </div>
       ) : (
         <div>
