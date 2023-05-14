@@ -1,0 +1,43 @@
+.business-profile-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    padding: 25px;
+}
+
+.business-border {
+    border: 4px solid #097D44;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px 2px black;
+}
+
+.item-margin-biz {
+    margin: 10px;
+}
+
+.align-biz-content {
+    align-items: flex-start;
+}
+
+.biz-txt-decor {
+    text-decoration: underline;
+}
+
+.flex-btn-biz {
+    display: flex;
+    justify-content: center;
+
+}
+
+.delet-margin-top {
+    margin-top: 20px;
+}
+
+.bg-whitesmoke{
+    background-color: #fef8fe;
+    border-radius: 15px;
+    border: 1px solid grey;
+    box-shadow: inset 1px 1px 1px black;
+}

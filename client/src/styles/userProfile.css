@@ -17,3 +17,52 @@
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
 }
+
+.flex-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.margin-top-profile {
+  margin-top: 20px;
+}
+
+.prof-btn-pad{
+  padding: 25px;
+}
+
+.prof-marg {
+  margin: 5px;
+}
+
+.btn-width {
+  width: 5vw;
+}
+.flex-btn {
+  display: flex;
+  justify-content: center;
+}
+.flex-row-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-bg-color {
+  background-color: white;
+}
+
+.btn-bg-color:hover{
+  background-color: #097D44;
+  color: white;
+}
+
+.profile-bg-color {
+  background-color: #097D44;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 1px 10px 1px grey;
+}

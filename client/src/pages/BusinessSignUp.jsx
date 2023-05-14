@@ -5,6 +5,7 @@ import { ADD_BUSINESS } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import UploadWidget from "../components/UploadWidget";
+import "../styles/login.css"
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -245,7 +246,7 @@ export default function BusinessSignUp() {
               }
               return (
                 <button
-                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
                   onClick={handleOnClick}
                 >
                   Upload an Image
@@ -265,13 +266,13 @@ export default function BusinessSignUp() {
           )}
           {/* <Link to={`/custom-business/${businessName}`}> */}
             <button
-              className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--lime)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+              className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
               type="submit"
             >
               Create Profile
             </button>
           {/* </Link> */}
-          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center" onClick={prevPage}>
+          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center" onClick={prevPage}>
             Cancel
           </button>
         </div>
