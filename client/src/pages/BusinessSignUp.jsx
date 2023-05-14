@@ -5,7 +5,6 @@ import { ADD_BUSINESS } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import UploadWidget from "../components/UploadWidget";
-import BusinessProfile from "./BusinessProfile";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -66,9 +65,38 @@ export default function BusinessSignUp() {
     if (user !== null) {
       setLoggedIn(true);
     }
-    console.log("This is user in useEffect", user);
-    console.log("This is loggedIn in useEffect", loggedIn);
   }, []);
+
+  const validateForm = () => {
+    let errors = {};
+    let isValid= true;
+    // business name validation
+    if(!businessName.trim()) {
+      errors.businessName = "Business name is a required field. Please enter business name.";
+      isValid = false;
+    }
+
+    if (!description) {
+      errors.description = "Description is a required field. Please enter a description.";
+      isValid = false;
+    } else if (description.length < 25) {
+        errors.description = "The description must be at least 25 characters long.";
+        isValid = false;
+    }
+
+    if (missionStatement.length < 25) {
+      errors.missionStatement = "The mission statement must be at least 25 characters long.";
+      isValid = false;
+    }
+    setFormErrors(errors);
+    return isValid;
+  }
+
+  const [formErrors, setFormErrors] = useState({
+    businessName: "",
+    description: "",
+    missionStatement: "",
+  });
 
   //set cancel button to previous page.
   const prevPage = () => {};
@@ -87,8 +115,8 @@ export default function BusinessSignUp() {
       imageUrl: imageUrl,
     };
     console.log("this is user Info: ",userInfo);
-
-    try {
+    if(validateForm()) {
+          try {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
@@ -98,6 +126,7 @@ export default function BusinessSignUp() {
       console.log("you're in the catch block");
       console.error(err);
       alert("Business creation unsuccessful. Please try again.");
+    }
     }
   };
 
@@ -131,6 +160,7 @@ export default function BusinessSignUp() {
           onChange={handleNameChange}
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+        {formErrors.businessName && <span className="error">{formErrors.businessName}</span>}
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Location
@@ -191,6 +221,7 @@ export default function BusinessSignUp() {
           rows="6"
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+        {formErrors.description && <span className="error">{formErrors.description}</span>}
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Mission Statement
@@ -201,6 +232,7 @@ export default function BusinessSignUp() {
           rows="6"
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+                {formErrors.missionStatement && <span className="error">{formErrors.missionStatement}</span>}
 
         <div>
           <UploadWidget onUpload={handleOnUpload}>
