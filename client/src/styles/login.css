@@ -49,10 +49,14 @@
 
 .button-background {
     background-color: whitesmoke;
+    color: black;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
 .button-background:hover {
     background-color: #097D44;
+    color: whitesmoke;
 }
 
 .fade-in-box {
