@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link, Routes, useNavigate, redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
+import { QUERY_ME } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 import UploadWidget from "../components/UploadWidget";
 import BusinessProfile from "./BusinessProfile";
 
@@ -16,7 +18,10 @@ export default function BusinessSignUp() {
   const [description, setDescription] = useState("");
   const [missionStatement, setMissionStatement] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  //Handle & store Changes for input values
+  const [loggedIn, setLoggedIn] = useState(false);
+  const { data } = useQuery(QUERY_ME);
+  const user = data?.me || [];
+
   //Handle & store Changes for input values
   function handleNameChange(e) {
     setBusinessName(e.target.value);
@@ -54,6 +59,17 @@ export default function BusinessSignUp() {
     console.log("This is the result in handleUpload", result.info.secure_url);
   }
 
+  // use effect for logged in status
+  useEffect(() => {
+    setLoggedIn(false);
+    console.log("This is user at the beginning of useEffect", user);
+    if (user !== null) {
+      setLoggedIn(true);
+    }
+    console.log("This is user in useEffect", user);
+    console.log("This is loggedIn in useEffect", loggedIn);
+  }, []);
+
   //set cancel button to previous page.
   const prevPage = () => {};
   //Move to next steps
@@ -89,6 +105,18 @@ export default function BusinessSignUp() {
   const [validated] = useState(false);
 
   return (
+    <div>
+      {data === undefined ? (
+        <div>
+          <h2>You must be logged in to create a business.</h2>
+          <button type="button" className="redirectBtn">
+            <Link to="/login">Login</Link>
+          </button>
+          <button type="button" className="redirectBtn">
+            <Link to="/signup">Signup</Link>
+          </button>
+        </div>
+      ) : (
     <div className="w-full flex justify-center items-center p-4">
       <form
         className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
@@ -214,6 +242,8 @@ export default function BusinessSignUp() {
           </button>
         </div>
       </form>
+    </div>)}
+    {/* final div */}
     </div>
   );
 }

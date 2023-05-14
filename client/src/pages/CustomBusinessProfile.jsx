@@ -8,9 +8,10 @@ import BusinessSignUp from "./BusinessSignUp";
 import { DELETE_BUSINESS } from "../utils/mutations";
 
 const CustomBusinessProfile = () => {
+  // grab name from url
   const { name } = useParams();
   console.log("name from useParams", name);
-
+  // query business based on name from url
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
       name: name,
