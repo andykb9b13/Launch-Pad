@@ -114,21 +114,7 @@ const resolvers = {
       await user.save();
       return product;
     },
-    addBusiness: async (
-      _,
-      {
-        name,
-        location,
-        website,
-        twitter,
-        facebook,
-        instagram,
-        description,
-        missionStatement,
-        imageUrl,
-      },
-      { user }
-    ) => {
+    addBusiness: async (_, { name, description, location, website, twitter, facebook, instagram, missionStatement, imageUrl }, { user }) => {
       if (!user) {
         throw new Error("Authentication failed");
       }
@@ -150,13 +136,12 @@ const resolvers = {
           description,
           missionStatement,
           imageUrl,
-          sponsor: user._id,
+          sponsor: user._id
         });
 
-        console.log("here is newBusiness", newBusiness);
-
-        let newUser = await User.findByIdAndUpdate(
+        const newUser = await User.findByIdAndUpdate(
           user._id,
+          // changed from business to business
           { $push: { businesses: newBusiness._id } },
           { new: true }
         );
@@ -166,23 +151,24 @@ const resolvers = {
         console.error(err);
       }
     },
-    deleteBusiness: async (_, { businessId }, { user }) => {
-      if (!user) {
-        throw new Error("Invalid Credentials");
-      }
-      const business = await Business.findById(businessId);
-      if (!business) {
-        throw new Error("Business not found");
-      }
-      if (!user.businesses.includes(business._id)) {
-        throw new Error("Invalid Credentials");
-      }
-      await Business.findByIdAndDelete(businessId);
-      user.businesses = user.businesses.filter(
-        (b) => b.toString() !== businessId.toString()
+    deleteBusiness: async (_, { _id }, { user }) => {
+      // if (!user) {
+      //   throw new Error("Invalid Credentials");
+      // }
+      // if (!user.businesses.includes(Business._id)) {
+      //   throw new Error("Invalid Credentials");
+      // }        
+      console.log("user ID: ",user._id);
+      const userId = Business.sponsor; 
+      const updatedUser = await User.findByIdAndUpdate(
+
+        user._id,
+        { $pull: { businesses: _id } },
+        { new: true }
       );
-      await user.save();
-      return user;
+      await Business.findByIdAndDelete(_id);
+      
+      return updatedUser;
     },
 
     addProduct: async (

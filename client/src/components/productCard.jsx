@@ -10,78 +10,80 @@ import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 
 const ProductCard = () => {
-  const [total, setTotal] = useState(0);
-
-  const handleTotalChange = (e) => {
-    setTotal(e.target.value);
-  };
-
-  const handleToken = (totalAmount, token) => {
-    console.log("token: " + token);
-    try {
-      fetch("/api/stripe/pay", {
-        method: "POST",
-        token: token.id,
-        amount: totalAmount,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const tokenHandler = (token) => {
-    handleToken(100, token);
-  };
-
+  const [total, setTotal] = useState(null);
+  const [message, setMessage] = useState("")
+  const [donate, { error }] = useMutation(ADD_DONATION);
   const { productId } = useParams();
 
-  console.log("productId from useParams", productId);
+  const product = data?.product || [];
 
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
       productId: productId,
     },
   });
+  console.log(productId)
 
-  console.log("data from useQuery", data);
-
-  const [donate, { error }] = useMutation(ADD_DONATION);
-  const [formData, setFormData] = useState({
-    amount: "",
-    message: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    console.log("This is value", typeof value);
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-    console.log("This is formData in handleChange", formData);
+  const handleTotalChange = (e) => {
+    setTotal(e.target.value);
   };
 
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value)
+  }
+
+
+
+  const handleToken = async(total, token) => {
+    console.log("token: " + token);
+    try {
+      const response = await fetch("/api/stripe/pay", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token.id,
+          amount: total,
+        }),
+      });
+
+      console.log(response)
+
+      if(response.ok){
+        console.log("response is good")
+        handleSubmit();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const tokenHandler = (token) => {
+    handleToken(total, token);
+  };
+  
+  //variables: 
+  // _id
+  // donor
+  // amount
+  // product
+  // message
   const handleSubmit = async (event) => {
-    event.preventDefault();
     console.log(productId, "THIS IS PRODUCTID in handleSubmit");
     try {
       const { data } = await donate({
         variables: {
-          ...formData,
           productId,
-          amount: parseInt(formData.amount),
+          amount: total,
         },
       });
-      console.log("This is data in donate()", data);
+      console.log("This is data in donate()", data)
     } catch (err) {
       console.error(err);
       alert(err);
     }
-    setFormData({
-      amount: "",
-      message: "",
-    });
   };
-
-  const product = data?.product || [];
-  console.log("This is product at the end", product);
 
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
@@ -120,11 +122,8 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleTotalChange(e);
-                  }}
-                  value={formData.amount}
+                  onChange={handleTotalChange}
+                  value={total}
                   type="number"
                   name="amount"
                   id="amount"
@@ -144,8 +143,7 @@ const ProductCard = () => {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <textarea
-                  onChange={handleChange}
-                  value={formData.message}
+                  onChange={handleMessageChange}
                   type="text"
                   name="message"
                   id="message"
@@ -155,12 +153,9 @@ const ProductCard = () => {
                 ></textarea>
               </div>
             </div>
-            <div id="stripe-button">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
+            <div id="stripe-button" onClick={(e) => {
+              e.preventDefault()
+            }}>
                 <Stripe
                   className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
                   data-te-ripple-init
@@ -168,7 +163,6 @@ const ProductCard = () => {
                   stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
                   token={tokenHandler}
                 />
-              </button>
              </div>
           </div>
           {/* check these links, they are placeholders on 5/3 */}

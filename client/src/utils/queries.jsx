@@ -74,31 +74,30 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_BUSINESS = gql`
-  query Business($name: String!) {
-    business(name: $name) {
+query Business($name: String!) {
+  business(name: $name) {
+    _id
+    name
+    sponsor
+    description
+    location
+    website
+    facebook
+    twitter
+    instagram
+    missionStatement
+    imageUrl
+    products {
       _id
       name
-      sponsor
       description
-      location
-      website
-      facebook
-      twitter
-      instagram
-      missionStatement
+      funding
+      externalLink
       imageUrl
-      products {
-        _id
-        name
-        description
-        funding
-        externalLink
-        imageUrl
-        businessId
-      }
+      businessId
     }
   }
-`;
+}`;
 
 export const QUERY_BUSINESSES = gql`
   query Businesses {
