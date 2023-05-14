@@ -12,12 +12,18 @@ import TwoProducts from "../components/TwoProducts";
 const Businesses = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
   const businesses = data?.businesses || [];
-  console.log(businesses.length)
+  console.log(businesses.length);
   console.log("businesses in BusinessCard", businesses);
-  
 
   return (
     <div className="businessCard">
+      <div className="businessHeader">
+        <h1>A little bit can go a long way...</h1>
+        <h2>
+          Even the smallest donation can help a business realize their dream of
+          reaching people and making a difference.
+        </h2>
+      </div>
       {businesses &&
         businesses.map((business, i) => (
           <div key={i} className="business">
