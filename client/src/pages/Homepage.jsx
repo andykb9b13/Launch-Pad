@@ -6,7 +6,7 @@ import "../styles/Homepage.css";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="margin-top">
       <div className="banner">
         <h1>Launch Pad</h1>
         <h2 className="subtitle">where dreams are launched...</h2>
@@ -31,7 +31,7 @@ const Homepage = () => {
             equitable and thriving economy for all.
           </p>
           <button className="exploreBtn" type="button">
-            <Link to={'/businesses'}>Explore Businesses</Link>
+            <Link to={"/businesses"}>Explore Businesses</Link>
           </button>
         </div>
         <img

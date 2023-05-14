@@ -60,8 +60,8 @@ export default function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/businesses" element={<Businesses />} />
           <Route path="/custom-business/:name" element={<CustomBusinessProfile />} />
+>>>>>>>>> Temporary merge branch 2
         </Routes>
       </Router>
     </ApolloProvider>

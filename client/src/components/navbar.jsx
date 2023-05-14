@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Auth from "../utils/auth";
+import "../styles/navbar.css"
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -11,13 +12,15 @@ const Navbar = () => {
     try {
       Auth.logout();
       console.log("user was logged out");
+      alert("Successfully logged out!");
     } catch (err) {
       console.log(err);
+      alert("Could not log out. Please try again.");
     }
   };
 
   return (
-    <div className="w-full h-[70px] flex justify-between items-center px-4 z-10">
+    <div className="w-full h-[70px] flex justify-between items-center px-4 z-10 nav-box-shadow z-index-1">
       <h2 className="text-2xl md:text-4xl tracking-wider duration-150">
         <Link to="/">LaunchPad</Link>
       </h2>

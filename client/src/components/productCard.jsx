@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { QUERY_PRODUCT } from "../utils/queries";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useApolloClient } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import forms from "@tailwindcss/forms";
 import { useMutation } from "@apollo/react-hooks";
@@ -10,13 +10,21 @@ import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 
 const ProductCard = () => {
-  const [total, setTotal] = useState(null);
+  const [total, setTotal] = useState(0);
   const [message, setMessage] = useState("")
   const [donate, { error }] = useMutation(ADD_DONATION);
+  const [product, setProduct] = useState([])
+  const [productFunding, setProductFunding] = useState(0);
   const { productId } = useParams();
 
-  const product = data?.product || [];
-
+  const handleTotalChange = (e) => {
+    const newTotal = parseInt(e.target.value);
+    setTotal(newTotal);
+  };
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
+  }
+  
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
       productId: productId,
@@ -24,18 +32,7 @@ const ProductCard = () => {
   });
   console.log(productId)
 
-  const handleTotalChange = (e) => {
-    setTotal(e.target.value);
-  };
-
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value)
-  }
-
-
-
   const handleToken = async(total, token) => {
-    console.log("token: " + token);
     try {
       const response = await fetch("/api/stripe/pay", {
         method: "POST",
@@ -47,43 +44,46 @@ const ProductCard = () => {
           amount: total,
         }),
       });
-
-      console.log(response)
-
       if(response.ok){
-        console.log("response is good")
+        setProductFunding(productFunding + total)
         handleSubmit();
+        
       }
     } catch (err) {
       console.log(err);
     }
   };
-
   const tokenHandler = (token) => {
     handleToken(total, token);
   };
+
+  const getProduct = () => {
+    const product = data?.product || [];
+    setProduct(product)
+    setProductFunding(product.funding)
+  }
+
+  useEffect(() => {
+    getProduct();
+  }, [data])
   
-  //variables: 
-  // _id
-  // donor
-  // amount
-  // product
-  // message
+  useEffect(() => {
+  }, [productFunding])
+
   const handleSubmit = async (event) => {
-    console.log(productId, "THIS IS PRODUCTID in handleSubmit");
     try {
       const { data } = await donate({
         variables: {
-          productId,
-          amount: total,
+          message: message,
+          productId: productId,
+          amount: parseInt(total),
         },
       });
-      console.log("This is data in donate()", data)
     } catch (err) {
       console.error(err);
       alert(err);
     }
-  };
+  };  
 
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
@@ -95,7 +95,7 @@ const ProductCard = () => {
         <img src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">
           <h3>How much is raised so far...</h3>
-          <p className="progressAmt">${product.funding}</p>
+          <p className="progressAmt">${productFunding}/${product.fundingGoal}</p>
         </div>
         <div className="text-center mt-6">
           <a

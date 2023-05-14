@@ -32,6 +32,7 @@ const typeDefs = gql`
     name: String
     description: String
     funding: Int
+    fundingGoal: Int
     externalLink: String
     imageUrl: String
     businessId: String
@@ -80,11 +81,12 @@ const typeDefs = gql`
       imageUrl: String
     ): Business
     deleteBusiness(_id: ID!): User
-    donate(amount: String!, message: String, productId: String): Donation
+    donate(amount: Int!, message: String, productId: String): Donation
     addProduct(
       name: String!
       description: String!
-      funding: String!
+      funding: Int!
+      fundingGoal: Int!
       externalLink: String
       imageUrl: String
       businessId: String

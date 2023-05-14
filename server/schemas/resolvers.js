@@ -173,7 +173,7 @@ const resolvers = {
 
     addProduct: async (
       _,
-      { name, description, funding, externalLink, imageUrl, businessId }
+      { name, description, funding, fundingGoal, externalLink, imageUrl, businessId }
     ) => {
       try {
         console.log("In the resolver~~~~~");
@@ -181,6 +181,7 @@ const resolvers = {
           name,
           description,
           funding,
+          fundingGoal,
           externalLink,
           imageUrl,
           businessId,
@@ -208,10 +209,13 @@ const resolvers = {
     },
 
     donate: async (_, { amount, message, productId }, { user }) => {
+      console.log('Request payload:', { amount, message, productId });
       if (!user) {
         throw new Error("Authentication failed");
       }
       console.log("hitting donation route");
+    
+      // Create a new donation record
       let newDonation = await Donation.create({
         amount,
         message,
@@ -219,22 +223,26 @@ const resolvers = {
         productId,
       });
       console.log("newDonation in resolver", newDonation);
-
+    
+      // Update the product's funding amount and donors
       let newProduct = await Product.findByIdAndUpdate(
         productId,
-        { $push: { donors: user._id, donations: newDonation._id } },
+        {
+          $push: { donors: user._id, donations: newDonation._id },
+          $inc: { funding: parseInt(amount) },
+        },
         { new: true }
       );
       console.log("newProduct in resolver", newProduct);
-
+    
+      // Update the user's donation record
       let newUser = await User.findByIdAndUpdate(
         user._id,
         { $push: { donations: newDonation._id } },
         { new: true }
       );
       console.log("newUser in resolver", newUser);
-      // product.funding += amount;
-      // await product.save();
+    
       return newDonation;
     },
   },

@@ -28,6 +28,7 @@ export const QUERY_USER = gql`
           name
           description
           funding
+          fundingGoal
           externalLink
           imageUrl
         }
@@ -65,6 +66,7 @@ export const QUERY_ME = gql`
           name
           description
           funding
+          fundingGoal
           externalLink
           imageUrl
         }
@@ -92,6 +94,7 @@ query Business($name: String!) {
       name
       description
       funding
+      fundingGoal
       externalLink
       imageUrl
       businessId
@@ -118,6 +121,7 @@ export const QUERY_BUSINESSES = gql`
         name
         description
         funding
+        fundingGoal
         externalLink
         imageUrl
       }
@@ -132,6 +136,7 @@ export const QUERY_PRODUCT = gql`
       name
       description
       funding
+      fundingGoal
       externalLink
       imageUrl
       businessId

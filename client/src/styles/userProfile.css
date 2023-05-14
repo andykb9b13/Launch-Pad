@@ -1,10 +1,52 @@
+.noDataDiv {
+  background-image: url("https://images.unsplash.com/photo-1523287562758-66c7fc58967f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  background-position: bottom;
+  height: 100vh;
+}
+
+.profileHeader {
+  background-image: url("https://images.unsplash.com/photo-1527788263495-3518a5c1c42d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1808&q=80");
+  background-position: center;
+  background-repeat: none;
+  width: 100%;
+  height: 400px;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.profileHeader h1 {
+  text-align: center;
+}
+
+.profileArea {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.profileInfo {
+  width: 75%;
+  margin: 5%;
+  font-size: 1.2em;
+}
+
 .bizLaunchBtn,
 .redirectBtn {
   border: 2px solid black;
   border-radius: 5px;
   padding: 15px;
   color: black;
-  font-size: 1em;
+  font-size: 1.3em;
   transition: 0.3s;
   margin-top: 3%;
 }
@@ -16,4 +58,68 @@
   transform: translateY(2px);
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
+}
+
+.flex-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.margin-top-profile {
+  margin-top: 20px;
+}
+
+.prof-btn-pad {
+  padding: 25px;
+}
+
+.prof-marg {
+  margin: 5px;
+}
+
+.btn-width {
+  width: 5vw;
+}
+.flex-btn {
+  display: flex;
+  justify-content: center;
+}
+.flex-row-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-bg-color {
+  background-color: white;
+}
+
+.cancel-btn-bg-color:hover {
+  background-color: #B81F1F;
+  color: white;
+}
+
+.upload-btn-bg-color:hover {
+  background-color: #81C221;
+  color: white;
+}
+
+.btn-bg-color:hover {
+  background-color: #0e3753;
+  color: white;
+}
+
+.profile-bg-color {
+  background-color: #0e3753;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 1px 10px 1px grey;
+}
+
+.btn-border {
+  border: 2px solid black;
+  border-radius: 15px;
 }

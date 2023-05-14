@@ -81,7 +81,8 @@ export const ADD_PRODUCT = gql`
   mutation addProduct(
     $name: String!
     $description: String!
-    $funding: String!
+    $funding: Int!
+    $fundingGoal: Int!
     $externalLink: String
     $imageUrl: String
     $businessId: String
@@ -90,6 +91,7 @@ export const ADD_PRODUCT = gql`
       name: $name
       description: $description
       funding: $funding
+      fundingGoal: $fundingGoal
       externalLink: $externalLink
       imageUrl: $imageUrl
       businessId: $businessId
@@ -98,9 +100,18 @@ export const ADD_PRODUCT = gql`
       name
       description
       funding
+      fundingGoal
       externalLink
       imageUrl
       businessId
     }
   }
 `;
+
+export const DELETE_BUSINESS = gql`
+mutation Mutation($id: ID!) {
+  deleteBusiness(_id: $id) {
+    _id
+  }
+}
+`
