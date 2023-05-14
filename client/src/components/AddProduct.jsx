@@ -40,13 +40,14 @@ export default function AddProduct({ business }) {
   }
 
   const onSubmit = async (e) => {
-    console.log(productFunding)
+    console.log("in the on submit function");
+    console.log("product funding: ",productFunding)
     e.preventDefault();
     const productInfo = {
       name: productName,
       description: productDescription,
       funding: 0,
-      fundingGoal: productFunding,
+      fundingGoal: parseInt(productFunding),
       externalLink: externalLink,
       imageUrl: imageUrl,
       businessId: business._id,
@@ -62,8 +63,10 @@ export default function AddProduct({ business }) {
       setProductFunding("");
       setExternalLink("");
       setImageUrl("");
+      alert("Product successfully added!");
     } catch (err) {
       console.error(err);
+      alert("Product not added. Please try again.");
     }
   };
 
