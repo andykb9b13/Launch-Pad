@@ -15,13 +15,20 @@ const ProductCard = () => {
   const [donate, { error }] = useMutation(ADD_DONATION);
   const { productId } = useParams();
 
-  const product = data?.product || [];
-
-  const { data } = useQuery(QUERY_PRODUCT, {
+  const { data, loading, error: queryError } = useQuery(QUERY_PRODUCT, {
     variables: {
       productId: productId,
     },
-  });
+  });  
+  if (loading) {
+    console.log("ITS LOADING")
+  }  
+  if (queryError) {
+    console.log("Sometheing went horribly wrong")
+  }
+  
+  const product = data?.product || [];
+
   console.log(productId)
 
   const handleTotalChange = (e) => {
@@ -70,18 +77,22 @@ const ProductCard = () => {
   // product
   // message
   const handleSubmit = async (event) => {
+    console.log("amount:", total, "message:", message, "productId", productId)
     console.log(productId, "THIS IS PRODUCTID in handleSubmit");
     try {
       const { data } = await donate({
         variables: {
-          productId,
-          amount: total,
+          amount: total, 
+          message: message, 
+          productId: productId, 
         },
       });
-      console.log("This is data in donate()", data)
-    } catch (err) {
-      console.error(err);
-      alert(err);
+  
+      // Handle the returned data as needed
+      console.log('Donation successful:', data);
+    } catch (error) {
+      // Handle any errors that occur during the mutation
+      console.error('Error during donation:', error);
     }
   };
 
@@ -123,7 +134,6 @@ const ProductCard = () => {
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
                   onChange={handleTotalChange}
-                  value={total}
                   type="number"
                   name="amount"
                   id="amount"

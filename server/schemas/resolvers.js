@@ -208,6 +208,7 @@ const resolvers = {
     },
 
     donate: async (_, { amount, message, productId }, { user }) => {
+      console.log('Request payload:', { amount, message, productId });
       if (!user) {
         throw new Error("Authentication failed");
       }
