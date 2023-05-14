@@ -10,6 +10,38 @@ export default function AddProduct({ business }) {
   const [externalLink, setExternalLink] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+  // validate form input
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    // product name validation
+    if(!productName) {
+      errors.productName = "Product name is a required field. Please enter a product name.";
+      isValid = false;
+    }
+
+    // product description validation
+    if(!productDescription) {
+      errors.productDescription = "Product description is a required field. Please enter a product description.";
+      isValid = false;
+    }
+
+    // funding goal validation
+    if(!productFunding) {
+      errors.productFunding = "Funding needed is a required field. Please enter funding needed.";
+      isValid = false;
+    }
+    setFormErrors(errors);
+    return isValid;
+  }
+  // form error validation
+  const [formErrors, setFormErrors] = useState({
+    productName: "",
+    productDescription: "",
+    productFunding: "",
+  })
+
   console.log("business in Add Product", business);
 
   function handleProductNameChange(e) {
@@ -40,19 +72,21 @@ export default function AddProduct({ business }) {
   }
 
   const onSubmit = async (e) => {
-    console.log(productFunding)
+    console.log("in the on submit function");
+    console.log("product funding: ",productFunding)
     e.preventDefault();
     const productInfo = {
       name: productName,
       description: productDescription,
       funding: 0,
-      fundingGoal: productFunding,
+      fundingGoal: parseInt(productFunding),
       externalLink: externalLink,
       imageUrl: imageUrl,
       businessId: business._id,
     };
     console.log("productInfo", productInfo);
-    try {
+    if(validateForm()){
+          try {
       const { data } = await createProduct({
         variables: { ...productInfo },
       });
@@ -62,8 +96,11 @@ export default function AddProduct({ business }) {
       setProductFunding("");
       setExternalLink("");
       setImageUrl("");
+      alert("Product successfully added!");
     } catch (err) {
       console.error(err);
+      alert("Product not added. Please try again.");
+    }
     }
   };
 
@@ -85,6 +122,7 @@ export default function AddProduct({ business }) {
           onChange={handleProductNameChange}
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+         {formErrors.productName && <span className="error">{formErrors.productName}</span>}
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Description
@@ -95,6 +133,7 @@ export default function AddProduct({ business }) {
           onChange={handleProductDescriptionChange}
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+        {formErrors.productDescription && <span className="error">{formErrors.productDescription}</span>}
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           Funding Needed
@@ -105,6 +144,7 @@ export default function AddProduct({ business }) {
           onChange={handleProductFundingChange}
           className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
         />
+        {formErrors.productFunding && <span className="error">{formErrors.productFunding}</span>}
 
         <label className="text-[var(--red)] tracking-wider sm:text-2xl">
           External Link
