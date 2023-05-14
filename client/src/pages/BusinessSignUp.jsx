@@ -99,7 +99,9 @@ export default function BusinessSignUp() {
   });
 
   //set cancel button to previous page.
-  const prevPage = () => {};
+  const prevPage = () => {
+    navigate(`/`);
+  };
   //Move to next steps
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -269,7 +271,7 @@ export default function BusinessSignUp() {
               Create Profile
             </button>
           {/* </Link> */}
-          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center">
+          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg hover:bg-[var(--red)] hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center" onClick={prevPage}>
             Cancel
           </button>
         </div>
