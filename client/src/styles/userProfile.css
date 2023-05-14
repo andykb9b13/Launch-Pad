@@ -57,3 +57,12 @@
   background-color: #097D44;
   color: white;
 }
+
+.profile-bg-color {
+  background-color: #097D44;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 1px 10px 1px grey;
+}

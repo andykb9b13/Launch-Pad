@@ -43,9 +43,12 @@ const UserProfile = () => {
         </div>
       ) : (
         <div>
+          <div className="flex-profile margin-top-profile">
+          <div className="flex-profile margin-top-profile profile-bg-color">
           <h2>Profile</h2>
-          <h3>Username: {user.username}</h3>
-          <button type="button" className="bizLaunchBtn">
+          <h2>Username: {user.username}</h2>
+          </div>
+          <button type="button" className="bizLaunchBtn btn-bg-color btn-bg-color:hover">
             <Link to="/newbusiness">Launch A Business</Link>
           </button>
           <div>
@@ -57,6 +60,7 @@ const UserProfile = () => {
                 </div>
               ))}
             </div>
+          </div>
           </div>
         </div>
       )}
