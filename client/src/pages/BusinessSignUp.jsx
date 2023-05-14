@@ -76,10 +76,12 @@ export default function BusinessSignUp() {
       const { data } = await createBusiness({
         variables: { ...userInfo },
       });
+      alert("Business created!");
       if (data) navigate(`/custom-business/${businessName}`);
     } catch (err) {
       console.log("you're in the catch block");
       console.error(err);
+      alert("Business creation unsuccessful. Please try again.");
     }
   };
 

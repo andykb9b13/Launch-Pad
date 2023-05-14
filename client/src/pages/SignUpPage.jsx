@@ -47,8 +47,8 @@ function SignUp() {
     if (!formData.password) {
       errors.password = "Please enter your password";
       isValid = false;
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters long";
+    } else if (formData.password.length < 8) {
+      errors.password = "Password must be at least 8 characters long";
       isValid = false;
     }
 
@@ -69,6 +69,7 @@ function SignUp() {
             variables: { ...formData },
           });
           Auth.login(data.addUser.token);
+          alert("Account created!");
         } catch (err) {
           console.error(err);
           alert(err);

@@ -24,10 +24,12 @@ const CustomBusinessProfile = () => {
         try {
         await deleteBusiness({
             variables: {id: businessId},
-        })
+        });
+        alert("Business deleted!");
     } catch (err) {
       console.log("catch block");
       console.error(err);
+      alert("Unsuccessful delete. Please try again.");
     }
   }
     const [deleteBusiness, { error }] = useMutation(DELETE_BUSINESS);
