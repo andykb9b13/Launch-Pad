@@ -100,18 +100,19 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center p-4">
+    <div className="outerContainer w-full h-screen flex justify-center flex-col items-center p-4">
       {/* <form className='login-border rounded-lg flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6' onSubmit={handleSubmit}> */}
+      <h1 className="fade-in-box">Sign Up</h1>
       <form
-        className="login-border padding-20 top-margin fade-in-box"
+        className="signUpForm login-border padding-20 fade-in-box"
         onSubmit={handleSubmit}
       >
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+        <label className="tracking-wider sm:text-2xl">
           Username:
           <br />
           <input
             placeholder=" username"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]"
+            className="my-2 p-2 border-2 rounded-lg"
             type="text"
             name="username"
             value={formData.username}
@@ -122,12 +123,12 @@ function SignUp() {
           )}
         </label>
         <br />
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+        <label className="tracking-wider sm:text-2xl">
           Email:
           <br />
           <input
             placeholder=" email"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]"
+            className="my-2 p-2 border-2 rounded-lg"
             type="email"
             name="email"
             value={formData.email}
@@ -138,12 +139,12 @@ function SignUp() {
           )}
         </label>
         <br />
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+        <label className="tracking-wider sm:text-2xl">
           Password:
           <br />
           <input
             placeholder=" password"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]"
+            className="my-2 p-2 border-2 rounded-lg"
             type="password"
             name="password"
             value={formData.password}
@@ -154,12 +155,12 @@ function SignUp() {
           )}
         </label>
         <br />
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+        <label className="tracking-wider sm:text-2xl">
           Confirm Password:
           <br />
           <input
             placeholder=" password"
-            className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]"
+            className="my-2 p-2 border-2 rounded-lg"
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
@@ -172,13 +173,13 @@ function SignUp() {
         <br />
         <div className="flex space-evenly gap-10">
           <button
-            className="button-background button-background:hover border-2 border-[var(--green)] rounded-lg hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="button-background button-background:hover border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
             type="submit"
           >
             Sign Up
           </button>
           <button
-            className="button-background button-background:hover border-2 border-[var(--green)] rounded-lg hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center"
+            className="button-background button-background:hover border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
             type="button"
             onClick={handleClear}
           >
