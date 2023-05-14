@@ -44,11 +44,11 @@ const Business = ({ business }) => {
           <img src={instagram} alt="instagram" />
         </a>
       </div>
-      <div>
+      <div className="outer-div-for-products">
         <div className="productContainer">
           {myBusiness.products &&
             myBusiness.products.map((product, i) => (
-              <div key={i} className="product">
+              <div key={i} className="product product-inner-container">
                 <div className="innerProduct">
                   <img src={product.imageUrl} alt={product.name} />
                   <h2>{product.name}</h2>

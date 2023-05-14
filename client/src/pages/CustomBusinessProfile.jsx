@@ -85,7 +85,8 @@ const CustomBusinessProfile = ({ business }) => {
             <p>{data?.business.missionStatement}</p>
 
             <div>
-              {data?.business.imageUrl && (
+              <div>
+                {data?.business.imageUrl && (
                 <>
                   <h3>Profile Image</h3>
                   <p>
@@ -97,6 +98,8 @@ const CustomBusinessProfile = ({ business }) => {
                   <p>{data?.business.imageUrl}</p>
                 </>
               )}
+              </div>
+              
               <div>
                 <div className="delet-margin-top">
                   <Link to={`/`}>

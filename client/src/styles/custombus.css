@@ -41,3 +41,12 @@
     border: 1px solid grey;
     box-shadow: inset 1px 1px 1px black;
 }
+
+.biz-prod-image-div{
+    padding: 500px;
+    border: 5px solid black;
+}
+
+.padding-500px{
+    padding: 500px;
+}

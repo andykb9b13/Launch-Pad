@@ -18,7 +18,7 @@ const Products = ({ products }) => {
               <p>{product.description}</p>
               <button type="button" className="fundBtn">
                 <Link to={`/product/${product._id}`} product={product}>
-                  Fund This Item!
+                  Fund this Item!
                 </Link>
               </button>
             </div>

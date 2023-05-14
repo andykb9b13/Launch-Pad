@@ -45,4 +45,13 @@
   padding: 5%;
   margin: 2%;
   border-radius: 5px;
+  width:100%;
+}
+
+.product-inner-container{
+  width: 100%;
+}
+
+.outer-div-for-products {
+  width: 100%;
 }

@@ -95,6 +95,16 @@
   background-color: white;
 }
 
+.cancel-btn-bg-color:hover {
+  background-color: #B81F1F;
+  color: white;
+}
+
+.upload-btn-bg-color:hover {
+  background-color: #81C221;
+  color: white;
+}
+
 .btn-bg-color:hover {
   background-color: #0e3753;
   color: white;
@@ -107,4 +117,9 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: 3px 1px 10px 1px grey;
+}
+
+.btn-border {
+  border: 2px solid black;
+  border-radius: 15px;
 }
