@@ -31,7 +31,7 @@ const Homepage = () => {
             equitable and thriving economy for all.
           </p>
           <button className="exploreBtn" type="button">
-            Explore Businesses
+            <Link to={'/businesses'}>Explore Businesses</Link>
           </button>
         </div>
         <img
@@ -40,7 +40,7 @@ const Homepage = () => {
           alt="fundraising"
         />
       </div>
-      <h2 className="text-center">Featured Businesses</h2>
+      <h2 className="text-center">Featured Business</h2>
       <BusinessCard />
     </div>
   );

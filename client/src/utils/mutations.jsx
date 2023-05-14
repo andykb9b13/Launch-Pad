@@ -105,7 +105,6 @@ export const ADD_PRODUCT = gql`
   }
 `;
 
-
 export const DELETE_BUSINESS = gql`
 mutation Mutation($id: ID!) {
   deleteBusiness(_id: $id) {

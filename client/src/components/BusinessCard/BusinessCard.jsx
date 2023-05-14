@@ -2,7 +2,7 @@ import React from "react";
 import { QUERY_BUSINESSES } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
-import Products from "../Products";
+import TwoProducts from "../TwoProducts";
 import twitter from "../../assets/icons/twitter.png";
 import facebook from "../../assets/icons/facebook.png";
 import instagram from "../../assets/icons/instagram.png";
@@ -11,53 +11,54 @@ import "./style.css";
 const BusinessCard = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
   const businesses = data?.businesses || [];
-  console.log("businesses in BusinessCard", businesses);
+
+  // Select a random business
+  const randomBusiness = businesses[Math.floor(Math.random() * businesses.length)];
 
   return (
     <div className="businessCard">
-      {businesses &&
-        businesses.map((business, i) => (
-          <div key={i} className="business">
-            <div className="businessDetails">
-              <a href="#!">
-                <img
-                  src={business.imageUrl}
-                  className="businessImg"
-                  alt="businessProfilePic"
-                />
-              </a>
+      {randomBusiness && (
+        <div className="business">
+          <div className="businessDetails">
+            <a href="#!">
+              <img
+                src={randomBusiness.imageUrl}
+                className="businessImg"
+                alt="businessProfilePic"
+              />
+            </a>
 
-              <h2 className="businessName">{business.name}</h2>
-              <a className="businessWebsite" href={business.website}>
-                {business.website}
+            <h2 className="businessName">{randomBusiness.name}</h2>
+            <a className="businessWebsite" href={randomBusiness.website}>
+              {randomBusiness.website}
+            </a>
+            <p className="mb-4">{randomBusiness.location}</p>
+            <p className="mb-4">{randomBusiness.description}</p>
+            <button
+              type="button"
+              className="inline-block businessLaunchBtn"
+              data-te-ripple-init
+              data-te-ripple-color="light"
+            >
+              <Link to={`/business/${randomBusiness.name}`}>Learn More</Link>
+            </button>
+          </div>
+          <div className="businessProducts p-6">
+            <TwoProducts products={randomBusiness.products} />
+            <div className="socialIcons">
+              <a href={randomBusiness.facebook}>
+                <img src={facebook} alt="facebook" />
               </a>
-              <p className="mb-4">{business.location}</p>
-              <p className="mb-4">{business.description}</p>
-              <button
-                type="button"
-                className="inline-block businessLaunchBtn"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                <Link to={`/business/${business.name}`}>Learn More</Link>
-              </button>
-            </div>
-            <div className="businessProducts p-6">
-              <Products products={business.products} />
-              <div className="socialIcons">
-                <a href={business.facebook}>
-                  <img src={facebook} alt="facebook" />
-                </a>
-                <a href={business.twitter}>
-                  <img src={twitter} alt="twitter" />
-                </a>
-                <a href={business.instagram}>
-                  <img src={instagram} alt="instagram" />
-                </a>
-              </div>
+              <a href={randomBusiness.twitter}>
+                <img src={twitter} alt="twitter" />
+              </a>
+              <a href={randomBusiness.instagram}>
+                <img src={instagram} alt="instagram" />
+              </a>
             </div>
           </div>
-        ))}
+        </div>
+      )}
     </div>
   );
 };
