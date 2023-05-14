@@ -4,6 +4,10 @@ import AddProduct from "./AddProduct";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_BUSINESS } from "../utils/queries";
+import facebook from "../assets/icons/facebook.png";
+import instagram from "../assets/icons/instagram.png";
+import twitter from "../assets/icons/twitter.png";
+import "../styles/business.css";
 
 const Business = ({ business }) => {
   const { data } = useQuery(QUERY_BUSINESS, {
@@ -15,19 +19,32 @@ const Business = ({ business }) => {
   console.log("This is myBusiness", myBusiness);
 
   return (
-    <div>
-      <h3>Business Name: {myBusiness.name}</h3>
-      <img src={myBusiness.imageUrl} alt={business.name} />
-      <p>Location: {myBusiness.location}</p>
-      <p>Description: {myBusiness.description}</p>
-      <p>Mission Statement: {myBusiness.missionStatement}</p>
-      <div>
-        <a href={myBusiness.twitter}>Twitter</a>
-        <a href={myBusiness.facebook}>Facebook</a>
-        <a href={myBusiness.instagram}>Instagram</a>
+    <div className="businessContainer">
+      <h3 className="businessName">{myBusiness.name}</h3>
+      <img
+        src={myBusiness.imageUrl}
+        alt={business.name}
+        className="businessProfileImg"
+      />
+      <h3 className="location">{myBusiness.location}</h3>
+      <p className="description">{myBusiness.description}</p>
+      <div className="businessMissionStatement">
+        <h2>Mission Statement</h2>
+        <p>{myBusiness.missionStatement}</p>
+      </div>
+
+      <div className="socialIcons">
+        <a href={myBusiness.twitter}>
+          <img src={twitter} alt="twitter" />
+        </a>
+        <a href={myBusiness.facebook}>
+          <img src={facebook} alt="facebook" />
+        </a>
+        <a href={myBusiness.instagram}>
+          <img src={instagram} alt="instagram" />
+        </a>
       </div>
       <div>
-        <h2>Products</h2>
         <div className="productContainer">
           {myBusiness.products &&
             myBusiness.products.map((product, i) => (
@@ -35,7 +52,7 @@ const Business = ({ business }) => {
                 <div className="innerProduct">
                   <img src={product.imageUrl} alt={product.name} />
                   <h2>{product.name}</h2>
-                  <p>${product.funding}/{product.fundingGoal}</p>
+                  <p>${product.funding}</p>
                   <p>{product.description}</p>
                   <button type="button" className="fundBtn">
                     <Link to={`/product/${product._id}`} product={product}>
