@@ -110,35 +110,36 @@ const CustomBusinessProfile = ({ business }) => {
                   </Link>
                 </div>
               </div>
-              {/* products div */}
-              <div>
-        <h2>Products</h2>
-        <div className="productContainer">
-          {data?.business.products &&
-            data?.business.products.map((product, i) => (
-              <div key={i} className="product">
-                <div className="innerProduct">
-                  <img src={product.imageUrl} alt={product.name} />
-                  <h2>{product.name}</h2>
-                  <p>${product.funding}/{product.fundingGoal}</p>
-                  <p>{product.description}</p>
-                  <button type="button" className="fundBtn">
-                    <Link to={`/product/${product._id}`} product={product}>
-                      Fund This Item!
-                    </Link>
-                  </button>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
-
             </div>
           </form>
+          {/* products div */}
           <div>
-        <h2>Add a Product To Be Funded</h2>
-        <AddProduct business={data?.business} />
-      </div>
+            <h2>Products</h2>
+            <div className="productContainer">
+              {data?.business.products &&
+                data?.business.products.map((product, i) => (
+                  <div key={i} className="product">
+                    <div className="innerProduct">
+                      <img src={product.imageUrl} alt={product.name} />
+                      <h2>{product.name}</h2>
+                      <p>
+                        ${product.funding}/{product.fundingGoal}
+                      </p>
+                      <p>{product.description}</p>
+                      <button type="button" className="fundBtn">
+                        <Link to={`/product/${product._id}`} product={product}>
+                          Fund This Item!
+                        </Link>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div>
+            <h2>Add a Product To Be Funded</h2>
+            <AddProduct business={data?.business} />
+          </div>
         </div>
       </div>
     </div>
