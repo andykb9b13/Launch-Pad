@@ -1,75 +1,75 @@
 :root {
-    --primarygreen: #0DB261,
+  --primarygreen: #0db261;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .width-50 {
-    width: 50%;
+  width: 50%;
 }
 
 .full-height {
-    height: 100vh !important;
+  height: 100vh !important;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .justify-center {
-    justify-items: center;
+  justify-items: center;
 }
 
 .align-items {
-    align-items: center;
+  align-items: center;
 }
 .space-evenly {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .gap-10 {
-    gap: 10px;
+  gap: 10px;
 }
 
 .login-border {
-    border: 5px solid #097D44;
-    border-radius: 25px;
-    box-shadow: 5px 5px 10px 2px grey;
+  border: 5px solid #097d44;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px 2px grey;
 }
 
 .padding-20 {
-    padding: 20px;
+  padding: 20px;
 }
 
 .top-margin {
-    margin-top: 10vh;
+  margin-top: 10vh;
 }
 
 .button-background {
-    background-color: whitesmoke;
-    color: black;
-    border: 1px solid black;
-    border-radius: 15px;
+  background-color: whitesmoke;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .button-background:hover {
-    background-color: #097D44;
-    color: whitesmoke;
+  background-color: #097d44;
+  color: whitesmoke;
 }
 
 .fade-in-box {
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-     }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
