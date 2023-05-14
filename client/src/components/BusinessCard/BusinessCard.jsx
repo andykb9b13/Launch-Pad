@@ -13,7 +13,8 @@ const BusinessCard = () => {
   const businesses = data?.businesses || [];
 
   // Select a random business
-  const randomBusiness = businesses[Math.floor(Math.random() * businesses.length)];
+  const randomBusiness =
+    businesses[Math.floor(Math.random() * businesses.length)];
 
   return (
     <div className="businessCard">

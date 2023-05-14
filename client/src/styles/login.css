@@ -2,12 +2,34 @@
   --primarygreen: #0db261;
 }
 
+.outerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1550751187-da63f7e2b4eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80");
+  background-position: bottom;
+  background-repeat: none;
+  background-size: cover;
+}
+
+.loginForm,
+.signUpForm {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .full-width {
   width: 100%;
 }
 
 .width-50 {
   width: 50%;
+}
+
+.width-75 {
+  width: 75%;
 }
 
 .full-height {
@@ -35,7 +57,7 @@
 
 .login-border {
   border: 5px solid #0e3753;
-  border-radius: 25px;
+  border-radius: 10px;
   box-shadow: 5px 5px 10px 2px grey;
 }
 
