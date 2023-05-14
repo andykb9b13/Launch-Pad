@@ -49,27 +49,39 @@ const UserProfile = () => {
         </div>
       ) : (
         <div>
+          <div className="profileHeader">
+            <h1>Make your vision come to life...</h1>
+          </div>
           <div className="flex-profile margin-top-profile">
-            <div className="flex-profile margin-top-profile profile-bg-color">
-              <h2>Profile</h2>
-              <p>Username: {user.username}</p>
-              <p>Email: {user.email}</p>
-              <div>
-                Businesses You Sponsor:
-                {user.businesses &&
-                  user.businesses.map((business) => <p>{business.name}</p>)}
+            <div className="profileArea">
+              <div className="profileInfo flex-profile margin-top-profile profile-bg-color">
+                <h2>My Profile</h2>
+                <p>Username: {user.username}</p>
+                <p>Email: {user.email}</p>
+                <div>
+                  Businesses You Sponsor:
+                  {user.businesses &&
+                    user.businesses.map((business) => <p>{business.name}</p>)}
+                </div>
+                <div>Donations You've Made:</div>
               </div>
               <div>
-                Donations You've Made:
-                <div></div>
+                <h2>Launch a Business to be funded</h2>
+                <p>
+                  We know you have amazing ideas for a business that are just
+                  bursting to come out. Getting it off the ground can be hard.
+                  Launch your own business today and add items to be funded to
+                  take those dreams and give them wings!
+                </p>
+                <button
+                  type="button"
+                  className="bizLaunchBtn btn-bg-color btn-bg-color:hover"
+                >
+                  <Link to="/newbusiness">Launch A Business</Link>
+                </button>
               </div>
             </div>
-            <button
-              type="button"
-              className="bizLaunchBtn btn-bg-color btn-bg-color:hover"
-            >
-              <Link to="/newbusiness">Launch A Business</Link>
-            </button>
+
             <div>
               <h2 className="text-center">My Businesses</h2>
               <div>

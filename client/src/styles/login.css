@@ -34,7 +34,7 @@
 }
 
 .login-border {
-  border: 5px solid #097d44;
+  border: 5px solid #0e3753;
   border-radius: 25px;
   box-shadow: 5px 5px 10px 2px grey;
 }
@@ -55,7 +55,7 @@
 }
 
 .button-background:hover {
-  background-color: #097d44;
+  background-color: #0e3753;
   color: whitesmoke;
 }
 
