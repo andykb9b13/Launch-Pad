@@ -228,7 +228,7 @@ const resolvers = {
         productId,
         {
           $push: { donors: user._id, donations: newDonation._id },
-          $inc: { funding: amount },
+          $inc: { funding: parseInt(amount) },
         },
         { new: true }
       );

@@ -13,7 +13,7 @@ const productSchema = new Schema({
     required: true,
   },
   funding: {
-    type: String,
+    type: Number,
     required: true,
   },
   externalLink: {
