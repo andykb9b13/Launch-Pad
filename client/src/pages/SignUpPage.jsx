@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
-import "../styles/login.css"
+import "../styles/login.css";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -19,8 +19,8 @@ function SignUp() {
     confirmPassword: "",
   });
 
-  const [createUser, {error}] = useMutation(ADD_USER);
-    // Incase we want to change navBar to not show login/signup when logged in
+  const [createUser, { error }] = useMutation(ADD_USER);
+  // Incase we want to change navBar to not show login/signup when logged in
   const [validated] = useState(false);
 
   const handleChange = (event) => {
@@ -65,22 +65,22 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
-        try {
-          const { data } = await createUser({
-            variables: { ...formData },
-          });
-          Auth.login(data.addUser.token);
-          alert("Account created!");
-        } catch (err) {
-          console.error(err);
-          alert(err);
-        }
-        setFormData({
-          username: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
+      try {
+        const { data } = await createUser({
+          variables: { ...formData },
         });
+        Auth.login(data.addUser.token);
+        alert("Account created!");
+      } catch (err) {
+        console.error(err);
+        alert(err);
+      }
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
     }
   };
 
@@ -100,36 +100,91 @@ function SignUp() {
   };
 
   return (
-    <div className='w-full h-screen flex justify-center items-center p-4'>
+    <div className="outerContainer w-full h-screen flex justify-center flex-col items-center p-4">
       {/* <form className='login-border rounded-lg flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6' onSubmit={handleSubmit}> */}
-      <form className='login-border padding-20 top-margin fade-in-box' onSubmit={handleSubmit}>
-        <label className='text-[var(--red)] tracking-wider sm:text-2xl'> 
-          Username: 
-          <br /><input placeholder=' username' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]' type="text" name="username" value={formData.username} onChange={handleChange} />
-          {formErrors.username && <span className="error">{formErrors.username}</span>}
+      <h1 className="fade-in-box">Sign Up</h1>
+      <form
+        className="signUpForm login-border padding-20 fade-in-box"
+        onSubmit={handleSubmit}
+      >
+        <label className="tracking-wider sm:text-2xl">
+          Username:
+          <br />
+          <input
+            placeholder=" username"
+            className="my-2 p-2 border-2 rounded-lg"
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          {formErrors.username && (
+            <span className="error">{formErrors.username}</span>
+          )}
         </label>
         <br />
-        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+        <label className="tracking-wider sm:text-2xl">
           Email:
-          <br /><input placeholder=' email' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]' type="email" name="email" value={formData.email} onChange={handleChange} />
-          {formErrors.email && <span className="error">{formErrors.email}</span>}
+          <br />
+          <input
+            placeholder=" email"
+            className="my-2 p-2 border-2 rounded-lg"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {formErrors.email && (
+            <span className="error">{formErrors.email}</span>
+          )}
         </label>
         <br />
-        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+        <label className="tracking-wider sm:text-2xl">
           Password:
-          <br /><input placeholder=' password' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]' type="password" name="password" value={formData.password} onChange={handleChange} />
-          {formErrors.password && <span className="error">{formErrors.password}</span>}
+          <br />
+          <input
+            placeholder=" password"
+            className="my-2 p-2 border-2 rounded-lg"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {formErrors.password && (
+            <span className="error">{formErrors.password}</span>
+          )}
         </label>
         <br />
-        <label className='text-[var(--red)] tracking-wider sm:text-2xl'>
+        <label className="tracking-wider sm:text-2xl">
           Confirm Password:
-          <br /><input placeholder=' password' className='bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)]' type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
-          {formErrors.confirmPassword && <span className="error">{formErrors.confirmPassword}</span>}
+          <br />
+          <input
+            placeholder=" password"
+            className="my-2 p-2 border-2 rounded-lg"
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
+          {formErrors.confirmPassword && (
+            <span className="error">{formErrors.confirmPassword}</span>
+          )}
         </label>
         <br />
-        <div className='flex space-evenly gap-10'>
-        <button className='button-background button-background:hover border-2 border-[var(--green)] rounded-lg hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center' type="submit">Sign Up</button>
-        <button className='button-background button-background:hover border-2 border-[var(--green)] rounded-lg hover:text-[var(--white)] px-10 py-3 my-2 mx-auto flex flex-center' type="button" onClick={ handleClear }>Cancel</button>
+        <div className="flex space-evenly gap-10">
+          <button
+            className="button-background button-background:hover border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
+            type="submit"
+          >
+            Sign Up
+          </button>
+          <button
+            className="button-background button-background:hover border-2 rounded-lg px-10 py-3 my-2 mx-auto flex flex-center"
+            type="button"
+            onClick={handleClear}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

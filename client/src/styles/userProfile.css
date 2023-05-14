@@ -1,10 +1,52 @@
+.noDataDiv {
+  background-image: url("https://images.unsplash.com/photo-1523287562758-66c7fc58967f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  background-position: bottom;
+  height: 100vh;
+}
+
+.profileHeader {
+  background-image: url("https://images.unsplash.com/photo-1527788263495-3518a5c1c42d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1808&q=80");
+  background-position: center;
+  background-repeat: none;
+  width: 100%;
+  height: 400px;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.profileHeader h1 {
+  text-align: center;
+}
+
+.profileArea {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.profileInfo {
+  width: 75%;
+  margin: 5%;
+  font-size: 1.2em;
+}
+
 .bizLaunchBtn,
 .redirectBtn {
   border: 2px solid black;
   border-radius: 5px;
   padding: 15px;
   color: black;
-  font-size: 1em;
+  font-size: 1.3em;
   transition: 0.3s;
   margin-top: 3%;
 }
@@ -29,7 +71,7 @@
   margin-top: 20px;
 }
 
-.prof-btn-pad{
+.prof-btn-pad {
   padding: 25px;
 }
 
@@ -53,13 +95,13 @@
   background-color: white;
 }
 
-.btn-bg-color:hover{
-  background-color: #097D44;
+.btn-bg-color:hover {
+  background-color: #0e3753;
   color: white;
 }
 
 .profile-bg-color {
-  background-color: #097D44;
+  background-color: #0e3753;
   color: whitesmoke;
   text-shadow: 1px 1px 1px black;
   padding: 20px;

@@ -1,0 +1,48 @@
+.circular-progress-bar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .progress-ring__circle {
+    fill: none;
+  }
+  
+  .progress-ring__bar {
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    fill: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  
+  .progress-ring__bar{
+    cx: 50%;
+    cy: 50%;
+  }
+  .progress-ring__circle {    
+    cx: 50%;
+    cy: 50%;
+    stroke: #ccc;
+
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
