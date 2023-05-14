@@ -188,7 +188,7 @@ export default function AddProduct({ business }) {
             className="btn-border rounded-lg px-10 py-3 my-2 mx-auto flex flex-center btn-bg-color"
             type="submit"
           >
-            Next
+            Add Product
           </button>
           <button className="btn-border rounded-lg px-10 py-3 my-2 mx-auto flex flex-center cancel-btn-bg-color">
             Cancel
