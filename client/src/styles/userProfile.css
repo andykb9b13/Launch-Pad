@@ -29,7 +29,7 @@
   margin-top: 20px;
 }
 
-.prof-btn-pad{
+.prof-btn-pad {
   padding: 25px;
 }
 
@@ -53,13 +53,13 @@
   background-color: white;
 }
 
-.btn-bg-color:hover{
-  background-color: #097D44;
+.btn-bg-color:hover {
+  background-color: #097d44;
   color: white;
 }
 
 .profile-bg-color {
-  background-color: #097D44;
+  background-color: #097d44;
   color: whitesmoke;
   text-shadow: 1px 1px 1px black;
   padding: 20px;
