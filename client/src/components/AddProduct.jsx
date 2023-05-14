@@ -40,11 +40,13 @@ export default function AddProduct({ business }) {
   }
 
   const onSubmit = async (e) => {
+    console.log(productFunding)
     e.preventDefault();
     const productInfo = {
       name: productName,
       description: productDescription,
-      funding: productFunding,
+      funding: 0,
+      fundingGoal: productFunding,
       externalLink: externalLink,
       imageUrl: imageUrl,
       businessId: business._id,

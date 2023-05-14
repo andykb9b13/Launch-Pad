@@ -14,7 +14,7 @@ const TwoProducts = ({ products }) => {
           <div className="innerProduct">
             <img src={product.imageUrl} alt={product.name} />
             <h2>{product.name}</h2>
-            <p>${product.funding}</p>
+            <p>${product.funding}/{product.fundingGoal}</p>
             <p>{product.description}</p>
             <button type="button" className="fundBtn">
               <Link to={`/product/${product._id}`} product={product}>
