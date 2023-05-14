@@ -11,8 +11,10 @@ const Navbar = () => {
     try {
       Auth.logout();
       console.log("user was logged out");
+      alert("Successfully logged out!");
     } catch (err) {
       console.log(err);
+      alert("Could not log out. Please try again.");
     }
   };
 

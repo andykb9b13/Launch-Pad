@@ -8,9 +8,10 @@ import BusinessSignUp from "./BusinessSignUp";
 import { DELETE_BUSINESS } from "../utils/mutations";
 
 const CustomBusinessProfile = () => {
+  // grab name from url
   const { name } = useParams();
   console.log("name from useParams", name);
-
+  // query business based on name from url
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
       name: name,
@@ -24,10 +25,12 @@ const CustomBusinessProfile = () => {
         try {
         await deleteBusiness({
             variables: {id: businessId},
-        })
+        });
+        alert("Business deleted!");
     } catch (err) {
       console.log("catch block");
       console.error(err);
+      alert("Unsuccessful delete. Please try again.");
     }
   }
     const [deleteBusiness, { error }] = useMutation(DELETE_BUSINESS);

@@ -61,9 +61,11 @@ function SignIn() {
             variables: { ...formData },
           });
           Auth.login(data.loginUser.token);
+          alert("Successfully logged in!");
         } catch (err) {
           console.error(err);
           alert(err);
+          alert("Login failed. Please try again.");
         }
         setFormData({
           username: "",
