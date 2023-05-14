@@ -1,3 +1,7 @@
+:root {
+    --primarygreen: #0DB261,
+}
+
 .full-width {
     width: 100%;
 }
@@ -26,11 +30,38 @@
 }
 
 .login-border {
-    border: 5px solid black;
+    border: 5px solid #097D44;
     border-radius: 25px;
-    box-shadow: 5px 5px 5px 2px black;
+    box-shadow: 5px 5px 10px 2px grey;
 }
 
 .padding-20 {
     padding: 20px;
+}
+
+.top-margin {
+    margin-top: 10vh;
+}
+
+.button-background {
+    background-color: whitesmoke;
+}
+
+.button-background:hover {
+    background-color: #097D44;
+}
+
+.fade-in-box {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
 }
