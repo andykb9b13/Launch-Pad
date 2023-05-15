@@ -6,6 +6,7 @@ const CircularProgressBar = ({ funding, fundingGoal }) => {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (progress / 100) * circumference;
+  console.log(offset)
 
   return (
     <div className="circular-progress-bar">
