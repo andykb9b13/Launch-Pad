@@ -115,3 +115,28 @@
 .businessProducts {
   width: 50%;
 }
+
+@media screen and (max-width: 1150px) {
+  .business {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .businessProducts {
+    width: 90%;
+  }
+
+  .businessDetails {
+    width: 90%;
+    padding: 2%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .productContainer {
+    flex-direction: column;
+  }
+  .product {
+    width: 100%;
+  }
+}

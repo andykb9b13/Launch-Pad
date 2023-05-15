@@ -96,12 +96,12 @@
 }
 
 .cancel-btn-bg-color:hover {
-  background-color: #B81F1F;
+  background-color: #b81f1f;
   color: white;
 }
 
 .upload-btn-bg-color:hover {
-  background-color: #81C221;
+  background-color: #81c221;
   color: white;
 }
 
@@ -122,4 +122,28 @@
 .btn-border {
   border: 2px solid black;
   border-radius: 15px;
+}
+
+@media screen and (max-width: 1070px) {
+  .profileArea {
+    flex-direction: column;
+  }
+  .profileHeader h1 {
+    font-size: 6em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .profileHeader h1 {
+    font-size: 5em;
+  }
+  .profileInfo h2 {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profileHeader h1 {
+    font-size: 4em;
+  }
 }
