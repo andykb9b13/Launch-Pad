@@ -55,3 +55,17 @@
 .outer-div-for-products {
   width: 100%;
 }
+
+.business-flex-page{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.biz-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
