@@ -278,7 +278,7 @@ export default function BusinessSignUp() {
                   <p>
                     <img src={imageUrl} alt="Uploaded resource" />
                   </p>
-                  <p>{imageUrl}</p>
+                  {/* <p>{imageUrl}</p> */}
                 </>
               )}
               {/* <Link to={`/custom-business/${businessName}`}> */}
