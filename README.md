@@ -17,6 +17,11 @@ Starting a small business can be incredibly daunting and the pressure of finding
 7. [Questions](#questions)
 8. [Creators](#creators)
 
+## Live Site Link
+
+The application is deployed on Heroku:
+[Launch Pad Live Site](https://launch-pad.herokuapp.com/)
+
 ## Installing Dependencies
 
 npm install
@@ -26,42 +31,32 @@ npm install
 ### Homepage
 
 When a user first visits the site, they will see a homepage populated with business that are looking for funding for items.
-![HomePage](/client/src/assets/mock-ups/HomePage.png)
+![HomePage](/client/src/assets/readme/Homepage.png)
 
 ### Business Page
 
 Users can choose to visit a particular business and see the items they have posted for funding
-![Business Page](/client/src/assets/mock-ups/BusinessPage.png)
+![Business Page](/client/src/assets/readme/BusinessCard.png)
 
 ### Funding a Business
 
 When an item is clicked on, the user will see the progress of funding as well as details for the item.
-![Funding Form](/client/src/assets/mock-ups/FundingForm.png)
+![Funding Form](/client/src/assets/readme/DonateCard.png)
 
 ### Signup
 
 In order to donate to a business, a user must create an account.
-![User Sign Up](/client/src/assets/mock-ups/UserSignup.png)
+![User Sign Up](/client/src/assets/readme/Signup.png)
 
 ### User Profile
 
 Users can customize their profiles once they have created their account. Users will be able to see the projects that they have contributed to.
-![User Profile](/client/src/assets/mock-ups/UserProfile.png)
+![User Profile](/client/src/assets/readme/userProfile.png)
 
 ### Business Profile
 
-Users have the option to create a business profile
-![Business Profile](/client/src/assets/mock-ups/BusinessProfile1.png)
-
-### Customize Profile
-
-Users will have the option to customize their profile by adding a written mission statement, a video describing their business, and images of their business.
-![Customize Profile](/client/src/assets/mock-ups/BusinessProfile2.png)
-
-### Add Items for Funding
-
-Users can add items that require funding.
-![Add Items](/client/src/assets/mock-ups/BusinessProfile3.png)
+Users have the option to create a business profile where they can add information about the business as well as add items for the business that will look for funding.
+![Business Profile](/client/src/assets/readme/businessProfile.png)
 
 ## Contributing
 
