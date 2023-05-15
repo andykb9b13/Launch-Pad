@@ -79,12 +79,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   margin: 2%;
+  box-shadow: 2px 2px 2px 2px grey;
+  width: 50%;
 }
 
 .socialIcons {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 2%;
+  margin-top: 10%;
 }
+
+.visual-aid-border {
+  border: 3px dotted blue;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.padding-10{
+  padding: 10px;
+}
+
+.businessProducts{
+  width:50%;
+}
+
