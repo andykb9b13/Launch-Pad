@@ -13,7 +13,7 @@ import "../styles/productCard.css";
 import Confetti from 'react-confetti'
 
 const ProductCard = () => {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(null);
   const [message, setMessage] = useState("");
   const [donate, { error }] = useMutation(ADD_DONATION);
   const [product, setProduct] = useState([]);
