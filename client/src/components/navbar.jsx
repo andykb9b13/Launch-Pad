@@ -39,7 +39,7 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </li>
           <li
-            className="hover:scale-110 duration-500 mx-2"
+            className="hover:scale-110 duration-500 mx-2 logout-button"
             onClick={handleLogout}
           >
             Logout
