@@ -18,14 +18,23 @@
   }
 }
 
+.businessHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInAnimation ease 3s;
+}
+
 .businessHeader h1 {
   text-align: center;
+  font-size: 6em;
 }
 
 .businessHeader h2 {
   text-align: center;
   color: white;
   text-shadow: 1px 5px 10px black;
+  font-size: 2.6em;
 }
 
 .businessImg {
@@ -99,11 +108,35 @@
   width: 50%;
 }
 
-.padding-10{
+.padding-10 {
   padding: 10px;
 }
 
-.businessProducts{
-  width:50%;
+.businessProducts {
+  width: 50%;
 }
 
+@media screen and (max-width: 1150px) {
+  .business {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .businessProducts {
+    width: 90%;
+  }
+
+  .businessDetails {
+    width: 90%;
+    padding: 2%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .productContainer {
+    flex-direction: column;
+  }
+  .product {
+    width: 100%;
+  }
+}
