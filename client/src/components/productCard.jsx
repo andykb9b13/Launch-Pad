@@ -10,6 +10,7 @@ import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 import CircularProgressBar from "../components/ProgressBar";
 import "../styles/productCard.css";
+import Confetti from 'react-confetti'
 
 const ProductCard = () => {
   const [total, setTotal] = useState(0);
@@ -17,6 +18,9 @@ const ProductCard = () => {
   const [donate, { error }] = useMutation(ADD_DONATION);
   const [product, setProduct] = useState([]);
   const [productFunding, setProductFunding] = useState(0);
+  const [confettiCompleted, setConfettiCompleted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+
   const { productId } = useParams();
 
   const handleTotalChange = (e) => {
@@ -27,11 +31,20 @@ const ProductCard = () => {
     setMessage(e.target.value);
   };
 
+  const handleConfettiComplete = () => {
+    setShowConfetti(false)
+  };
+
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
       productId: productId,
     },
   });
+  console.log(productId)
+
+  const renderConfetti = () => {
+    setShowConfetti(true)
+  }
 
   const handleToken = async (total, token) => {
     try {
@@ -48,6 +61,7 @@ const ProductCard = () => {
       if (response.ok) {
         setProductFunding(productFunding + total);
         handleSubmit();
+        renderConfetti();
       }
     } catch (err) {
       console.log(err);
@@ -68,6 +82,11 @@ const ProductCard = () => {
   }, [data]);
 
   useEffect(() => {}, [productFunding]);
+  useEffect(() => {
+    if (showConfetti && confettiCompleted) {
+      setShowConfetti(false);
+    }
+  }, [showConfetti, confettiCompleted]);
 
   const handleSubmit = async (event) => {
     try {
@@ -86,6 +105,7 @@ const ProductCard = () => {
 
   return (
     <div>
+      {showConfetti && <Confetti height={10000} onConfettiComplete={{handleConfettiComplete}}/>}
       <div className="productInfo">
         {/* <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
           Funding Form
@@ -127,6 +147,7 @@ const ProductCard = () => {
                 <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
                 <input
                   onChange={handleTotalChange}
+                  value={total}
                   type="number"
                   name="amount"
                   id="amount"

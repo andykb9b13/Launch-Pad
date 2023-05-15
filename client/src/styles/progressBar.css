@@ -24,6 +24,7 @@
     right: 0;
     bottom: 0;
     margin: auto;
+    transition: 1s;
   }
   
   .progress-ring__bar{
@@ -34,7 +35,6 @@
     cx: 50%;
     cy: 50%;
     stroke: #ccc;
-
   }
   
   .progress-text {
@@ -45,4 +45,5 @@
     font-size: 20px;
     font-weight: bold;
     color: #333;
+    transition: 0.3s;
   }
