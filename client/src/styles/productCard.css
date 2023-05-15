@@ -1,0 +1,32 @@
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 15%;
+  padding: 5%;
+  border-radius: 5px;
+}
+
+.productImg {
+  width: 60%;
+}
+
+.navigateBtn {
+  border: 1px solid black;
+  padding: 2%;
+  border-radius: 5px;
+  margin: 2%;
+}
+
+.navigateBtn:hover {
+  border: 1px solid black;
+  padding: 2%;
+  border-radius: 5px;
+  margin: 2%;
+}
+
+.productInfo h2 {
+  font-size: 3em;
+  text-align: center;
+}
