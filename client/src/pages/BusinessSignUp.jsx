@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, Routes, useNavigate, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_BUSINESS } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
@@ -56,13 +56,11 @@ export default function BusinessSignUp() {
       return;
     }
     setImageUrl(result?.info?.secure_url);
-    console.log("This is the result in handleUpload", result.info.secure_url);
   }
 
   // use effect for logged in status
   useEffect(() => {
     setLoggedIn(false);
-    console.log("This is user at the beginning of useEffect", user);
     if (user !== null) {
       setLoggedIn(true);
     }
@@ -130,7 +128,6 @@ export default function BusinessSignUp() {
         alert("Business created!");
         if (data) navigate(`/custom-business/${businessName}`);
       } catch (err) {
-        console.log("you're in the catch block");
         console.error(err);
         alert("Business creation unsuccessful. Please try again.");
       }
@@ -138,7 +135,6 @@ export default function BusinessSignUp() {
   };
 
   const [createBusiness, { error }] = useMutation(ADD_BUSINESS);
-  const [validated] = useState(false);
 
   return (
     <div>
@@ -278,17 +274,14 @@ export default function BusinessSignUp() {
                   <p>
                     <img src={imageUrl} alt="Uploaded resource" />
                   </p>
-                  {/* <p>{imageUrl}</p> */}
                 </>
               )}
-              {/* <Link to={`/custom-business/${businessName}`}> */}
               <button
                 className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
                 type="submit"
               >
                 Create Profile
               </button>
-              {/* </Link> */}
               <button
                 className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
                 onClick={prevPage}
@@ -299,7 +292,6 @@ export default function BusinessSignUp() {
           </form>
         </div>
       )}
-      {/* final div */}
     </div>
   );
 }

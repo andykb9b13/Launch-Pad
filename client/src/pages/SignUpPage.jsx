@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
@@ -101,7 +100,6 @@ function SignUp() {
 
   return (
     <div className="outerContainer w-full h-screen flex justify-center flex-col items-center p-4">
-      {/* <form className='login-border rounded-lg flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6' onSubmit={handleSubmit}> */}
       <h1 className="fade-in-box">Sign Up</h1>
       <form
         className="signUpForm login-border padding-20 fade-in-box"

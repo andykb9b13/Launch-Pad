@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -45,10 +45,8 @@ export default function BusinessSignUp() {
       websiteURL: websiteURL,
       twitterURL: twitterURL,
       facebookURL: facebookURL,
-      instagramURL,
-      instagramURL,
-      description,
-      description,
+      instagramURL: instagramURL,
+      description: description,
     };
     console.log(userInfo);
   };

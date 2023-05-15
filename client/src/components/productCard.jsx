@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { QUERY_PRODUCT } from "../utils/queries";
 import { Link } from "react-router-dom";
-import { useQuery, useApolloClient } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import forms from "@tailwindcss/forms";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_DONATION } from "../utils/mutations";
-import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 import CircularProgressBar from "../components/ProgressBar";
 import "../styles/productCard.css";
@@ -87,9 +85,6 @@ const ProductCard = () => {
   return (
     <div>
       <div className="productInfo">
-        {/* <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
-          Funding Form
-        </h2> */}
         <h2>{product.name}</h2>
         <img className="productImg" src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">

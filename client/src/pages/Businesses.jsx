@@ -12,8 +12,6 @@ import TwoProducts from "../components/TwoProducts";
 const Businesses = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
   const businesses = data?.businesses || [];
-  console.log(businesses.length);
-  console.log("businesses in BusinessCard", businesses);
 
   return (
     <div className="businessCard">

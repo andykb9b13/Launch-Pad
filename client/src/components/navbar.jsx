@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Auth from "../utils/auth";
-import "../styles/navbar.css"
+import "../styles/navbar.css";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -11,7 +11,6 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       Auth.logout();
-      console.log("user was logged out");
       alert("Successfully logged out!");
     } catch (err) {
       console.log(err);
@@ -31,10 +30,6 @@ const Navbar = () => {
           <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/user">Profile</Link>
           </li>
-          {/* <li className="hover:scale-110 duration-500 mx-2">
-            <Link to="/business">Business</Link>
-          </li> */}
-
           <li className="hover:scale-110 duration-500 mx-2">
             <Link to="/login">Login</Link>
           </li>
@@ -63,7 +58,7 @@ const Navbar = () => {
         className={
           !nav
             ? "hidden"
-            : "absolute top-0 left-0 w-full h-screen bg-[var(--lime)] flex flex-col justify-center items-center font-bold tracking-widest"
+            : "absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center font-bold tracking-widest"
         }
       >
         <li className="py-6 text-4xl">
@@ -71,11 +66,6 @@ const Navbar = () => {
             Profile
           </Link>
         </li>
-        {/* <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="/business">
-            Business
-          </Link>
-        </li> */}
         <li className="py-6 text-4xl">
           <Link onClick={handleClick} to="/login"></Link>
         </li>

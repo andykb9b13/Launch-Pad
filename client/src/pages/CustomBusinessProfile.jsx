@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_BUSINESS, QUERY_ME } from "../utils/queries";
+import { QUERY_BUSINESS } from "../utils/queries";
 import { useMutation } from "@apollo/react-hooks";
-//import UploadWidget from "../components/UploadWidget";
-//import BusinessSignUp from "./BusinessSignUp";
 import { DELETE_BUSINESS } from "../utils/mutations";
 import AddProduct from "../components/AddProduct";
 import "../styles/custombus.css";
@@ -12,17 +10,14 @@ import "../styles/custombus.css";
 const CustomBusinessProfile = ({ business }) => {
   // grab name from url
   const { name } = useParams();
-  console.log("name from useParams", name);
   // query business based on name from url
   const { data } = useQuery(QUERY_BUSINESS, {
     variables: {
       name: name,
     },
   });
-  console.log("data from useQuery", data);
 
   const handleDelete = async () => {
-    console.log("business id: ", data?.business._id);
     const businessId = data?.business._id;
     try {
       await deleteBusiness({
@@ -30,7 +25,6 @@ const CustomBusinessProfile = ({ business }) => {
       });
       alert("Business deleted!");
     } catch (err) {
-      console.log("catch block");
       console.error(err);
       alert("Unsuccessful delete. Please try again.");
     }
