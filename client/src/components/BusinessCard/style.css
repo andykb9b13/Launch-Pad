@@ -18,14 +18,23 @@
   }
 }
 
+.businessHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInAnimation ease 3s;
+}
+
 .businessHeader h1 {
   text-align: center;
+  font-size: 6em;
 }
 
 .businessHeader h2 {
   text-align: center;
   color: white;
   text-shadow: 1px 5px 10px black;
+  font-size: 2.6em;
 }
 
 .businessImg {
@@ -99,11 +108,10 @@
   width: 50%;
 }
 
-.padding-10{
+.padding-10 {
   padding: 10px;
 }
 
-.businessProducts{
-  width:50%;
+.businessProducts {
+  width: 50%;
 }
-
