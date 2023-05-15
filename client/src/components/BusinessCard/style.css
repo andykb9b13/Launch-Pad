@@ -82,6 +82,7 @@
   justify-content: center;
   margin: 2%;
   box-shadow: 2px 2px 2px 2px grey;
+  width: 50%;
 }
 
 .socialIcons {
@@ -100,5 +101,9 @@
 
 .padding-10{
   padding: 10px;
+}
+
+.businessProducts{
+  width:50%;
 }
 

@@ -76,3 +76,7 @@ h2 {
   box-shadow: 1px 1px 5px black;
   text-shadow: 1px 1px 5px white;
 }
+
+.visual-aid-border {
+  border: 2px dotted green;
+}
