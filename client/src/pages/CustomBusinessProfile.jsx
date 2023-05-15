@@ -87,19 +87,19 @@ const CustomBusinessProfile = ({ business }) => {
             <div>
               <div>
                 {data?.business.imageUrl && (
-                <>
-                  <h3>Profile Image</h3>
-                  <p>
-                    <img
-                      src={data?.business.imageUrl}
-                      alt="Uploaded resource"
-                    />
-                  </p>
-                  <p>{data?.business.imageUrl}</p>
-                </>
-              )}
+                  <>
+                    <h3>Profile Image</h3>
+                    <p>
+                      <img
+                        src={data?.business.imageUrl}
+                        alt="Uploaded resource"
+                      />
+                    </p>
+                    <p>{data?.business.imageUrl}</p>
+                  </>
+                )}
               </div>
-              
+
               <div>
                 <div className="delet-margin-top">
                   <Link to={`/`}>
