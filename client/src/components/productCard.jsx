@@ -9,6 +9,7 @@ import { ADD_DONATION } from "../utils/mutations";
 import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
 import CircularProgressBar from "../components/ProgressBar";
+import "../styles/productCard.css";
 
 const ProductCard = () => {
   const [total, setTotal] = useState(0);
@@ -84,13 +85,13 @@ const ProductCard = () => {
   };
 
   return (
-    <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
-      <div className="rounded-md outline outline-4 outline-[var(--lime)]">
+    <div>
+      <div className="productInfo">
         {/* <h2 className="font-semibold leading-7 text-[var(--red)] text-center border-b-4 border-[var(--green)] h-10 text-2xl">
           Funding Form
         </h2> */}
-        <h3 className="text-center text-xl font-semibold">{product.name}</h3>
-        <img src={product.imageUrl} alt={product.name} />
+        <h2>{product.name}</h2>
+        <img className="productImg" src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">
           <h3>How much is raised so far...</h3>
           <CircularProgressBar
@@ -102,18 +103,17 @@ const ProductCard = () => {
           </p>
         </div>
         <div className="text-center mt-6">
-          <a
-            href={product.externalLink}
-            className="text-center basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
-          >
-            Buy it now
-          </a>
+          <button className="navigateBtn">
+            <a
+              href={product.externalLink}
+              className="text-center basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
+            >
+              Buy it now
+            </a>
+          </button>
         </div>
 
-        <form
-          className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1"
-          onSubmit={handleSubmit}
-        >
+        <form className="donateForm" onSubmit={handleSubmit}>
           <div className="sm:col-span-4">
             <label
               htmlFor="amount"
@@ -173,18 +173,22 @@ const ProductCard = () => {
           </div>
           {/* check these links, they are placeholders on 5/3 */}
           <div className="flex flex-row justify-center">
-            <Link
-              to="/signup"
-              className="basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
-            >
-              Sign in to donate
-            </Link>
-            <Link
-              to="/business"
-              className="basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
-            >
-              Back to Business
-            </Link>
+            <button className="navigateBtn">
+              <Link
+                to="/signup"
+                className="basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
+              >
+                Sign in to donate
+              </Link>
+            </button>
+            <button className="navigateBtn">
+              <Link
+                to="/business"
+                className="basis=1/4 text-[var(--green)] font-bold rounded-full p-5"
+              >
+                Back to Business
+              </Link>
+            </button>
           </div>
         </form>
       </div>

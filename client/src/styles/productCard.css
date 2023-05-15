@@ -10,6 +10,11 @@
 
 .productImg {
   width: 60%;
+  margin: auto;
+}
+
+.circular-progress-bar {
+  margin: auto;
 }
 
 .navigateBtn {
@@ -20,7 +25,8 @@
 }
 
 .navigateBtn:hover {
-  border: 1px solid black;
+  background-color: #0e3753;
+  color: whitesmoke;
   padding: 2%;
   border-radius: 5px;
   margin: 2%;
@@ -29,4 +35,8 @@
 .productInfo h2 {
   font-size: 3em;
   text-align: center;
+}
+
+.donateForm {
+  margin: auto;
 }
