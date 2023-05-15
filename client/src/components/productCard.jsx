@@ -8,12 +8,13 @@ import { useMutation } from "@apollo/react-hooks";
 import { ADD_DONATION } from "../utils/mutations";
 import Auth from "../utils/auth";
 import Stripe from "react-stripe-checkout";
+import CircularProgressBar from "../components/ProgressBar";
 
 const ProductCard = () => {
   const [total, setTotal] = useState(0);
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
   const [donate, { error }] = useMutation(ADD_DONATION);
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState([]);
   const [productFunding, setProductFunding] = useState(0);
   const { productId } = useParams();
 
@@ -23,15 +24,15 @@ const ProductCard = () => {
   };
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
-  }
-  
+  };
+
   const { data } = useQuery(QUERY_PRODUCT, {
     variables: {
       productId: productId,
     },
   });
 
-  const handleToken = async(total, token) => {
+  const handleToken = async (total, token) => {
     try {
       const response = await fetch("/api/stripe/pay", {
         method: "POST",
@@ -43,10 +44,9 @@ const ProductCard = () => {
           amount: total,
         }),
       });
-      if(response.ok){
-        setProductFunding(productFunding + total)
+      if (response.ok) {
+        setProductFunding(productFunding + total);
         handleSubmit();
-        
       }
     } catch (err) {
       console.log(err);
@@ -58,16 +58,15 @@ const ProductCard = () => {
 
   const getProduct = () => {
     const product = data?.product || [];
-    setProduct(product)
-    setProductFunding(product.funding)
-  }
+    setProduct(product);
+    setProductFunding(product.funding);
+  };
 
   useEffect(() => {
     getProduct();
-  }, [data])
-  
-  useEffect(() => {
-  }, [productFunding])
+  }, [data]);
+
+  useEffect(() => {}, [productFunding]);
 
   const handleSubmit = async (event) => {
     try {
@@ -84,8 +83,6 @@ const ProductCard = () => {
     }
   };
 
-  
-
   return (
     <div className="grid gap-4 place-content-center px-4 py-3 rounded-sm relative top-20">
       <div className="rounded-md outline outline-4 outline-[var(--lime)]">
@@ -96,7 +93,13 @@ const ProductCard = () => {
         <img src={product.imageUrl} alt={product.name} />
         <div className="progressBar text-center">
           <h3>How much is raised so far...</h3>
-          <p className="progressAmt">${productFunding}/${product.fundingGoal}</p>
+          <CircularProgressBar
+            funding={productFunding}
+            fundingGoal={product.fundingGoal}
+          />
+          <p className="progressAmt">
+            ${productFunding}/${product.fundingGoal}
+          </p>
         </div>
         <div className="text-center mt-6">
           <a
@@ -153,17 +156,20 @@ const ProductCard = () => {
                 ></textarea>
               </div>
             </div>
-            <div id="stripe-button" onClick={(e) => {
-              e.preventDefault()
-            }}>
-                <Stripe
-                  className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                  stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
-                  token={tokenHandler}
-                />
-             </div>
+            <div
+              id="stripe-button"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Stripe
+                className="ml-2 inline-block rounded bg-[var(--red)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-[var(--white)] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] relative top-2"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                stripeKey="pk_test_51N6iz9AqOUdA7AoG2XmQujEgl4vktvigfdoVOeIHUOdHYKrbZJiHzcdUA6HVp0SrY8IsN6WlaYh247mX0sXihXKz008JQffNTH"
+                token={tokenHandler}
+              />
+            </div>
           </div>
           {/* check these links, they are placeholders on 5/3 */}
           <div className="flex flex-row justify-center">
