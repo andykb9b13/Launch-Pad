@@ -103,3 +103,33 @@ h2 {
 .visual-aid-border {
   border: 2px dotted green;
 }
+
+@media screen and (max-width: 650px) {
+  .banner h1 {
+    font-size: 5em;
+  }
+
+  .banner h2 {
+    font-size: 2em;
+  }
+
+  .launchBtn {
+    font-size: 1.25em;
+    padding: 10px;
+  }
+
+  .missionImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .businessImg {
+    width: 100%;
+  }
+
+  .banner h1,
+  .banner h2 {
+    text-align: center;
+  }
+}
