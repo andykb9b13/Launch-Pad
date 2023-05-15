@@ -81,6 +81,10 @@
   color: whitesmoke;
 }
 
+.visual-aid {
+  border: 2px dotted green;
+}
+
 .fade-in-box {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
@@ -94,4 +98,28 @@
   100% {
     opacity: 1;
   }
+}
+
+.full-height{
+  height: 100vh;
+}
+
+.margin-10px{
+  margin: 10px;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.box-shadow-2{
+  box-shadow: 2px 2px 2px 2px grey;
+}
+
+.bg-blue {
+  background-color: rgb(18, 18, 133);
+}
+
+.bg-white {
+  background-color: whitesmoke;
 }

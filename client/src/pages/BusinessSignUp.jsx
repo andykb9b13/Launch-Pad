@@ -139,14 +139,22 @@ export default function BusinessSignUp() {
   return (
     <div>
       {data === undefined ? (
-        <div>
-          <h2>You must be logged in to create a business.</h2>
-          <button type="button" className="redirectBtn">
-            <Link to="/login">Login</Link>
-          </button>
-          <button type="button" className="redirectBtn">
-            <Link to="/signup">Signup</Link>
-          </button>
+        <div className="full-height flex justify-center align-items ">
+          <div className="padding-20 border-radius-15 box-shadow-2 bg-blue">
+            <div className="padding-20 border-radius-15 box-shadow-2 bg-white">
+            <h2>You must be logged in to create a business.</h2>
+            <div className="flex justify-center align-items">
+              <button type="button" className="redirectBtn margin-10px" >
+              <Link to="/login">Login</Link>
+            </button>
+            <button type="button" className="redirectBtn margin-10px">
+            < Link to="/signup">Signup</Link>
+            </button>
+            </div>
+          </div>
+          </div>
+          
+          
         </div>
       ) : (
     <div className="w-full flex justify-center items-center p-4">
