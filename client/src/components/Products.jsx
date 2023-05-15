@@ -6,7 +6,7 @@ import CircularProgressBar from "./ProgressBar";
 const Products = ({ products }) => {
   console.log("products from component", products);
   return (
-    <div className="productContainer">
+    <div className="productContainer width-75">
       {products &&
         products.map((product, i) => (
           <div key={i} className="product">

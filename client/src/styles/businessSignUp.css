@@ -1,0 +1,47 @@
+.businessBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: none;
+  width: 100%;
+  height: 400px;
+  animation: fadeInAnimation ease 3s;
+  background-image: url("https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80");
+}
+
+.businessBanner h1 {
+  text-align: center;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.businessSignUp {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px black;
+  background-color: white;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+  background-color: #0e3753;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 1px 10px 1px grey;
+}

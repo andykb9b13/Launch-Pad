@@ -5,7 +5,7 @@ import { ADD_BUSINESS } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import UploadWidget from "../components/UploadWidget";
-import "../styles/login.css"
+import "../styles/businessSignUp.css";
 
 export default function BusinessSignUp() {
   const navigate = useNavigate();
@@ -70,28 +70,32 @@ export default function BusinessSignUp() {
 
   const validateForm = () => {
     let errors = {};
-    let isValid= true;
+    let isValid = true;
     // business name validation
-    if(!businessName.trim()) {
-      errors.businessName = "Business name is a required field. Please enter business name.";
+    if (!businessName.trim()) {
+      errors.businessName =
+        "Business name is a required field. Please enter business name.";
       isValid = false;
     }
 
     if (!description) {
-      errors.description = "Description is a required field. Please enter a description.";
+      errors.description =
+        "Description is a required field. Please enter a description.";
       isValid = false;
     } else if (description.length < 25) {
-        errors.description = "The description must be at least 25 characters long.";
-        isValid = false;
+      errors.description =
+        "The description must be at least 25 characters long.";
+      isValid = false;
     }
 
     if (missionStatement.length < 25) {
-      errors.missionStatement = "The mission statement must be at least 25 characters long.";
+      errors.missionStatement =
+        "The mission statement must be at least 25 characters long.";
       isValid = false;
     }
     setFormErrors(errors);
     return isValid;
-  }
+  };
 
   const [formErrors, setFormErrors] = useState({
     businessName: "",
@@ -117,19 +121,19 @@ export default function BusinessSignUp() {
       missionStatement: missionStatement,
       imageUrl: imageUrl,
     };
-    console.log("this is user Info: ",userInfo);
-    if(validateForm()) {
-          try {
-      const { data } = await createBusiness({
-        variables: { ...userInfo },
-      });
-      alert("Business created!");
-      if (data) navigate(`/custom-business/${businessName}`);
-    } catch (err) {
-      console.log("you're in the catch block");
-      console.error(err);
-      alert("Business creation unsuccessful. Please try again.");
-    }
+    console.log("this is user Info: ", userInfo);
+    if (validateForm()) {
+      try {
+        const { data } = await createBusiness({
+          variables: { ...userInfo },
+        });
+        alert("Business created!");
+        if (data) navigate(`/custom-business/${businessName}`);
+      } catch (err) {
+        console.log("you're in the catch block");
+        console.error(err);
+        alert("Business creation unsuccessful. Please try again.");
+      }
     }
   };
 
@@ -149,136 +153,153 @@ export default function BusinessSignUp() {
           </button>
         </div>
       ) : (
-    <div className="w-full flex justify-center items-center p-4">
-      <form
-        className="flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 mt-10"
-        onSubmit={onSubmit}
-      >
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Business Name
-        </label>
-        <input
-          type="text"
-          placeholder="Your Business Name"
-          onChange={handleNameChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
-        {formErrors.businessName && <span className="error">{formErrors.businessName}</span>}
+        <div className="signUpContainer w-full flex justify-center flex-col items-center">
+          <div className="businessBanner">
+            <h1>Launch your dreams...</h1>
+          </div>
+          <div className="instructions">
+            <h2>Create a Business Profile</h2>
+            <p>Enter the information for your business</p>
+          </div>
+          <form
+            className="businessSignUp flex flex-col max-w-[800px] w-full p-6 mt-10"
+            onSubmit={onSubmit}
+          >
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Business Name
+            </label>
+            <input
+              type="text"
+              placeholder="Your Business Name"
+              onChange={handleNameChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
+            {formErrors.businessName && (
+              <span className="error">{formErrors.businessName}</span>
+            )}
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Location
-        </label>
-        <input
-          type="text"
-          placeholder="Business Location"
-          onChange={handleLocationChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Location
+            </label>
+            <input
+              type="text"
+              placeholder="Business Location"
+              onChange={handleLocationChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Website URL
-        </label>
-        <input
-          type="text"
-          placeholder="www.examplebusiness.com"
-          onChange={handleWebsiteChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Website URL
+            </label>
+            <input
+              type="text"
+              placeholder="www.examplebusiness.com"
+              onChange={handleWebsiteChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Twitter
-        </label>
-        <input
-          type="text"
-          placeholder="www.twitter.com/yourbusiness"
-          onChange={handleTwitterChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Twitter
+            </label>
+            <input
+              type="text"
+              placeholder="www.twitter.com/yourbusiness"
+              onChange={handleTwitterChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Facebook
-        </label>
-        <input
-          type="text"
-          placeholder="www.facebook.com/yourbusiness"
-          onChange={handleFacebookChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Facebook
+            </label>
+            <input
+              type="text"
+              placeholder="www.facebook.com/yourbusiness"
+              onChange={handleFacebookChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Instagram
-        </label>
-        <input
-          type="text"
-          placeholder="www.instagram.com/yourbusiness"
-          onChange={handleInstagramChange}
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Instagram
+            </label>
+            <input
+              type="text"
+              placeholder="www.instagram.com/yourbusiness"
+              onChange={handleInstagramChange}
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Description
-        </label>
-        <textarea
-          placeholder="Enter Description Here"
-          onChange={handleDescriptionChange}
-          rows="6"
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
-        {formErrors.description && <span className="error">{formErrors.description}</span>}
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Description
+            </label>
+            <textarea
+              placeholder="Enter Description Here"
+              onChange={handleDescriptionChange}
+              rows="6"
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
+            {formErrors.description && (
+              <span className="error">{formErrors.description}</span>
+            )}
 
-        <label className="text-[var(--red)] tracking-wider sm:text-2xl">
-          Mission Statement
-        </label>
-        <textarea
-          placeholder="Enter Mission Statement Here"
-          onChange={handleMissionStatementChange}
-          rows="6"
-          className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
-        />
-                {formErrors.missionStatement && <span className="error">{formErrors.missionStatement}</span>}
+            <label className="text-[var(--red)] tracking-wider sm:text-2xl">
+              Mission Statement
+            </label>
+            <textarea
+              placeholder="Enter Mission Statement Here"
+              onChange={handleMissionStatementChange}
+              rows="6"
+              className="bg-[var(--white)] my-2 text-[gray] p-2 border-2 rounded-lg border-[var(--green)] ml-2"
+            />
+            {formErrors.missionStatement && (
+              <span className="error">{formErrors.missionStatement}</span>
+            )}
 
-        <div>
-          <UploadWidget onUpload={handleOnUpload}>
-            {({ open }) => {
-              function handleOnClick(e) {
-                e.preventDefault();
-                open();
-              }
-              return (
-                <button
-                  className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
-                  onClick={handleOnClick}
-                >
-                  Upload an Image
-                </button>
-              );
-            }}
-          </UploadWidget>
+            <div>
+              <UploadWidget onUpload={handleOnUpload}>
+                {({ open }) => {
+                  function handleOnClick(e) {
+                    e.preventDefault();
+                    open();
+                  }
+                  return (
+                    <button
+                      className="bg-[var(--white)] border-2 border-[var(--green)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
+                      onClick={handleOnClick}
+                    >
+                      Upload an Image
+                    </button>
+                  );
+                }}
+              </UploadWidget>
 
-          {imageUrl && (
-            <>
-              <h3>Profile Image</h3>
-              <p>
-                <img src={imageUrl} alt="Uploaded resource" />
-              </p>
-              <p>{imageUrl}</p>
-            </>
-          )}
-          {/* <Link to={`/custom-business/${businessName}`}> */}
-            <button
-              className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
-              type="submit"
-            >
-              Create Profile
-            </button>
-          {/* </Link> */}
-          <button className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center" onClick={prevPage}>
-            Cancel
-          </button>
+              {imageUrl && (
+                <>
+                  <h3>Profile Image</h3>
+                  <p>
+                    <img src={imageUrl} alt="Uploaded resource" />
+                  </p>
+                  {/* <p>{imageUrl}</p> */}
+                </>
+              )}
+              {/* <Link to={`/custom-business/${businessName}`}> */}
+              <button
+                className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
+                type="submit"
+              >
+                Create Profile
+              </button>
+              {/* </Link> */}
+              <button
+                className="bg-[var(--white)] border-2 border-[var(--lime)] rounded-lg button-background button-background:hover px-10 py-3 my-2 mx-auto flex flex-center"
+                onClick={prevPage}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>)}
-    {/* final div */}
+      )}
+      {/* final div */}
     </div>
   );
 }

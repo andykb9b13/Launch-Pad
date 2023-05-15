@@ -1,19 +1,25 @@
 .productContainer {
   display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
 }
 
 .product {
   margin-left: 2%;
-  border: 1px solid black;
   padding: 2%;
   width: 50%;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px grey;
+  background-color: white;
 }
 
 .innerProduct {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  box-shadow: inset 1px 1px 1px 1px grey;
+  background-color: white;
 }
 
 .innerProduct * {
@@ -47,4 +53,16 @@
 
 .funding-progress{
   font-size: 1.5vw;
+}
+
+.styling-border{
+  border: 2px dotted black;
+}
+
+.outer-border {
+  border: 2px dotted green !important;
+}
+
+.width-75 {
+  width: 75vw;
 }

@@ -43,9 +43,6 @@ const BusinessCard = () => {
             >
               <Link to={`/business/${randomBusiness.name}`}>Learn More</Link>
             </button>
-          </div>
-          <div className="businessProducts p-6">
-            <TwoProducts products={randomBusiness.products} />
             <div className="socialIcons">
               <a href={randomBusiness.facebook}>
                 <img src={facebook} alt="facebook" />
@@ -57,6 +54,9 @@ const BusinessCard = () => {
                 <img src={instagram} alt="instagram" />
               </a>
             </div>
+          </div>
+          <div className="businessProducts p-6">
+            <TwoProducts products={randomBusiness.products} />
           </div>
         </div>
       )}

@@ -27,7 +27,7 @@ const Businesses = () => {
       {businesses &&
         businesses.map((business, i) => (
           <div key={i} className="business">
-            <div className="businessDetails">
+            <div className="businessDetails width-50">
               <a href="#!">
                 <img
                   src={business.imageUrl}
@@ -40,8 +40,8 @@ const Businesses = () => {
               <a className="businessWebsite" href={business.website}>
                 {business.website}
               </a>
-              <p className="mb-4">{business.location}</p>
-              <p className="mb-4">{business.description}</p>
+              <p className="mb-4 padding-10">{business.location}</p>
+              <p className="mb-4 padding-10">{business.description}</p>
               <button
                 type="button"
                 className="inline-block businessLaunchBtn"
@@ -50,9 +50,6 @@ const Businesses = () => {
               >
                 <Link to={`/business/${business.name}`}>Learn More</Link>
               </button>
-            </div>
-            <div className="businessProducts p-6">
-              <TwoProducts products={business.products} />
               <div className="socialIcons">
                 <a href={business.facebook}>
                   <img src={facebook} alt="facebook" />
@@ -64,6 +61,9 @@ const Businesses = () => {
                   <img src={instagram} alt="instagram" />
                 </a>
               </div>
+            </div>
+            <div className="businessProducts p-6 width-50 ">
+              <TwoProducts products={business.products} />
             </div>
           </div>
         ))}

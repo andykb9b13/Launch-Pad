@@ -3,6 +3,7 @@ import { QUERY_BUSINESS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Products from "../components/Products";
+import "../styles/business.css"
 
 const ExploreBusiness = () => {
   const { name } = useParams();
@@ -23,7 +24,8 @@ const ExploreBusiness = () => {
 
   return (
     <div>
-      <div>
+      <div className="business-flex-page styling-border">
+      <div className="biz-flex-container styling-border">
         <h2>{business.name}</h2>
         <div className="profileImg">
           <img src={business.imageUrl} alt="profile" />
@@ -32,6 +34,7 @@ const ExploreBusiness = () => {
       </div>
       <h2>These are the items that need funding</h2>
       <Products products={business.products} />
+      </div>
     </div>
   );
 };
