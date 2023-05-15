@@ -7,6 +7,8 @@ import { QUERY_BUSINESS } from "../utils/queries";
 import facebook from "../assets/icons/facebook.png";
 import instagram from "../assets/icons/instagram.png";
 import twitter from "../assets/icons/twitter.png";
+import { DELETE_BUSINESS } from "../utils/mutations";
+import { useMutation } from "@apollo/react-hooks";
 import "../styles/business.css";
 
 const Business = ({ business }) => {
@@ -17,6 +19,22 @@ const Business = ({ business }) => {
   });
   const myBusiness = data?.business || [];
   console.log("This is myBusiness", myBusiness);
+
+  const handleDelete = async () => {
+    console.log("business id: ", data?.business._id);
+    const businessId = data?.business._id;
+    try {
+      await deleteBusiness({
+        variables: { id: businessId },
+      });
+      alert("Business deleted!");
+    } catch (err) {
+      console.log("catch block");
+      console.error(err);
+      alert("Unsuccessful delete. Please try again.");
+    }
+  };
+  const [deleteBusiness, { error }] = useMutation(DELETE_BUSINESS);
 
   return (
     <div className="businessContainer">
@@ -44,6 +62,15 @@ const Business = ({ business }) => {
           <img src={instagram} alt="instagram" />
         </a>
       </div>
+      <Link to={`/`}>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="bg-[var(--red)] text-[var(--white)] font-bold py-2 px-4 my-2 rounded item-margin-biz"
+        >
+          Delete Business Profile
+        </button>
+      </Link>
       <div className="outer-div-for-products">
         <div className="productContainer">
           {myBusiness.products &&

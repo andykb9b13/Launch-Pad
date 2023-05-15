@@ -83,7 +83,6 @@ const UserProfile = () => {
             </div>
 
             <div>
-              <h2 className="text-center">My Businesses</h2>
               <div>
                 {user.businesses.map((business, i) => (
                   <div key={i}>
