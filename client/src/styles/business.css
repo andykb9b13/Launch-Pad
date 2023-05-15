@@ -70,6 +70,24 @@
   align-items: center;
 }
 
-.styling-border{
-  border: 2px dotted black;
+.bg-color-blue {
+  background-color: rgba(10, 10, 165, 0.549);
 }
+
+.box-shadow{
+  box-shadow: 2px 2px 2px 2px grey;
+}
+
+.padding-20px {
+  padding: 20px;
+}
+
+.margin-20px {
+  margin: 20px;
+}
+
+.border-radius-20px {
+  border-radius: 20px;
+}
+
+
