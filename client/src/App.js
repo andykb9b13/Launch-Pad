@@ -61,6 +61,7 @@ export default function App() {
           <Route path="/newbusiness" element={<BusinessSignUp />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/custom-business/:name" element={<CustomBusinessProfile />} />
+          <Route path="/businesses" element={<Businesses />} />
         </Routes>
       </Router>
     </ApolloProvider>
