@@ -69,3 +69,7 @@
   justify-content: center;
   align-items: center;
 }
+
+.styling-border{
+  border: 2px dotted black;
+}

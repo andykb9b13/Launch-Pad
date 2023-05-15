@@ -24,8 +24,8 @@ const ExploreBusiness = () => {
 
   return (
     <div>
-      <div className="business-flex-page">
-      <div className="biz-flex-container">
+      <div className="business-flex-page styling-border">
+      <div className="biz-flex-container styling-border">
         <h2>{business.name}</h2>
         <div className="profileImg">
           <img src={business.imageUrl} alt="profile" />
