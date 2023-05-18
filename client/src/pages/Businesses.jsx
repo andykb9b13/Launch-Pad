@@ -12,8 +12,6 @@ import TwoProducts from "../components/TwoProducts";
 const Businesses = () => {
   const { data } = useQuery(QUERY_BUSINESSES);
   const businesses = data?.businesses || [];
-  console.log(businesses.length);
-  console.log("businesses in BusinessCard", businesses);
 
   return (
     <div className="businessCard">
@@ -27,7 +25,7 @@ const Businesses = () => {
       {businesses &&
         businesses.map((business, i) => (
           <div key={i} className="business">
-            <div className="businessDetails width-50">
+            <div className="businessDetails">
               <a href="#!">
                 <img
                   src={business.imageUrl}
@@ -62,7 +60,7 @@ const Businesses = () => {
                 </a>
               </div>
             </div>
-            <div className="businessProducts p-6 width-50 ">
+            <div className="businessProducts p-6">
               <TwoProducts products={business.products} />
             </div>
           </div>

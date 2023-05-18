@@ -1,6 +1,5 @@
 import React from "react";
 import BusinessCard from "../components/BusinessCard/BusinessCard";
-import BusinessProfile from "./BusinessProfile";
 import { Link } from "react-router-dom";
 import "../styles/Homepage.css";
 

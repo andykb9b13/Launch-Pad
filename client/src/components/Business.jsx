@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Products from "./Products";
+import React from "react";
 import AddProduct from "./AddProduct";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";

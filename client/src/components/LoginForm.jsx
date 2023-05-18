@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
@@ -90,10 +89,8 @@ function SignIn() {
   };
 
   return (
-    // <div className='w-full h-screen flex justify-center items-center p-4'>
     <div className="outerContainer w-full h-screen flex justify-top align-center p-4 flex-col">
       <h1 className="fade-in-box">Login</h1>
-      {/* <form className='border-4 border-[var(--green)] rounded-lg flex flex-col max-w-[800px] w-full bg-[var(--white)] p-6 full-width' onSubmit={handleSubmit}> */}
       <form
         className="loginForm login-border padding-20 fade-in-box"
         onSubmit={handleSubmit}
